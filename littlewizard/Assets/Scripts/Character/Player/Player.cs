@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : Character{
 
+    public FloatVar playerHP;
+    public FloatVar playerSP;
     PlayerState currentState;
     public WalkState walkState;
     public IdleState idleState;
@@ -32,7 +34,10 @@ public class Player : Character{
 
 
 
+    public void decreaseSP() {
 
+        this.playerSP.runtimeValue -= 5f;
+    }
 
 
 

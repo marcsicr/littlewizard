@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class Enemy : Character{
    
-    public Transform target;
+    protected Transform target;
 
+    public float HP = 100;
     protected float chaseRadius = 5f;
     protected float attackRadius = 2f;
     protected Vector2 spawnLocation;

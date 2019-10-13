@@ -74,6 +74,7 @@ public class AttackState : PlayerState {
         direction.Normalize();
         playerAnimator.SetFloat("moveX", direction.x);
         playerAnimator.SetFloat("moveY", direction.y);
+        player.decreaseSP();
 
         Vector2 force = new Vector2(forceAxis, forceAxis);
         playerRB.AddForce(force * direction, ForceMode2D.Impulse);

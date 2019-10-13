@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Character : MonoBehaviour{
     public float speed = 2f;
-    public int HP;
     public bool debugCharacter = false;
     
     protected Rigidbody2D myRigidBody;
