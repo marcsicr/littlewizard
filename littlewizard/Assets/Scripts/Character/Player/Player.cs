@@ -6,33 +6,41 @@ public class Player : Character{
 
     public FloatVar playerHP;
     public FloatVar playerSP;
+    
     PlayerState currentState;
     public WalkState walkState;
     public IdleState idleState;
 
+    private Vector2 inputAxis;
+    private Vector2 attackAxis;
     public override void Start() {
         base.Start();
-        walkState = new WalkState(this);
-        idleState = new IdleState(this);
-        currentState = idleState;
+       // walkState = new WalkState(this);
+       //idleState = new IdleState(this);
+       // currentState = idleState;
 
     }
 
    
 
     public void Update() {
-        currentState = currentState.handleInput();
-        currentState.act();
+     
+        handleInput();
+        // currentState = currentState.handleInput();
+       // currentState.act();
     }
   
 
     public void setOrientation(float posX, float posY) {
 
+
         myAnimator.SetFloat("moveX", posX);
         myAnimator.SetFloat("moveY", posY);
     }
 
-
+    public void move() {
+        transform.position = transform.position + (Vector3)inputAxis.normalized * speed * Time.deltaTime;
+    }
 
     public void decreaseSP() {
 
@@ -40,6 +48,36 @@ public class Player : Character{
     }
 
 
+    private void handleInput() {
+
+
+        if (Input.GetMouseButtonDown(0)) {
+
+            Vector3 clickPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 direction = clickPoint - transform.position;
+            direction.Normalize();
+            myAnimator.SetFloat("attackX", direction.x);
+            myAnimator.SetFloat("attackY", direction.y);
+            myAnimator.SetBool("attacking", true);
+
+        }
+
+        inputAxis.x = Input.GetAxisRaw("Horizontal");
+        inputAxis.y = Input.GetAxisRaw("Vertical");
+
+       if(inputAxis != Vector2.zero) {
+            myAnimator.SetFloat("inputX", inputAxis.x);
+            myAnimator.SetFloat("inputY", inputAxis.y);
+          
+        }
+        myAnimator.SetFloat("magnitude", inputAxis.magnitude);
+
+
+
+
+
+
+    }
 
 
     //public enum State { idle,walk,attack,stagger};
