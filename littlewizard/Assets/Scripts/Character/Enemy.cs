@@ -4,7 +4,10 @@ using UnityEngine;
 
 
 public class Enemy : Character{
-   
+
+    [HideInInspector]
+    public static readonly string ENEMY_TAG = "Enemy"; //This tag is defined first on inspector
+    
     protected Transform target;
 
     public float HP = 100;
@@ -17,6 +20,8 @@ public class Enemy : Character{
         base.Start();
     
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        gameObject.tag = ENEMY_TAG;
+        
         spawnLocation = transform.position;
 
         if (debugCharacter)

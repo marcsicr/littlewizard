@@ -21,7 +21,7 @@ public class Bar : MonoBehaviour
 
         if (watchVar.initialValue != watchVar.runtimeValue) {
 
-            Debug.Log("Player SP:" + watchVar.runtimeValue.ToString());
+          //  Debug.Log("Player SP:" + watchVar.runtimeValue.ToString());
             float barLength = computeBarLength();
             transform.localScale = new Vector3(barLength, 1f);
 
