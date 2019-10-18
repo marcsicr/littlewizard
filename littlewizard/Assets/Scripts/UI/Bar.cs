@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Bar : MonoBehaviour
 {
-    public FloatVar watchVar;
+    public IntVar watchVar;
    
 
    

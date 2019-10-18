@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour{
+public abstract class Character : MonoBehaviour{
     public float speed = 2f;
     public bool debugCharacter = false;
     
@@ -18,4 +18,7 @@ public class Character : MonoBehaviour{
         myAnimator.SetFloat("moveX", 0.0f);
         myAnimator.SetFloat("moveY", -1.0f);
     }
+
+
+    public abstract void OnGetKicked(int attack);
 }

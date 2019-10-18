@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Enemy : Character{
+public abstract class Enemy : Character{
 
     [HideInInspector]
     public static readonly string ENEMY_TAG = "Enemy"; //This tag is defined first on inspector
@@ -11,8 +11,8 @@ public class Enemy : Character{
     protected Transform target;
 
     public float HP = 100;
-    protected float chaseRadius = 5f;
-    protected float attackRadius = 2f;
+    public float chaseRadius = 5f;
+    public float attackRadius = 2f;
     protected Vector2 spawnLocation;
 
   

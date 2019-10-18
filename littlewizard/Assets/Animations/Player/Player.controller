@@ -9,13 +9,13 @@ AnimatorController:
   m_Name: Player
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: inputX
+  - m_Name: moveX
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: inputY
+  - m_Name: moveY
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -187,8 +187,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: moveX
     m_Mirror: 0
-  m_BlendParameter: inputX
-  m_BlendParameterY: inputY
+  m_BlendParameter: moveX
+  m_BlendParameterY: moveY
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
@@ -234,8 +234,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: moveX
     m_Mirror: 0
-  m_BlendParameter: inputX
-  m_BlendParameterY: inputY
+  m_BlendParameter: moveX
+  m_BlendParameterY: moveY
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
@@ -451,6 +451,6 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 48, y: 96, z: 0}
   m_EntryPosition: {x: -312, y: 156, z: 0}
-  m_ExitPosition: {x: 252, y: 24, z: 0}
+  m_ExitPosition: {x: 324, y: 204, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102207410289569842}

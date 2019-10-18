@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class StaffKick : MonoBehaviour
 {
-    public void OnCollisionEnter2D(Collision2D other) {
-        
-        if(other.gameObject.tag == Enemy.ENEMY_TAG) {
+    public void Update() {
 
-            Debug.Log("Collided with enemy");
+       
+    }
+    public void OnTriggerEnter2D(Collider2D other) {
+
+
+        if (other.gameObject.tag == Enemy.ENEMY_TAG) {
+
+            Log enemy =(Log) other.gameObject.GetComponent(typeof(Enemy));
+            enemy.OnGetKicked(1);
+            
         }
     }
 }

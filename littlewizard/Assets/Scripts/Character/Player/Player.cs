@@ -11,14 +11,16 @@ public class Player : Character{
     public WalkState walkState;
     public IdleState idleState;
 
+    public bool attack;
+
     private Vector2 inputAxis;
     private Vector2 attackAxis;
     public override void Start() {
         base.Start();
-       // walkState = new WalkState(this);
-       //idleState = new IdleState(this);
-       // currentState = idleState;
-
+        // walkState = new WalkState(this);
+        //idleState = new IdleState(this);
+        // currentState = idleState;
+        attack = false;
     }
 
    
@@ -29,10 +31,16 @@ public class Player : Character{
         // currentState = currentState.handleInput();
        // currentState.act();
     }
-  
+
+
+    public void FixedUpdate() {
+
+        if (attack) {
+
+        }
+    }
 
     public void setOrientation(float posX, float posY) {
-
 
         myAnimator.SetFloat("moveX", posX);
         myAnimator.SetFloat("moveY", posY);
@@ -43,13 +51,11 @@ public class Player : Character{
     }
 
     public void decreaseSP() {
-
         this.playerSP.runtimeValue -= 5f;
     }
 
 
     private void handleInput() {
-
 
         if (Input.GetMouseButtonDown(0)) {
 
@@ -60,25 +66,28 @@ public class Player : Character{
             myAnimator.SetFloat("attackY", direction.y);
             myAnimator.SetBool("attacking", true);
 
+        } else {
+
+            inputAxis.x = Input.GetAxisRaw("Horizontal");
+            inputAxis.y = Input.GetAxisRaw("Vertical");
+
+            if (inputAxis != Vector2.zero) {
+                myAnimator.SetFloat("moveX", inputAxis.x);
+                myAnimator.SetFloat("moveY", inputAxis.y);
+
+            }
+            myAnimator.SetFloat("magnitude", inputAxis.magnitude);
         }
-
-        inputAxis.x = Input.GetAxisRaw("Horizontal");
-        inputAxis.y = Input.GetAxisRaw("Vertical");
-
-       if(inputAxis != Vector2.zero) {
-            myAnimator.SetFloat("inputX", inputAxis.x);
-            myAnimator.SetFloat("inputY", inputAxis.y);
-          
-        }
-        myAnimator.SetFloat("magnitude", inputAxis.magnitude);
-
-
-
-
-
 
     }
 
+    public override void OnGetKicked(int attack) {
+
+        playerHP.runtimeValue -= attack;
+    }
+
+
+   
 
     //public enum State { idle,walk,attack,stagger};
 

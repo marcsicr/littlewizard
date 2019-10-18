@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Log : Enemy
 {
-    private enum State { sleep,walk,attack};
+    private enum State { sleep,walk,attack,death};
 
     private State logState;
     // Start is called before the first frame update
@@ -43,7 +43,10 @@ public class Log : Enemy
         }
     }
 
- 
+    public override void OnGetKicked(int attack) {
+
+        Destroy(this.gameObject);
+    }
     public void FixedUpdate() {
         
         if (isPlayerInChaseRadius()){
