@@ -4,50 +4,46 @@ using UnityEngine;
 
 public class WalkState : PlayerState {
 
-    public Vector2 change;
- 
+    public Vector2 movement;
+
 
     public WalkState(Player player) : base(player) {
-        change = Vector2.zero;
-    
+        movement = Vector2.zero;
+
     }
-   
+
 
     public override PlayerState handleInput() {
 
         //Check first if we should change to another state
         if (Input.GetMouseButtonDown(0)) {
-            playerAnimator.SetBool("walking", false); //Disable walking animation before going to attack
+            playerAnimator.SetFloat("magnitude", 0); //Disable walking animation before going to attack
             return new AttackState(player, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-         
         }
-            
 
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
-        //We mantain the the player in this frame on walking state
+        playerAnimator.SetFloat("magnitude", movement.sqrMagnitude);
 
-        change = Vector2.zero; //Resset change between calls
-        change.x = Input.GetAxisRaw("Horizontal");
-        change.y = Input.GetAxisRaw("Vertical");
-
-        if (change != Vector2.zero) {
+        if (movement != Vector2.zero) {
             return this;
         } else {
-
-            playerAnimator.SetBool("walking", false); //Disable walking animation before going to idle
             return player.idleState;
         }
-          
+    }
+
+    public void setMovement(Vector2 movement) {
+        this.movement = movement;
     }
 
     public override void act() {
 
-        if (change != Vector2.zero) {
-            playerAnimator.SetFloat("moveX", change.x);
-            playerAnimator.SetFloat("moveY", change.y);
-            playerAnimator.SetBool("walking", true);
-            change.Normalize();
-            playerRB.MovePosition((Vector2)player.transform.position + change * player.speed * Time.deltaTime);
+        if (movement != Vector2.zero) {
+            playerAnimator.SetFloat("moveX", movement.x);
+            playerAnimator.SetFloat("moveY", movement.y);
+            movement.Normalize();
+            playerRB.MovePosition((Vector2)playerRB.position + movement * player.speed * Time.fixedDeltaTime);
         }
     }
 

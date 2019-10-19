@@ -4,80 +4,98 @@ using UnityEngine;
 
 public class Player : Character{
 
-    public FloatVar playerHP;
-    public FloatVar playerSP;
+    //States that can be reused
+    public IdleState idleState; 
+    public WalkState walkState; 
+
+    public IntVar playerHP;
+    public IntVar playerSP;
+    public IntVar stamina;
+
+    private Vector2 movement;
+    private Vector2 clickPoint;
+    private PlayerState currentState;
     
-    PlayerState currentState;
-    public WalkState walkState;
-    public IdleState idleState;
-
-    public bool attack;
-
-    private Vector2 inputAxis;
-    private Vector2 attackAxis;
     public override void Start() {
         base.Start();
-        // walkState = new WalkState(this);
-        //idleState = new IdleState(this);
-        // currentState = idleState;
-        attack = false;
+
+        idleState = new IdleState(this);
+        walkState = new WalkState(this);
+        currentState = idleState;
+        
     }
 
-   
+   public Animator getAnimator() {
+
+        return this.myAnimator;
+    }
 
     public void Update() {
-     
-        handleInput();
-        // currentState = currentState.handleInput();
-       // currentState.act();
+       currentState = currentState.handleInput();
     }
 
 
     public void FixedUpdate() {
 
-        if (attack) {
+        currentState.act();
 
-        }
+        //myRigidBody.MovePosition(myRigidBody.position + movement * speed * Time.fixedDeltaTime);
+       
+
     }
 
-    public void setOrientation(float posX, float posY) {
 
-        myAnimator.SetFloat("moveX", posX);
-        myAnimator.SetFloat("moveY", posY);
-    }
 
     public void move() {
-        transform.position = transform.position + (Vector3)inputAxis.normalized * speed * Time.deltaTime;
+      //  transform.position = transform.position + (Vector3)inputAxis.normalized * speed * Time.deltaTime;
     }
 
     public void decreaseSP() {
-        this.playerSP.runtimeValue -= 5f;
+        this.playerSP.runtimeValue -= 5;
     }
 
 
     private void handleInput() {
 
-        if (Input.GetMouseButtonDown(0)) {
+        movement.x = Input.GetAxis("Horizontal");
+        movement.y = Input.GetAxis("Vertical");
 
-            Vector3 clickPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 direction = clickPoint - transform.position;
-            direction.Normalize();
-            myAnimator.SetFloat("attackX", direction.x);
-            myAnimator.SetFloat("attackY", direction.y);
-            myAnimator.SetBool("attacking", true);
-
-        } else {
-
-            inputAxis.x = Input.GetAxisRaw("Horizontal");
-            inputAxis.y = Input.GetAxisRaw("Vertical");
-
-            if (inputAxis != Vector2.zero) {
-                myAnimator.SetFloat("moveX", inputAxis.x);
-                myAnimator.SetFloat("moveY", inputAxis.y);
-
-            }
-            myAnimator.SetFloat("magnitude", inputAxis.magnitude);
+        if (movement != Vector2.zero) {
+            myAnimator.SetFloat("moveX", movement.x);
+            myAnimator.SetFloat("moveY", movement.y);
         }
+
+        myAnimator.SetFloat("magnitude", movement.sqrMagnitude);
+
+        if (Input.GetMouseButton(0)) {
+           clickPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+           Vector2 direction =  clickPoint - myRigidBody.position;
+           myAnimator.SetFloat("attackX", direction.x);
+           myAnimator.SetFloat("attackY", direction.y);
+           myAnimator.SetBool("attacking", true);
+        }
+      
+       
+
+        /*Vector3 clickPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = clickPoint - transform.position;
+        direction.Normalize();
+        myAnimator.SetFloat("attackX", direction.x);
+        myAnimator.SetFloat("attackY", direction.y);
+        myAnimator.SetBool("attacking", true);
+
+    } else {
+
+        inputAxis.x = Input.GetAxisRaw("Horizontal");
+        inputAxis.y = Input.GetAxisRaw("Vertical");
+
+        if (inputAxis != Vector2.zero) {
+            myAnimator.SetFloat("moveX", inputAxis.x);
+            myAnimator.SetFloat("moveY", inputAxis.y);
+
+        }
+        myAnimator.SetFloat("magnitude", inputAxis.magnitude);
+    }*/
 
     }
 

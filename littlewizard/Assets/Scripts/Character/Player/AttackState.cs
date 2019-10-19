@@ -4,90 +4,66 @@ using UnityEngine;
 
 public class AttackState : PlayerState {
 
-    private float maxDist = 1f;
+    private float maxDist = 0.5f;
     float forceAxis = 10f;
     Vector3 clickPoint;
+    Vector2 direction;
     Vector3 startPoint;
+    public bool started_co;
 
-    
-    public bool forceAplied;
-    bool stop;
+
     bool done;
     public AttackState(Player player,Vector3 clickPoint) : base(player) { 
         this.clickPoint = clickPoint;
         this.clickPoint.z = 0;
 
-        forceAplied = false;
+       
+
         done = false;
-        startPoint = new Vector3(player.transform.position.x,player.transform.position.y,0);
+        startPoint = new Vector3(playerRB.position.x, playerRB.position.y,0);
+
+        direction = clickPoint - startPoint;
+        direction.Normalize();
+
+        playerAnimator.SetTrigger("attack");
+
     }
 
     public override PlayerState handleInput() {
 
-        if (Input.GetMouseButtonDown(0)) {
-            playerAnimator.SetBool("walking", false); //Disable walking animation before going to attack
-            return new AttackState(player, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-
-        }
-        if (!attackIsDone()) {
-            return this;
-        } else {
+     
+        if (done) {
             return player.idleState;
+        } else {
+            return this;
         }
     }
 
     public override void act() {
 
-        
-        if (!forceAplied) {
+        if (!started_co) {
 
-            
+            playerAnimator.SetFloat("attackX", direction.x);
+            playerAnimator.SetFloat("attackY", direction.y);
             player.StartCoroutine(StaffKickCo());
-
-        } else {
-            //Debug.Log("Velocity: " + playerRB.velocity.magnitude.ToString());
-            //Check if we must stop
-            if(Vector3.Distance(player.transform.position,startPoint) >= maxDist || playerRB.velocity.magnitude < 4f) {
-
-               // Debug.Log("Velocity reset");
-                playerRB.velocity = Vector2.zero;
-                playerRB.angularVelocity = 0;
-                stop = true;
-            }
-  
+            started_co = true;
         }
+
     }
 
     IEnumerator StaffKickCo() {
 
-        Vector2 direction = clickPoint - startPoint;
-        direction.Normalize();
-        playerAnimator.SetFloat("moveX", direction.x);
-        playerAnimator.SetFloat("moveY", direction.y);
-        playerAnimator.SetBool("attacking", true);
-        player.decreaseSP();
-
-        Vector2 force = new Vector2(forceAxis, forceAxis);
-        playerRB.AddForce(force * direction, ForceMode2D.Impulse);
-        forceAplied = true;
-       
+        Vector3 destination = playerRB.position + direction * maxDist;
+        Vector3 step = Vector3.Lerp(playerRB.transform.position, destination, 0.7f);
+        playerRB.MovePosition(step);
         yield return null;
 
-      
+        step = Vector3.Lerp(playerRB.transform.position, destination, 0.6f);
+        playerRB.MovePosition(step);
+        yield return null;
+
+        playerRB.MovePosition(destination);
         done = true;
-        playerAnimator.SetBool("attacking", false);
-        
-        
-    }
-    public void setTarget() {
-
-    }
-
-    public bool attackIsDone() {
-
-        return stop && done;
-    }
-    
-
-
+     }
+  
 }
