@@ -2,31 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WalkBehaviour : StateMachineBehaviour {
+public class AttackBehaviour : StateMachineBehaviour {
 
-    Player player;
+    Enemy enemy;
+   
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-      player =  GameObject.FindObjectOfType<Player>();
+
+        enemy = animator.gameObject.GetComponent<Enemy>();
+        enemy.GetComponent<Rigidbody2D>().isKinematic = true;
+        if (enemy == null)
+            Debug.Log("Enemy component not found");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
-        player.move();
+        //Update Attack Orientation
 
+        if (enemy.isPlayerInAttackRadius()) {
+
+            Vector2 direction = enemy.getTargetDirection();
+            animator.SetFloat("moveX", direction.x);
+            animator.SetFloat("moveY", direction.y);
+            
+
+
+        } else {
+
+            animator.SetBool("attack", false);
+        }
+       
     }
+
+
+  
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        //Debug.Log("Leaving Walk State");
+        //Debug.Log("Leaving Attack State");
+        enemy.GetComponent<Rigidbody2D>().isKinematic = false;
+        enemy.resetSpeed();
     }
+
+
+ 
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    // Implement code that processes and affects root motion
     //}
 
     // OnStateIK is called right after Animator.OnAnimatorIK()

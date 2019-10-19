@@ -6,13 +6,15 @@ using UnityEngine;
 public abstract class Enemy : Character{
 
     [HideInInspector]
-    public static readonly string ENEMY_TAG = "Enemy"; //This tag is defined first on inspector
+    public static readonly string ENEMY_TAG = "Enemy"; //This tag must be defined first on inspector
     
     protected Transform target;
 
     public float HP = 100;
     public float chaseRadius = 5f;
     public float attackRadius = 2f;
+    public float attackSpeed = 1f;
+    public int attackPower = 10;
     protected Vector2 spawnLocation;
 
   
@@ -72,13 +74,33 @@ public abstract class Enemy : Character{
             theta += deltaTheta;
         }
     }
-    protected bool isPlayerInChaseRadius(){
+    public bool isPlayerInChaseRadius(){
        return  Vector3.Distance(target.position, transform.position) <= chaseRadius;
     }
 
-    protected bool isPlayerInAttackRadius() {
+    public bool isPlayerInAttackRadius() {
         return Vector3.Distance(target.position, transform.position) <= attackRadius;
     }
 
+    public Transform getTarget() {
+        return this.target;
+    }
    
+    public void move(Vector2 position) {
+        myRigidBody.MovePosition(position);
+    }
+
+    public Vector2 getTargetDirection() {
+
+        Vector3 direction = target.transform.position - transform.position;
+        return new Vector2(direction.x, direction.y).normalized;
+        
+        
+    }
+
+    public void resetSpeed() {
+        myRigidBody.velocity = Vector2.zero;
+        myRigidBody.angularVelocity = 0;
+    }
+    
 }

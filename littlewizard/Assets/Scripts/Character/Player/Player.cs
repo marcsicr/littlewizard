@@ -38,17 +38,8 @@ public class Player : Character{
     public void FixedUpdate() {
 
         currentState.act();
-
-        //myRigidBody.MovePosition(myRigidBody.position + movement * speed * Time.fixedDeltaTime);
-       
-
     }
 
-
-
-    public void move() {
-      //  transform.position = transform.position + (Vector3)inputAxis.normalized * speed * Time.deltaTime;
-    }
 
     public void decreaseSP() {
         this.playerSP.runtimeValue -= 5;
@@ -75,86 +66,22 @@ public class Player : Character{
            myAnimator.SetBool("attacking", true);
         }
       
-       
-
-        /*Vector3 clickPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = clickPoint - transform.position;
-        direction.Normalize();
-        myAnimator.SetFloat("attackX", direction.x);
-        myAnimator.SetFloat("attackY", direction.y);
-        myAnimator.SetBool("attacking", true);
-
-    } else {
-
-        inputAxis.x = Input.GetAxisRaw("Horizontal");
-        inputAxis.y = Input.GetAxisRaw("Vertical");
-
-        if (inputAxis != Vector2.zero) {
-            myAnimator.SetFloat("moveX", inputAxis.x);
-            myAnimator.SetFloat("moveY", inputAxis.y);
-
-        }
-        myAnimator.SetFloat("magnitude", inputAxis.magnitude);
-    }*/
 
     }
 
     public override void OnGetKicked(int attack) {
+        Debug.Log("Player got kicked" + playerHP.runtimeValue.ToString());
+        
+        if(playerHP.runtimeValue > 0) {
 
-        playerHP.runtimeValue -= attack;
+            if (playerHP.runtimeValue > attack) {
+
+                playerHP.runtimeValue -= attack;
+            } else {
+                playerHP.runtimeValue = 0;
+            }
+        }
+       
     }
 
-
-   
-
-    //public enum State { idle,walk,attack,stagger};
-
-    //private State playerState;
-    //public int SP = 100;
-    //private Vector2 change;
-
-
-    //// Start is called before the first frame update
-    //public override void Start() {
-    //    base.Start();
-    //    playerState = State.walk;
-    //}
-
-    //// Update is called once per frame
-    //void Update() {
-
-
-    //    change = Vector2.zero;
-    //    change.x = Input.GetAxisRaw("Horizontal");
-    //    change.y = Input.GetAxisRaw("Vertical");
-
-
-    //    if (Input.GetKeyDown(KeyCode.LeftControl) && playerState != State.attack) {
-    //            StartCoroutine(StaffKickCo());
-    //            Debug.Log("Attack");
-
-    //    } else if(playerState == State.walk || playerState == State.idle){
-
-    //        if (change != Vector2.zero){
-
-    //            myAnimator.SetFloat("moveX", change.x);
-    //            myAnimator.SetFloat("moveY", change.y);
-    //            myAnimator.SetBool("walking", true);
-    //            change.Normalize();
-    //            myRigidBody.MovePosition((Vector2)transform.position + change * speed * Time.deltaTime);
-    //        }else{
-    //            myAnimator.SetBool("walking", false);
-    //        }
-    //    }
-    //}
-
-    //IEnumerator StaffKickCo(){
-    //    myAnimator.SetBool("attacking", true);
-    //    playerState = State.attack;
-    //    yield return null;
-
-    //    myAnimator.SetBool("attacking", false);
-    //    yield return new WaitForSeconds(0.2f);
-    //    playerState = State.idle;
-    //}
 }

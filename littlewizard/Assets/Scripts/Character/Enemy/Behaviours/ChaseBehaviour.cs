@@ -2,64 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackBehaviour : StateMachineBehaviour {
+public class ChaseBehaviour : StateMachineBehaviour {
 
-    Player player;
-    Rigidbody2D playerRB;
-    Vector2 force;  
-    float maxDistance = 1f;
-    Vector3 startPosition;
+    Enemy enemy;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        player =  GameObject.FindObjectOfType<Player>();
-        playerRB = player.GetComponent<Rigidbody2D>();
 
-        startPosition = player.transform.position;
-        force = new Vector2(10f, 10f);
-       
+        enemy = animator.gameObject.GetComponent<Enemy>();
+        if (enemy == null)
+            Debug.Log("Enemy component not found");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
-        //Delegar a FixedUpdate aquesta operacio
-        player.StartCoroutine(StaffKickCo(animator));
-       
-    }
+        if (enemy.isPlayerInAttackRadius()) {
+            //Attack
+            animator.SetBool("attack",true);
 
+        } else if(enemy.isPlayerInChaseRadius()) {
 
-    IEnumerator StaffKickCo(Animator animator) {
+            Vector3 enemyPos = animator.transform.position;
+            Vector3 targetPos = enemy.getTarget().position;
 
-        float xDirection = animator.GetFloat("attackX");
-        float yDirection = animator.GetFloat("attackY");
-        Vector2 forceDirection = new Vector2(xDirection, yDirection);
+            Vector3 step = Vector3.MoveTowards(enemyPos, targetPos, enemy.speed * Time.deltaTime);
+            Vector3 faceDirection = Vector3.Normalize(step - enemyPos);
+            animator.SetFloat("moveX", faceDirection.x);
+            animator.SetFloat("moveY", faceDirection.y);
+
+            enemy.move(step);
+        } else {
+
+            animator.SetBool("chase", false);
+        }
         
-        playerRB.AddForce(forceDirection.normalized * force, ForceMode2D.Impulse);
+       
 
-        while (Vector3.Distance(player.transform.position, startPosition) < maxDistance) {
-            yield return null;
-        } 
-            
-            
-        playerRB.velocity = Vector2.zero;
-        playerRB.angularVelocity = 0;
-        animator.SetBool("attacking", false);
-      
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        //Debug.Log("Leaving Attack State");
-
+        //Debug.Log("Leaving Walk State");
     }
-
-
- 
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
+    //    // Implement code that processes and affects root motion
     //}
 
     // OnStateIK is called right after Animator.OnAnimatorIK()

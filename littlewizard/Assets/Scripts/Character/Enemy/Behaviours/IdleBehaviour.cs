@@ -4,16 +4,27 @@ using UnityEngine;
 
 public class IdleBehaviour : StateMachineBehaviour
 {
+    Enemy enemy;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //Debug.Log("Entered Idle State");
+        enemy = animator.gameObject.GetComponent<Enemy>();
+        if (enemy == null)
+            Debug.Log("Enemy component not found");
+
+        enemy.resetSpeed();
+
+        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (enemy.isPlayerInChaseRadius()) {
 
+            animator.SetBool("chase", true);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

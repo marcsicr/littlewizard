@@ -13,7 +13,7 @@ public class StaffKick : MonoBehaviour
 
         if (other.gameObject.tag == Enemy.ENEMY_TAG) {
 
-            Log enemy =(Log) other.gameObject.GetComponent(typeof(Enemy));
+            Enemy enemy = (Enemy) other.gameObject.GetComponent(typeof(Enemy));
             enemy.OnGetKicked(1);
             
         }

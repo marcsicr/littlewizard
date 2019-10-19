@@ -17,7 +17,12 @@ public class GoblinS : Enemy
     }
 
     public override void OnGetKicked(int attack) {
-     
+
+        this.HP -= attack;
+        if(this.HP <= 0) {
+
+            this.myAnimator.SetTrigger("die");
+        }
 
     }
 
