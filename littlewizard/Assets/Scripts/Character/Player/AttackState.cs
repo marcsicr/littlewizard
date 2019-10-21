@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackState : PlayerState {
 
-    private float maxDist = 0.5f;
+    private float maxDist = 0.8f;
     float forceAxis = 10f;
     Vector3 clickPoint;
     Vector2 direction;
