@@ -82,6 +82,11 @@ public abstract class Enemy : Character{
         return Vector3.Distance(target.position, transform.position) <= attackRadius;
     }
 
+    public float distanceFromPlayer() {
+
+        return Vector3.Distance(target.transform.position, transform.position);
+    }
+
     public Transform getTarget() {
         return this.target;
     }

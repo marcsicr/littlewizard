@@ -15,7 +15,14 @@ public class Player : Character{
     private Vector2 movement;
     private Vector2 clickPoint;
     private PlayerState currentState;
-    
+    private bool kickAnimation = false;
+    bool isFlashing = false;
+    private Material mat;
+    private float flashSpeed = 4f;
+    public void Awake() {
+        mat = gameObject.GetComponent<SpriteRenderer>().material;
+            
+    }
     public override void Start() {
         base.Start();
 
@@ -32,6 +39,28 @@ public class Player : Character{
 
     public void Update() {
        currentState = currentState.handleInput();
+
+        if (kickAnimation) {
+
+            StartCoroutine(KikEffectCo());
+            kickAnimation = false;
+        }
+
+    }
+
+    public IEnumerator KikEffectCo() {
+       
+            isFlashing = false;
+            yield return new WaitForEndOfFrame();
+            isFlashing = true;
+            float flash = 1f;
+            while (isFlashing && flash >= 0) {
+                flash -= Time.deltaTime * flashSpeed;
+                mat.SetFloat("_FlashAmount", flash);
+                yield return null;
+            }
+            isFlashing = false;
+        
     }
 
 
@@ -71,7 +100,7 @@ public class Player : Character{
 
     public override void OnGetKicked(int attack) {
         Debug.Log("Player got kicked" + playerHP.runtimeValue.ToString());
-        
+        kickAnimation = true;
         if(playerHP.runtimeValue > 0) {
 
             if (playerHP.runtimeValue > attack) {
@@ -81,6 +110,11 @@ public class Player : Character{
                 playerHP.runtimeValue = 0;
             }
         }
+
+        SpriteRenderer render = gameObject.GetComponent<SpriteRenderer>();
+        render.color = Color.white;
+
+        kickAnimation = true;
        
     }
 

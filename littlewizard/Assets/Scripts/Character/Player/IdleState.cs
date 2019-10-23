@@ -28,7 +28,6 @@ public class IdleState : PlayerState {
     }
     public override void act() {
 
-        //Nothing
     }
 
 

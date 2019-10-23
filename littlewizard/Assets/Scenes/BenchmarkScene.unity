@@ -475,6 +475,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &410021006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 410021007}
+  m_Layer: 0
+  m_Name: ShotPoint
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &410021007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410021006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 710695629}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &431468132 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1619652750443476318, guid: 8516953be4bc6e34585b18b60bad2d12,
@@ -18124,7 +18154,7 @@ GameObject:
   - component: {fileID: 710695631}
   m_Layer: 0
   m_Name: Mushroom
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18204,9 +18234,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710695626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.0042524, y: -1.8696845, z: 0}
+  m_LocalPosition: {x: -4, y: -1.8696845, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 410021007}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18224,11 +18255,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   debugCharacter: 0
-  HP: 100
-  chaseRadius: 5
-  attackRadius: 2
+  HP: 10
+  chaseRadius: 8
+  attackRadius: 6
   attackSpeed: 1
   attackPower: 10
+  magicBullet: {fileID: 2116545674108303195, guid: d03ac472aa68817458f307279ec31cac,
+    type: 3}
 --- !u!61 &710695631
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18267,7 +18300,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -21164,6 +21197,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089105380317075692, guid: 297929156290e2b42a64e6cc00febe47,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089105380317075692, guid: 297929156290e2b42a64e6cc00febe47,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.4260869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089105380317075692, guid: 297929156290e2b42a64e6cc00febe47,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9046823
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089105380317075692, guid: 297929156290e2b42a64e6cc00febe47,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 50.439003
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089105380317075692, guid: 297929156290e2b42a64e6cc00febe47,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089105380317075695, guid: 297929156290e2b42a64e6cc00febe47,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.3457095
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089105380317075695, guid: 297929156290e2b42a64e6cc00febe47,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.41428363
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089105380317075695, guid: 297929156290e2b42a64e6cc00febe47,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.1974302
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089105380317075695, guid: 297929156290e2b42a64e6cc00febe47,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.75320876
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 297929156290e2b42a64e6cc00febe47, type: 3}
