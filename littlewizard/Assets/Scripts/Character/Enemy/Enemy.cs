@@ -23,6 +23,8 @@ public abstract class Enemy : Character{
     
         target = GameObject.FindGameObjectWithTag("Player").transform;
         gameObject.tag = ENEMY_TAG;
+        myRigidBody.isKinematic = true;
+        myRigidBody.useFullKinematicContacts = true;
         
         spawnLocation = transform.position;
 
@@ -107,5 +109,19 @@ public abstract class Enemy : Character{
         myRigidBody.velocity = Vector2.zero;
         myRigidBody.angularVelocity = 0;
     }
-    
+
+
+    public void OnCollisionEnter2D(Collision2D other) {
+
+        //Dont disturb other enemies chasing the player
+        if (other.gameObject.tag != ENEMY_TAG) {
+            myRigidBody.isKinematic = false;
+        } 
+    }
+
+    public void OnCollisionExit2D(Collision2D collision) {
+        
+        myRigidBody.isKinematic = true;
+    }
+
 }

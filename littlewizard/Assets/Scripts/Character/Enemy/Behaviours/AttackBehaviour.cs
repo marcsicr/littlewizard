@@ -11,7 +11,7 @@ public class AttackBehaviour : StateMachineBehaviour {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
         enemy = animator.gameObject.GetComponent<Enemy>();
-        enemy.GetComponent<Rigidbody2D>().isKinematic = true;
+        
         if (enemy == null)
             Debug.Log("Enemy component not found");
     }
@@ -42,7 +42,7 @@ public class AttackBehaviour : StateMachineBehaviour {
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         //Debug.Log("Leaving Attack State");
-        enemy.GetComponent<Rigidbody2D>().isKinematic = false;
+        
         enemy.resetSpeed();
     }
 
