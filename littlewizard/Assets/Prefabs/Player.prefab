@@ -166,7 +166,7 @@ MonoBehaviour:
   debugCharacter: 0
   playerHP: {fileID: 11400000, guid: a73345a43f7c4d943af323dcc8a05d07, type: 2}
   playerSP: {fileID: 11400000, guid: c503ea58add4e7a43b463bbcdabddd5c, type: 2}
-  stamina: {fileID: 0}
+  stamina: {fileID: 11400000, guid: b837b5b8aec15a14581e1889a36b3d80, type: 2}
 --- !u!1 &8239499120534258125
 GameObject:
   m_ObjectHideFlags: 0
