@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1871b1e1a4af84fb00f341352b919a, type: 3}
-  m_Name: HPUpdate
+  m_Script: {fileID: 11500000, guid: ccc4150d7b38076488a744beb7473413, type: 3}
+  m_Name: gemsCollected
   m_EditorClassIdentifier: 
+  initialValue: 0
