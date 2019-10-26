@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraPlayer : MonoBehaviour
 {
+    public Camera cam;
     public Transform target;
     public float smoothing;
     public Vector2 topLeft;
@@ -13,18 +14,28 @@ public class CameraPlayer : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-
+        cam = gameObject.GetComponent<Camera>();
+        Debug.Log("Pixel width :" + cam.pixelWidth + " Pixel height : " + cam.pixelHeight);
+       
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
+     
         Vector3 targetPosition = target.position + new Vector3(0, 0, -1);
 
         Vector3 smoothPosition = Vector3.Lerp(transform.position, targetPosition, smoothing);
-        smoothPosition.x = Mathf.Clamp(smoothPosition.x, topLeft.x,bottomRight.x);
+        smoothPosition.x = Mathf.Clamp(smoothPosition.x, topLeft.x ,bottomRight.x);
         smoothPosition.y = Mathf.Clamp(smoothPosition.y, bottomRight.y, topLeft.y);
-        transform.position = smoothPosition;  
+
+        transform.position = smoothPosition;
+
+        //Debug.Log("Top Left corner" + cam.ScreenToWorldPoint(new Vector3(0, cam.pixelHeight, cam.nearClipPlane)));
+
+        //Bottom Left = (0,0)
+        //TopRight = (pixelWidth,pixelHeigt)
+        //TopLeft = (0,pixelHeight)
     }
 
     public void updateBoundaries(Vector2 topLeft, Vector2 bottomRight) {

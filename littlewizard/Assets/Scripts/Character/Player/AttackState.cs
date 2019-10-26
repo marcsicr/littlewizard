@@ -46,7 +46,8 @@ public class AttackState : PlayerState {
             playerAnimator.SetFloat("attackX", direction.x);
             playerAnimator.SetFloat("attackY", direction.y);
             player.StartCoroutine(StaffKickCo());
-            player.stamina.runtimeValue -= 1;
+            player.decreaseStamina(1);
+           
             started_co = true;
         }
 

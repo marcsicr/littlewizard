@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,9 +9,10 @@ public class Player : Character{
     public IdleState idleState; 
     public WalkState walkState; 
 
-    public IntVar playerHP;
-    public IntVar playerSP;
-    public IntVar stamina;
+    public ObservableInt playerHP;
+    public ObservableInt playerSP;
+    public ObservableInt stamina;
+   
 
     private Vector2 movement;
     private Vector2 clickPoint;
@@ -23,6 +25,8 @@ public class Player : Character{
         mat = gameObject.GetComponent<SpriteRenderer>().material;
             
     }
+
+
     public override void Start() {
         base.Start();
 
@@ -71,11 +75,16 @@ public class Player : Character{
 
 
     public void decreaseSP() {
-        this.playerSP.runtimeValue -= 5;
+        //this.playerSP.runtimeValue -= 5;
+    }
+
+    public void decreaseStamina(int points) {
+        int currentST = stamina.getRunTimeValue();
+        stamina.UpdateValue(currentST - points);
     }
 
 
-    private void handleInput() {
+   /* private void handleInput() {
 
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
@@ -96,26 +105,46 @@ public class Player : Character{
         }
       
 
-    }
+    }*/
 
     public override void OnGetKicked(int attack) {
-        Debug.Log("Player got kicked" + playerHP.runtimeValue.ToString());
+        int hp = playerHP.getRunTimeValue();
+        //Debug.Log("Player got kicked" + hp.ToString() + "Current HP" + hp.ToString()) ;
+      
         kickAnimation = true;
-        if(playerHP.runtimeValue > 0) {
-
-            if (playerHP.runtimeValue > attack) {
-
-                playerHP.runtimeValue -= attack;
+        if(hp > 0) {
+            if (hp > attack) {
+                playerHP.UpdateValue(hp - attack);
             } else {
-                playerHP.runtimeValue = 0;
+                playerHP.UpdateValue(0);
             }
         }
 
-        SpriteRenderer render = gameObject.GetComponent<SpriteRenderer>();
-        render.color = Color.white;
-
         kickAnimation = true;
-       
     }
 
+
+    public void OnCollectPotion(int points,PotionType type) {
+
+        if (type == PotionType.HP) {
+            usePotion(points, playerHP);
+        } else if (type == PotionType.SP) {
+            usePotion(points, playerSP);
+        }
+
+    }
+
+    private void usePotion(int points, ObservableInt var) {
+
+        int current = var.getRunTimeValue();
+        int max = var.getInitialValue();
+        if (current + points > max) {
+
+            var.UpdateValue(max);
+        } else {
+
+            var.UpdateValue(current + points);
+        }
+    
+    }
 }
