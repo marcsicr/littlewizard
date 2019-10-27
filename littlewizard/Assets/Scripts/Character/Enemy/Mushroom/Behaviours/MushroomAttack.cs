@@ -6,8 +6,7 @@ public class MushroomAttack : StateMachineBehaviour
 {
 
     Mushroom mushroom;
-    float delay = 2f;
-    float nextAttack;
+    
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
         mushroom = animator.gameObject.GetComponent<Mushroom>();

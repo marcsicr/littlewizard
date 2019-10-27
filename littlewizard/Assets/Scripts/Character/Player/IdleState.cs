@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class IdleState : PlayerState {
     /*Player can go from Idle->Attack or Idle->Walk*/
@@ -15,7 +16,7 @@ public class IdleState : PlayerState {
 
 
 
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
             return new AttackState(player, Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
 

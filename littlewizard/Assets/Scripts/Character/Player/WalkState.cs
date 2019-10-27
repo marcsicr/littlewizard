@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class WalkState : PlayerState {
 
@@ -16,7 +15,7 @@ public class WalkState : PlayerState {
     public override PlayerState handleInput() {
 
         //Check first if we should change to another state
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) &&!EventSystem.current.IsPointerOverGameObject()) { //If left mouse click && pointer is not over some UI element
             playerAnimator.SetFloat("magnitude", 0); //Disable walking animation before going to attack
             return new AttackState(player, Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }

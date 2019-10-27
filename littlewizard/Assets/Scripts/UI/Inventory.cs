@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour
     /*Return true if the user uses the key*/
     public bool useKey() {
 
-        if (keyIcon != null && keyIcon.activeSelf) {
+        if (hasKey) {
            
             keyIcon.SetActive(false);
             hasKey = false;
