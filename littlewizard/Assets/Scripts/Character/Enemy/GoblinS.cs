@@ -18,12 +18,21 @@ public class GoblinS : Enemy
 
     public override void OnGetKicked(int attack) {
 
+    
         this.HP -= attack;
         if(this.HP <= 0) {
 
             this.myAnimator.SetTrigger("die");
         }
-
+        bar.updateBar(HP);
     }
 
+    public override int GetHashCode() {
+        return base.GetHashCode();
+    }
+
+    protected override void attackAction() {
+
+        myAnimator.SetBool("attack", true);
+    }
 }

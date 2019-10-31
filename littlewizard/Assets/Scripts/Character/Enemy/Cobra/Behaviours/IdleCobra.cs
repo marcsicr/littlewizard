@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class IdleCobra : StateMachineBehaviour
 {
-    Cobra enemy;
+    Enemy enemy;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemy = animator.gameObject.GetComponent<Enemy>().GetComponent<Cobra>();
+        enemy = animator.gameObject.GetComponent<Enemy>();//.GetComponent<Cobra>();
         if (enemy == null)
             Debug.Log("Enemy component not found");
 
@@ -31,7 +31,8 @@ public class IdleCobra : StateMachineBehaviour
         animator.SetFloat("moveY", direction.y);
 
         if (enemy.isPlayerInAttackRadius()) {
-            enemy.attack();
+            //enemy.attack();
+            enemy.attackAtempt();
             return;
         }
 

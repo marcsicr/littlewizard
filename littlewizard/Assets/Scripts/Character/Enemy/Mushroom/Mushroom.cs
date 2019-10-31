@@ -13,6 +13,8 @@ public class Mushroom : Enemy
             Destroy(gameObject);
         }
 
+        bar.updateBar(HP);
+
     }
 
     // Start is called before the first frame update
@@ -27,9 +29,8 @@ public class Mushroom : Enemy
         
     }
 
-    public void shot() {
+    private void shot() {
 
-        //Finds and assigns the child of the player named "Gun".
         Transform shootPoint = transform.Find("ShotPoint").gameObject.transform;
         //Transform shootPoint = gameObject.GetComponentInChildren<Transform>();
         if (shootPoint == null)
@@ -39,5 +40,9 @@ public class Mushroom : Enemy
         Instantiate(magicBullet, shootPoint.transform.position,Quaternion.identity);
 
         
+    }
+
+    protected override void attackAction() {
+        shot();
     }
 }

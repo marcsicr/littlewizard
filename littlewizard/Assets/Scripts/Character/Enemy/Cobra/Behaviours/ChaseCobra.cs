@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ChaseCobra : StateMachineBehaviour {
 
-    Cobra cobra;
+    Enemy enemy;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
-        cobra = animator.gameObject.GetComponent<Cobra>();
-        if (cobra == null)
+        enemy = animator.gameObject.GetComponent<Enemy>();
+        if (enemy == null)
             Debug.Log("Cobra component not found");
     }
 
@@ -18,28 +18,28 @@ public class ChaseCobra : StateMachineBehaviour {
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
 
-        if(cobra.distanceFromPlayer() <= cobra.minDistance) {
+        if(enemy.distanceFromPlayer() <= enemy.minDistance) {
             animator.SetBool("chase", false);
             return;
         }
 
-        if (!cobra.isPlayerInChaseRadius()) {
+        if (!enemy.isPlayerInChaseRadius()) {
             animator.SetBool("chase", false);
             return;
         }
 
-        Debug.Log("Distance from player " + cobra.distanceFromPlayer());
+       // Debug.Log("Distance from player " + enemy.distanceFromPlayer());
         // In chase Radius and distance from player > minDistance
 
         Vector3 enemyPos = animator.transform.position;
-        Vector3 targetPos = cobra.getTarget().position;
+        Vector3 targetPos = enemy.getTarget().position;
 
-        Vector3 step = Vector3.MoveTowards(enemyPos, targetPos, cobra.speed * Time.deltaTime);
+        Vector3 step = Vector3.MoveTowards(enemyPos, targetPos, enemy.speed * Time.deltaTime);
         Vector3 faceDirection = Vector3.Normalize(step - enemyPos);
         animator.SetFloat("moveX", faceDirection.x);
         animator.SetFloat("moveY", faceDirection.y);
 
-        cobra.move(step);
+        enemy.move(step);
 
     }
 

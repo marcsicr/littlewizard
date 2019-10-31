@@ -11,7 +11,7 @@ public class IdleLog : StateMachineBehaviour {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
         timeToSleep = Time.time + sleepTimeout;
-        timeToAttack = Time.time; // Attack immediatly first, then use timeout;
+        //timeToAttack = Time.time; // Attack immediatly first, then use timeout;
         log = animator.gameObject.GetComponent<Log>();
 
         if (log == null)
@@ -30,7 +30,7 @@ public class IdleLog : StateMachineBehaviour {
             Vector2 direction = log.getTargetDirection();
             animator.SetFloat("moveX", direction.x);
             animator.SetFloat("moveY", direction.y);
-            log.rootAttack();
+            log.attackAtempt();//rootAttack();
             timeToSleep = Time.time + sleepTimeout;
         }
 

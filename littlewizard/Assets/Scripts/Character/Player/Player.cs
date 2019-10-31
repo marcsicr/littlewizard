@@ -46,13 +46,13 @@ public class Player : Character{
 
         if (kickAnimation) {
 
-            StartCoroutine(KikEffectCo());
+            StartCoroutine(KickEffectCo());
             kickAnimation = false;
         }
 
     }
 
-    public IEnumerator KikEffectCo() {
+    public IEnumerator KickEffectCo() {
        
             isFlashing = false;
             yield return new WaitForEndOfFrame();

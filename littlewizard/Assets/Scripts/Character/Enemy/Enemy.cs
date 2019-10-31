@@ -10,33 +10,47 @@ public abstract class Enemy : Character{
     
     protected Transform target;
 
-    public float HP = 100;
+    public int HP = 100;
     public float chaseRadius = 5f;
     public float attackRadius = 2f;
-    public float attackSpeed = 1f;
     public int attackPower = 10;
+    public float minDistance = 2.5f;
+    public float attackInterval = 2f; // Minium time between attacks
+    protected float nextAttackAvailable;
     protected Vector2 spawnLocation;
 
-  
+    protected EnemyBar bar;
     public override void Start() {
         base.Start();
     
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        gameObject.tag = ENEMY_TAG;
-        myRigidBody.isKinematic = true;
-        myRigidBody.useFullKinematicContacts = true;
         
+        gameObject.tag = ENEMY_TAG;
+       // myRigidBody.isKinematic = true;
+        myRigidBody.useFullKinematicContacts = true;
+
+        nextAttackAvailable = Time.time + attackInterval;
+
         spawnLocation = transform.position;
 
         if (debugCharacter)
         {
             debugStart();
         }
-        
+
+        bar = gameObject.GetComponentInChildren<EnemyBar>();
+        if (bar == null) {
+            Debug.Log("No Enemy HP bar component found");
+        }
+
     }
 
-    
-    private void debugStart(){
+    public int getHP() {
+
+        return this.HP;
+    }
+
+    protected void debugStart(){
         DrawCircle(chaseRadius, Color.cyan);
         DrawCircle(attackRadius, Color.red);
     }
@@ -112,16 +126,39 @@ public abstract class Enemy : Character{
 
 
     public void OnCollisionEnter2D(Collision2D other) {
-
+        /*
         //Dont disturb other enemies chasing the player
         if (other.gameObject.tag != ENEMY_TAG) {
             myRigidBody.isKinematic = false;
-        } 
+        } */
     }
 
     public void OnCollisionExit2D(Collision2D collision) {
         
-        myRigidBody.isKinematic = true;
+        //myRigidBody.isKinematic = true;
+    }
+
+    protected abstract void attackAction();
+
+    /*Try to initiate attack if attempt is successfull return true*/
+    public bool attackAtempt() {
+
+        if(isAttackReady()) {
+
+            attackAction();
+            nextAttackAvailable = Time.time + attackInterval;
+            return true;
+        }
+
+        return false;
+    }
+
+    public virtual bool isAttackReady() {
+        return Time.time > nextAttackAvailable;
+    }
+   
+    public void OnAttackEnd() {
+        //nextAttackAvailable = Time.time + attackInterval;
     }
 
 }

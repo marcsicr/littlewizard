@@ -5,17 +5,15 @@ using UnityEngine;
 public class Log : Enemy
 {
     private float wakeDistance = 2f;
-    private float minDistance = 2f;
-    public float attackTimeout = 3f;
-    private float nextAttack;
+    //private float minDistance = 2f;
     public GameObject root;
     private RootAttack aRoot;
     
     
     public override void  Start(){
         base.Start();
-        //root = Instantiate()
-        nextAttack = Time.time + attackTimeout;
+
+        minDistance = 2f;
         root = Instantiate(root, transform.position, Quaternion.identity);
         aRoot = root.GetComponent<RootAttack>();
         aRoot.setAttackPower(this.attackPower);
@@ -27,9 +25,14 @@ public class Log : Enemy
 
     public override void OnGetKicked(int attack) {
 
-        
-        Destroy(this.gameObject);
-        Destroy(this.root);
+        this.HP -= attack;
+        if (this.HP <= 0) {
+
+            Destroy(gameObject);
+        }
+
+        bar.updateBar(HP);
+
     }
     
     public bool shouldWakeUp() {
@@ -40,13 +43,8 @@ public class Log : Enemy
         return this.minDistance;
     }
 
-    public void rootAttack() {
-
-        if(Time.time > nextAttack) {
-
-            //Debug.Log("Log attacks player");
-            aRoot.attack(getTarget());
-            nextAttack = Time.time + attackTimeout;// + Random.Range(0,10f);
-        } 
+    
+    protected override void attackAction() {
+        aRoot.attack(getTarget());
     }
 }

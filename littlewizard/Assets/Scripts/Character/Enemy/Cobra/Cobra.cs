@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Cobra : Enemy
 {
-    float nextAttack;
-    public float minDistance = 2.5f;
-    private float attackTimeout = 1f;
+    
+    //public float minDistance = 2.5f;
+    
      public override void Start() {
         base.Start();
-        nextAttack = Time.time + attackTimeout;
      }
 
 
@@ -23,22 +22,19 @@ public class Cobra : Enemy
     }
 
 
-    public void attack() {
-
-        if(Time.time > nextAttack) {
-
-            myAnimator.SetBool("attack", true);
-            nextAttack = 999f;
-        }
-    }
-
-    public void attackEnd() {
-        nextAttack = Time.time + attackTimeout;
-    }
-   
 
     public override void OnGetKicked(int attack) {
 
-        //Debug.Log("Cobra kicked");
+        this.HP -= attack;
+        if (this.HP <= 0) {
+
+            Destroy(gameObject);
+        }
+
+        bar.updateBar(HP);
+    }
+
+    protected override void attackAction() {
+        myAnimator.SetBool("attack", true);
     }
 }

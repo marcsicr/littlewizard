@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackCobra : StateMachineBehaviour {
-    Cobra enemy;
+    Enemy enemy;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        enemy = animator.gameObject.GetComponent<Enemy>().GetComponent<Cobra>();
+        enemy = animator.gameObject.GetComponent<Enemy>();//.GetComponent<Cobra>();
         if (enemy == null)
             Debug.Log("Enemy component not found");
 
@@ -24,7 +24,7 @@ public class AttackCobra : StateMachineBehaviour {
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
-        enemy.attackEnd();
+       // enemy.OnAttackEnd(); 
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

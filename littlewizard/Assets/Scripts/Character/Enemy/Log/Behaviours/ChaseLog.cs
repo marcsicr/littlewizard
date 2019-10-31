@@ -33,7 +33,8 @@ public class ChaseLog : StateMachineBehaviour {
         }
 
         if (log.isPlayerInAttackRadius()) {
-            log.rootAttack();
+            log.attackAtempt(); // rootAttack();
+
         }
 
 

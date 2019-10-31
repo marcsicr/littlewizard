@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StaffKick : MonoBehaviour
 {
+    public int KickPower;
     public void Update() {
 
        
@@ -13,8 +14,9 @@ public class StaffKick : MonoBehaviour
 
         if (other.gameObject.tag == Enemy.ENEMY_TAG) {
 
+           
             Enemy enemy = (Enemy) other.gameObject.GetComponent(typeof(Enemy));
-            enemy.OnGetKicked(1);
+            enemy.OnGetKicked(KickPower);
             
         }
     }

@@ -52,7 +52,7 @@ public class MushroomShot : MonoBehaviour
        
 
         ParticleSystem particle = Instantiate(explosion,gameObject.transform.position,Quaternion.identity,gameObject.transform);
-        particle.loop = false;
+        //particle.loop = false; //OLD API?
 
         bulletSparks.Stop();
         particle.Play();

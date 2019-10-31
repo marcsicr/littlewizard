@@ -5,8 +5,8 @@ using UnityEngine;
 public class MushroomChase : StateMachineBehaviour {
 
     Enemy enemy;
-    float nextAttack;
-    float delay = 1.5f;
+    //float nextAttack;
+    //float delay = 1.5f;
     public float minPlayerDist = 3f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -16,7 +16,7 @@ public class MushroomChase : StateMachineBehaviour {
         if (enemy == null)
             Debug.Log("Enemy component not found");
 
-        nextAttack = Time.time + delay;
+        //nextAttack = Time.time + delay;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -27,7 +27,7 @@ public class MushroomChase : StateMachineBehaviour {
             return;
         }
 
-        if (enemy.isPlayerInChaseRadius() && Time.time > nextAttack) {
+        if (enemy.isPlayerInChaseRadius() &&  enemy.isAttackReady()) {
             //Attack
             animator.SetTrigger("attack");
 
