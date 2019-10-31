@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PortalTransfer : MonoBehaviour
 {
-    public PortalTransfer portal;
-    public Boundaries mapBoundaries;
+    public PortalTransfer outPortal;
+
     public Signal transitionEnter;
     public Signal transitionOut;
 
-  
+    private BoundsManager boundsMan;
         
     GameObject player;
     CameraPlayer cam;
@@ -19,8 +19,14 @@ public class PortalTransfer : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraPlayer>();
-        
-       
+
+        //Potal is expected to be in /Map/portals/portalX Bounds is expected to be in /Map/Bounds
+        boundsMan = outPortal.gameObject.transform.parent.parent.Find("Bounds").GetComponent<BoundsManager>();
+        if (boundsMan == null)
+            Debug.Log("PortalTransfer: nextMapBounds not found");
+
+
+        //Debug.Log(boundsComponent.transform.parent.name + "BOUNDS" + "Top left " + boundsComponent.topLeft + "Top right " + boundsComponent.bottomRight);
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
@@ -29,23 +35,17 @@ public class PortalTransfer : MonoBehaviour
 
             transitionEnter.Raise();
             StartCoroutine(waitEneter());
-            transitionOut.Raise();
-
         }
     }
 
-    public Vector2 getTopLeftBoundaries() {
-        return mapBoundaries.topLeft;
-    }
 
-    public Vector2 getBottomRightBoundaries() {
-
-        return mapBoundaries.bottomRight;
-    }
     private IEnumerator waitEneter() {
-       yield return new WaitForSeconds(0.2f);
-        cam.updateBoundaries(portal.getTopLeftBoundaries(), portal.getBottomRightBoundaries());
-        player.transform.position = portal.transform.position;
-        cam.transform.position = portal.transform.position;
+
+        RectBoundaries b = boundsMan.getBoundaries();
+        yield return new WaitForSeconds(0.2f);
+        cam.updateBoundaries(b.topLeft, b.bottomRight,boundsMan.CameraSize);
+        cam.transform.position = outPortal.transform.position;
+        player.transform.position = outPortal.transform.position;
+        transitionOut.Raise();
     }
 }
