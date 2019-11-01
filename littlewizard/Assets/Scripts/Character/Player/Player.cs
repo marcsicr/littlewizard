@@ -21,9 +21,16 @@ public class Player : Character{
     bool isFlashing = false;
     private Material mat;
     private float flashSpeed = 4f;
+    GameObject line;
+    LineRenderer lr;
+
+
     public void Awake() {
         mat = gameObject.GetComponent<SpriteRenderer>().material;
-            
+         line = transform.Find("Line").gameObject;
+         lr = line.GetComponent<LineRenderer>();
+
+        
     }
 
 
@@ -50,8 +57,21 @@ public class Player : Character{
             kickAnimation = false;
         }
 
+
+
+       // float width = Mathf.Abs(Mathf.Cos(Time.time));
+        //lr.startWidth = width;
+        //lr.endWidth = width;
+        float offset = Time.time * 1.5f;
+
+        
+        lr.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+        lr.SetPosition(0, transform.position);
+        lr.SetPosition(1, new Vector3(0, 0, -0.1f));
+
     }
 
+   
     public IEnumerator KickEffectCo() {
        
             isFlashing = false;
@@ -84,32 +104,9 @@ public class Player : Character{
     }
 
 
-   /* private void handleInput() {
-
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
-
-        if (movement != Vector2.zero) {
-            myAnimator.SetFloat("moveX", movement.x);
-            myAnimator.SetFloat("moveY", movement.y);
-        }
-
-        myAnimator.SetFloat("magnitude", movement.sqrMagnitude);
-
-        if (Input.GetMouseButton(0)) {
-           clickPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-           Vector2 direction =  clickPoint - myRigidBody.position;
-           myAnimator.SetFloat("attackX", direction.x);
-           myAnimator.SetFloat("attackY", direction.y);
-           myAnimator.SetBool("attacking", true);
-        }
-      
-
-    }*/
-
     public override void OnGetKicked(int attack) {
         int hp = playerHP.getRunTimeValue();
-        //Debug.Log("Player got kicked" + hp.ToString() + "Current HP" + hp.ToString()) ;
+       
       
         kickAnimation = true;
         if(hp > 0) {

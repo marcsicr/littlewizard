@@ -26,7 +26,7 @@ public abstract class Enemy : Character{
         target = GameObject.FindGameObjectWithTag("Player").transform;
         
         gameObject.tag = ENEMY_TAG;
-       // myRigidBody.isKinematic = true;
+       
         myRigidBody.useFullKinematicContacts = true;
 
         nextAttackAvailable = Time.time + attackInterval;
@@ -115,27 +115,12 @@ public abstract class Enemy : Character{
 
         Vector3 direction = target.transform.position - transform.position;
         return new Vector2(direction.x, direction.y).normalized;
-        
-        
+
     }
 
     public void resetSpeed() {
         myRigidBody.velocity = Vector2.zero;
         myRigidBody.angularVelocity = 0;
-    }
-
-
-    public void OnCollisionEnter2D(Collision2D other) {
-        /*
-        //Dont disturb other enemies chasing the player
-        if (other.gameObject.tag != ENEMY_TAG) {
-            myRigidBody.isKinematic = false;
-        } */
-    }
-
-    public void OnCollisionExit2D(Collision2D collision) {
-        
-        //myRigidBody.isKinematic = true;
     }
 
     protected abstract void attackAction();
@@ -156,9 +141,5 @@ public abstract class Enemy : Character{
     public virtual bool isAttackReady() {
         return Time.time > nextAttackAvailable;
     }
-   
-    public void OnAttackEnd() {
-        //nextAttackAvailable = Time.time + attackInterval;
-    }
-
+    
 }

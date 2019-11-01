@@ -27,12 +27,8 @@ public class GoblinS : Enemy
         bar.updateBar(HP);
     }
 
-    public override int GetHashCode() {
-        return base.GetHashCode();
-    }
 
     protected override void attackAction() {
-
         myAnimator.SetBool("attack", true);
     }
 }
