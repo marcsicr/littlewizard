@@ -19,7 +19,8 @@ public class patrolGoblinA : StateMachineBehaviour {
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
         if (archer.isPlayerInAttackRadius() && archer.isAttackReady()) {
-            animator.SetTrigger("shot");
+            //animator.SetTrigger("shot");
+            archer.attackAtempt();
             return;
         }else if(archer.isPlayerInAttackRadius())
         {

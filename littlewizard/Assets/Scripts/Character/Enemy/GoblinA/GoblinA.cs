@@ -7,17 +7,8 @@ public class GoblinA : Enemy
   private enum GolbinAState { patrol,attack,idle}
 
     public Vector2[] patrolPoints;
-
-    // Update is called once per frame
-    void Update(){
-
-        
-
-        if (isPlayerInAttackRadius()) {
-
-            attackAtempt();
-        }
-    }
+    public GameObject arrowPrefab;
+   
 
     public override void OnGetKicked(int attack) {
         Debug.Log("Enemy Kicked");
@@ -29,5 +20,17 @@ public class GoblinA : Enemy
         myAnimator.SetFloat("moveX",direction.x);
         myAnimator.SetFloat("moveY", direction.y);
         myAnimator.SetTrigger("shot");
+
+
+        StartCoroutine(waitShotCo());
+      
+    }
+
+    public IEnumerator waitShotCo() {
+        Vector2 direction = getTargetDirection();
+        yield return new WaitForSeconds(0.1f);
+        GameObject arrow = Instantiate(arrowPrefab, new Vector3(transform.position.x + direction.x, transform.position.y + direction.y, transform.position.z), Quaternion.identity);
+        arrow.GetComponent<Arrow>().shot(direction);
+        //arrow.shot();
     }
 }
