@@ -13,7 +13,7 @@ public class Gem : Item
     }
 
     public override void onItemCollect(Player player) {
-        Debug.Log("Player collided with gem");
+        //Debug.Log("Player collided with gem");
         gemsCaught.UpdateValue(gemsCaught.getRunTimeValue() + 1);
         //gemsCaught.runtimeValue++;
     }

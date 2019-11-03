@@ -7,7 +7,7 @@ public class MushroomShot : MonoBehaviour
     
     public float speed = 2f;
     public float maxTime = 4f;
-    private static int damage = 10;
+    private static int damage = 20;
     public ParticleSystem explosion;
     public ParticleSystem bulletSparks;
 

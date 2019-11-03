@@ -63,13 +63,12 @@ public class Plant : Enemy
     }
 
     public override bool isAttackReady() {
-        return (Time.time > nextAttackAvailable) && state == PlantState.IDLE;
+        return (Time.time > nextAttackAvailable) && state == PlantState.IDLE && isPlayerInAttackRadius();
     }
 
     protected override void attackAction() {
-
-        StartCoroutine(plantShotCo());
-       
+        
+            StartCoroutine(plantShotCo());
     }
     //Instantiate bullets and shot
     private IEnumerator plantShotCo() {

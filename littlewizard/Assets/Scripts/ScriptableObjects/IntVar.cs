@@ -19,6 +19,10 @@ public class IntVar : ScriptableObject,ISerializationCallbackReceiver
         
     }
 
+    public void reset() {
+        runtimeValue = initialValue;
+    }
+
  
 
 }

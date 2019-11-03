@@ -16,7 +16,11 @@ public class ObservableInt : ScriptableObject, ISerializationCallbackReceiver {
 
    
     public void OnBeforeSerialize() {
+       
+    }
 
+    public void Awake() {
+        Debug.Log("Observable Awake");
     }
 
     public void UpdateValue(int i) {
@@ -47,6 +51,10 @@ public class ObservableInt : ScriptableObject, ISerializationCallbackReceiver {
     public void RemoveObserver(IntObserver observer) {
         observers.Remove(observer);
 
+    }
+
+    public void reset() {
+        this.runtimeValue = initialValue;
     }
 }
 

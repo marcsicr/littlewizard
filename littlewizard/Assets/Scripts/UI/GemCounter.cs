@@ -24,4 +24,9 @@ public class GemCounter : IntObserver {
     public void UpdateCounter(ObservableInt count) {
         text.SetText(count.getRunTimeValue().ToString() + "/" + gemCount.runtimeValue.ToString());
     }
+
+    public void resetCounter() {
+        gemsCaught.reset();
+        gemCount.reset();
+    }
 }

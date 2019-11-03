@@ -227,9 +227,9 @@ MonoBehaviour:
   debugCharacter: 0
   HP: 5
   chaseRadius: 5
-  attackRadius: 1.2
+  attackRadius: 1.3
   attackPower: 5
-  minDistance: 2.5
+  minDistance: 1.2
   attackInterval: 1
 --- !u!1001 &6680727939004743915
 PrefabInstance:
