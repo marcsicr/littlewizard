@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3142367626308481003}
   - component: {fileID: 3142367626308481002}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: BiteCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,9 +71,9 @@ GameObject:
   - component: {fileID: 3142367627504328920}
   - component: {fileID: 3142367627504328921}
   - component: {fileID: 3142367627504328927}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Cobra
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6a12cf6e10df551468126f5dea194fb9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -181,8 +181,8 @@ MonoBehaviour:
   chaseRadius: 5
   attackRadius: 3
   attackPower: 10
-  minDistance: 1.5
-  attackInterval: 3
+  minDistance: 1.3
+  attackInterval: 1
 --- !u!95 &3142367627504328921
 Animator:
   serializedVersion: 3
@@ -240,6 +240,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHPBar
       objectReference: {fileID: 0}
+    - target: {fileID: 8728764855889290183, guid: 545c2213207b62e449ab0454107caaee,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8728764855889290182, guid: 545c2213207b62e449ab0454107caaee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -294,6 +299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728764856403953988, guid: 545c2213207b62e449ab0454107caaee,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 545c2213207b62e449ab0454107caaee, type: 3}

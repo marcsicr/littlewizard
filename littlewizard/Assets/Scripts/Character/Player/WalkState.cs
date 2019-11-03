@@ -15,7 +15,7 @@ public class WalkState : PlayerState {
     public override PlayerState handleInput() {
 
         //Check first if we should change to another state
-        if (Input.GetMouseButtonDown(0) &&!EventSystem.current.IsPointerOverGameObject()) { //If left mouse click && pointer is not over some UI element
+        if (Input.GetMouseButtonDown(0) &&!EventSystem.current.IsPointerOverGameObject() && player.stamina.getRunTimeValue()>0) { //If left mouse click && pointer is not over some UI element
             playerAnimator.SetFloat("magnitude", 0); //Disable walking animation before going to attack
             return new AttackState(player, Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }

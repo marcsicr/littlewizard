@@ -16,7 +16,7 @@ public class IdleState : PlayerState {
 
 
 
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && player.stamina.getRunTimeValue() > 0) {
             return new AttackState(player, Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
 

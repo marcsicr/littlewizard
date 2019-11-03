@@ -18,11 +18,12 @@ public class Player : Character{
     public ObservableInt stamina;
     public Signal gameOverSignal;
 
-
-    private bool kickAnimation = false;
-    bool isFlashing = false;
-    private Material mat;
-    private float flashSpeed = 4f;
+    private float nextSTRecup;
+    private float recuPInterval = 2f;
+   // private bool kickAnimation = false;
+   // bool isFlashing = false;
+   // private Material mat;
+  //  private float flashSpeed = 4f;
    
 
     public void Awake() {
@@ -33,6 +34,8 @@ public class Player : Character{
     public override void Start() {
         base.Start();
 
+        nextSTRecup = Time.time + recuPInterval;
+       
         idleState = new IdleState(this);
         walkState = new WalkState(this);
         dieState = new DieState(this);
@@ -45,14 +48,10 @@ public class Player : Character{
         return this.myAnimator;
     }
 
-    public void Update() {
-       currentState = currentState.handleInput();
+    public override void Update() {
 
-        if (kickAnimation) {
-
-            StartCoroutine(KickEffectCo());
-            kickAnimation = false;
-        }
+        base.Update();
+        currentState = currentState.handleInput();
 
     }
 
@@ -63,25 +62,17 @@ public class Player : Character{
         return new Vector2(myAnimator.GetFloat("moveX"), myAnimator.GetFloat("moveY"));
     }
    
-    public IEnumerator KickEffectCo() {
-       
-            isFlashing = false;
-            yield return new WaitForEndOfFrame();
-            isFlashing = true;
-            float flash = 1f;
-            while (isFlashing && flash >= 0) {
-                flash -= Time.deltaTime * flashSpeed;
-                mat.SetFloat("_FlashAmount", flash);
-                yield return null;
-            }
-            isFlashing = false;
-        
-    }
-
-
+ 
     public void FixedUpdate() {
 
         currentState.act();
+        if(Time.time > nextSTRecup) {
+            if(stamina.getRunTimeValue() < stamina.getInitialValue()) {
+                stamina.UpdateValue(stamina.getRunTimeValue() + 1);
+            }
+
+            nextSTRecup = Time.time + recuPInterval;
+        }
     }
 
 

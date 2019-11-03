@@ -10,7 +10,7 @@ public class Plant : Enemy
     public Vector2[] teleportPoints;
     public float teleportInterval = 2f;
     private float nextTeleport;
-    private Material mat;
+    private new Material mat;
     private int currentPosIndex;
     BoxCollider2D myCollider;
    
@@ -20,21 +20,19 @@ public class Plant : Enemy
     }
     //private float nextAttackAvailable;
     public override void OnGetKicked(int attack) {
-        Debug.Log("Plant kicked");
-
+         
         HP -= attack;
         if(HP <= 0) {
             Destroy(gameObject);
         }
         bar.updateBar(HP);
         
-        //StartCoroutine(TeletransportCo());
-        //attackAction();
     }
 
     // Start is called before the first frame update
     public override void Start()
     {
+        //base.Start();
         if(bullet == null) {
             Debug.Log("Plant Error: Missing bullet");
         }
@@ -122,7 +120,7 @@ public class Plant : Enemy
     }
 
     // Update is called once per frame
-    void Update()
+     public override void Update()
     {
         switch (state) {
 

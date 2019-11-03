@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+    public int attackPower;
     public float speed;
+    public float maxTime;
+    private float lifeTime = 0;
     Vector2 direction;
     Rigidbody2D myRigidBody;
     Animator myAnimator;
@@ -27,7 +30,14 @@ public class Arrow : MonoBehaviour
 
     private void FixedUpdate() {
 
+        lifeTime += Time.fixedDeltaTime;
+        if(lifeTime >= maxTime) {
+            Destroy(gameObject);
+        }else {
+
             myRigidBody.velocity = direction * activeSpeed;
+        }
+           
      }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -35,7 +45,7 @@ public class Arrow : MonoBehaviour
         if(other.gameObject.tag == "Player") {
 
             Player p = other.gameObject.GetComponent<Player>();
-            p.OnGetKicked(25);
+            p.OnGetKicked(attackPower);
             Destroy(gameObject);
         }
 

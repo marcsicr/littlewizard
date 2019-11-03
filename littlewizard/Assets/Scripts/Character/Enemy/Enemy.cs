@@ -50,6 +50,10 @@ public abstract class Enemy : Character{
         return this.HP;
     }
 
+    public override void OnGetKicked(int attack) {
+        kickAnimation = true;
+    }
+
     protected void debugStart(){
         DrawCircle(chaseRadius, Color.cyan);
         DrawCircle(attackRadius, Color.red);

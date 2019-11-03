@@ -114,7 +114,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6a12cf6e10df551468126f5dea194fb9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   debugCharacter: 0
-  HP: 5
+  HP: 25
   chaseRadius: 5
   attackRadius: 1.3
   attackPower: 5

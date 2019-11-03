@@ -11,7 +11,14 @@ public class GoblinA : Enemy
    
 
     public override void OnGetKicked(int attack) {
-        Debug.Log("Enemy Kicked");
+        base.OnGetKicked(attack);
+        this.HP -= attack;
+        if (this.HP <= 0) {
+
+            Destroy(gameObject);
+        }
+
+        bar.updateBar(HP);
     }
 
     protected override void attackAction() {

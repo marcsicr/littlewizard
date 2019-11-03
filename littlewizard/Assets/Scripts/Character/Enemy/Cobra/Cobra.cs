@@ -24,7 +24,7 @@ public class Cobra : Enemy
 
 
     public override void OnGetKicked(int attack) {
-
+        base.OnGetKicked(attack);
         this.HP -= attack;
         if (this.HP <= 0) {
 

@@ -10,15 +10,12 @@ public class GoblinS : Enemy
         base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
+   
 
     public override void OnGetKicked(int attack) {
 
-    
+        base.OnGetKicked(attack);
         this.HP -= attack;
         if(this.HP <= 0) {
 

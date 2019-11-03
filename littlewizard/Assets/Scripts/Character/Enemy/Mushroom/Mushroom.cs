@@ -6,7 +6,7 @@ public class Mushroom : Enemy
 {
     public GameObject magicBullet;
     public override void OnGetKicked(int attack) {
-
+        base.OnGetKicked(attack);
         this.HP -= attack;
         if(this.HP <= 0) {
 
@@ -24,10 +24,7 @@ public class Mushroom : Enemy
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     private void shot() {
 

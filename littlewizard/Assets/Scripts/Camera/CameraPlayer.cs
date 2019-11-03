@@ -9,6 +9,7 @@ public class CameraPlayer : MonoBehaviour
     public float smoothing;
     public Vector2 topLeft;
     public Vector2 bottomRight;
+    public BoundsManager initialBounds;
 
     //Camera boundaries to make it Camera size independent
     private Vector3 wtl; // World point at (topLeft.x + CameraWidth/2 , topLeft.y - CemaraHeight/2)
@@ -18,7 +19,9 @@ public class CameraPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        computeCamBundaries(topLeft, bottomRight);
+        RectBoundaries bounds = initialBounds.getBoundaries();
+        computeCamBundaries(bounds.topLeft, bounds.bottomRight);
+        //computeCamBundaries(topLeft, bottomRight);
         target = GameObject.FindGameObjectWithTag("Player").transform;
         cam = gameObject.GetComponent<Camera>();
         Debug.Log("Pixel width :" + cam.pixelWidth + " Pixel height : " + cam.pixelHeight);
