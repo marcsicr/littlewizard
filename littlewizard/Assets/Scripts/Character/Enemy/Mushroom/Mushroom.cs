@@ -34,8 +34,10 @@ public class Mushroom : Enemy
             Debug.Log("Error: No shootPoint");
 
       //  Debug.Log("MagicBullet shot");
-        Instantiate(magicBullet, shootPoint.transform.position,Quaternion.identity);
+       GameObject bulletObj =  Instantiate(magicBullet, shootPoint.transform.position,Quaternion.identity);
 
+       Bullet bullet = bulletObj.GetComponent<Bullet>();
+       bullet.shot(getTargetDirection());
         
     }
 

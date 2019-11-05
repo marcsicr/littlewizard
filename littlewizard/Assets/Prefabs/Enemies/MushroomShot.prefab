@@ -152,8 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7efec5e6d182c4ebc1d590ecd68935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 15
+  lifetime: 2
   speed: 4
-  maxTime: 2
+  target: 0
   explosion: {fileID: 5320610451223891431, guid: 13699c75cc7b8d3429b800f26b159b04,
     type: 3}
   bulletSparks: {fileID: 8545728564432241930}

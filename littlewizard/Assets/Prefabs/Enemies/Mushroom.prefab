@@ -123,7 +123,7 @@ MonoBehaviour:
   attackRadius: 6
   attackPower: 10
   minDistance: 2.5
-  attackInterval: 3
+  attackInterval: 1
   magicBullet: {fileID: 2258838508735124573, guid: 38a24d387371882499091774cf1edec6,
     type: 3}
 --- !u!50 &785789911455106243
@@ -210,11 +210,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 785789911455106270}
     m_Modifications:
-    - target: {fileID: 8728764855889290183, guid: 545c2213207b62e449ab0454107caaee,
-        type: 3}
-      propertyPath: m_Name
-      value: EnemyHPBar
-      objectReference: {fileID: 0}
     - target: {fileID: 8728764855889290182, guid: 545c2213207b62e449ab0454107caaee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -269,6 +264,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728764855889290183, guid: 545c2213207b62e449ab0454107caaee,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemyHPBar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 545c2213207b62e449ab0454107caaee, type: 3}
