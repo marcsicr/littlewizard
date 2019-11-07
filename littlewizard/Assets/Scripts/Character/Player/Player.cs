@@ -20,11 +20,8 @@ public class Player : Character{
 
     private float nextSTRecup;
     private float recuPInterval = 2f;
-   // private bool kickAnimation = false;
-   // bool isFlashing = false;
-   // private Material mat;
-  //  private float flashSpeed = 4f;
-   
+
+    public GameObject boltPrefab;
 
     public void Awake() {
         mat = gameObject.GetComponent<SpriteRenderer>().material;

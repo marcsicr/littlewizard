@@ -23,7 +23,7 @@ public abstract class Bullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate(){
+    public virtual void FixedUpdate(){
         myRigidBody.velocity = direction * activeSpeed;
     }
 

@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrow : Bullet
-{
-    public override void FixedUpdate() {
+public class EnergyBolt : Bullet {
+    public override void onCollision() {
 
-        myRigidBody.velocity = direction * activeSpeed;
+        Destroy(gameObject);
     }
 
     public override void shot(Vector2 direction) {
-        this.gameObject.SetActive(true);
-
-        startMoving(direction);
+        
+        
+        gameObject.SetActive(true);
         myAnimator.SetFloat("moveX", direction.x);
         myAnimator.SetFloat("moveY", direction.y);
+        startMoving(direction);
         Destroy(gameObject, lifetime);
-    }
 
-    public override void onCollision() {
-        Destroy(gameObject);
     }
 }

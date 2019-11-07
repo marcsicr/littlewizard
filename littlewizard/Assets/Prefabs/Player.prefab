@@ -281,6 +281,8 @@ MonoBehaviour:
   playerSP: {fileID: 11400000, guid: c503ea58add4e7a43b463bbcdabddd5c, type: 2}
   stamina: {fileID: 11400000, guid: b837b5b8aec15a14581e1889a36b3d80, type: 2}
   gameOverSignal: {fileID: 11400000, guid: 8622d57c1f2891d42bbb0058c89fb19f, type: 2}
+  boltPrefab: {fileID: 8322000851611868158, guid: 77983ce53cb67894aba2e8c142ea5bf1,
+    type: 3}
 --- !u!1 &8239499120534258125
 GameObject:
   m_ObjectHideFlags: 0

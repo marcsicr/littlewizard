@@ -15,6 +15,10 @@ public class IdleState : PlayerState {
         movement.y = Input.GetAxis("Vertical");
 
 
+        if (Input.GetMouseButtonDown(1)) {
+            return new CastState(player, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
+
 
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && player.stamina.getRunTimeValue() > 0) {
             return new AttackState(player, Camera.main.ScreenToWorldPoint(Input.mousePosition));
