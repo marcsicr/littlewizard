@@ -39,7 +39,7 @@ public class patrolGoblinA : StateMachineBehaviour {
             //Convert local space position to world space
             targetPosition = archer.transform.parent.TransformPoint(new Vector3(point.x, point.y, archer.transform.position.z));
             nextWalk = Time.time + timeOutWalk;
-            Debug.Log("New Archer target " + targetPosition);
+            //Debug.Log("New Archer target " + targetPosition);
            
         }
 

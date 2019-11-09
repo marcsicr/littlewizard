@@ -21,6 +21,7 @@ public class Player : Character{
     private CastManager castManager;
 
     private Shield shield;
+    private bool isInvencible;
 
     private float nextSTRecup;
     private float recuPInterval = 2f;
@@ -36,6 +37,7 @@ public class Player : Character{
         shield = GameObject.Find("Shield").GetComponent<Shield>();
         if (shield == null)
             Debug.Log("Shield is null");
+        isInvencible = false;
     }
 
 
@@ -95,7 +97,11 @@ public class Player : Character{
         //this.playerSP.runtimeValue -= 5;
     }
 
-    
+    /*Set if enemies can hurt player*/
+    public void setInvencible(bool isInvencible) {
+        this.isInvencible = isInvencible;
+    }
+
     public void decreaseStamina(int points) {
         int currentST = stamina.getRunTimeValue();
         stamina.UpdateValue(currentST - points);
@@ -103,9 +109,10 @@ public class Player : Character{
 
 
     public override void OnGetKicked(int attack) {
-     
-       
-      
+
+        if (isInvencible)
+            return;
+
         kickAnimation = true;
         if(playerHP.getRunTimeValue() > 0) {
             if (playerHP.getRunTimeValue() > attack) {

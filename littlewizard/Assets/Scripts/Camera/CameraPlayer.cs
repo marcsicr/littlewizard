@@ -24,7 +24,7 @@ public class CameraPlayer : MonoBehaviour
         //computeCamBundaries(topLeft, bottomRight);
         target = GameObject.FindGameObjectWithTag("Player").transform;
         cam = gameObject.GetComponent<Camera>();
-        Debug.Log("Pixel width :" + cam.pixelWidth + " Pixel height : " + cam.pixelHeight);
+        //Debug.Log("Pixel width :" + cam.pixelWidth + " Pixel height : " + cam.pixelHeight);
        
     }
 

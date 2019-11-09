@@ -10,12 +10,12 @@ public class Plant : Enemy
     public Vector2[] teleportPoints;
     public float teleportInterval = 2f;
     private float nextTeleport;
-    private new Material mat;
+    private Material materiaL;
     private int currentPosIndex;
     BoxCollider2D myCollider;
    
     public void Awake() {
-        mat = gameObject.GetComponent<SpriteRenderer>().material;
+        materiaL = gameObject.GetComponent<SpriteRenderer>().material;
         myCollider = gameObject.GetComponent<BoxCollider2D>();
     }
     //private float nextAttackAvailable;
@@ -83,16 +83,16 @@ public class Plant : Enemy
 
         float duration = 0.5f;
         float maxOutlineWidth = 0.0032f;
-        mat.SetVector("_OutlineColor", new Vector4(1f, 0, 0, 1f));
-        mat.SetFloat("_Brightness", 1f);
+        materiaL.SetVector("_OutlineColor", new Vector4(1f, 0, 0, 1f));
+        materiaL.SetFloat("_Brightness", 1f);
         for (float t = 0f; t < duration; t += Time.deltaTime) {
             float normalizedTime = t / duration;
 
             float width = Mathf.Lerp(0, maxOutlineWidth, normalizedTime);
-            mat.SetFloat("_Width", width);
+            materiaL.SetFloat("_Width", width);
             yield return null;
         }
-        mat.SetFloat("_Width", maxOutlineWidth);
+        materiaL.SetFloat("_Width", maxOutlineWidth);
 
         bulletUp.GetComponent<PlantBullet>().shot(Vector2.up);
         bulletDown.GetComponent<PlantBullet>().shot(Vector2.down);
@@ -109,12 +109,12 @@ public class Plant : Enemy
             float normalizedTime = t / duration;
 
             float width = Mathf.Lerp(maxOutlineWidth,0, normalizedTime);
-            mat.SetFloat("_Width", width);
+            materiaL.SetFloat("_Width", width);
             yield return null;
         }
 
-        mat.SetFloat("_Width", 0);
-        mat.SetFloat("_Brightness", 0);
+        materiaL.SetFloat("_Width", 0);
+        materiaL.SetFloat("_Brightness", 0);
         state = PlantState.IDLE;
 
     }
@@ -168,7 +168,7 @@ public class Plant : Enemy
             float normalizedTime = t / duration;
 
             c = Color.Lerp( whiteFull,whiteAlpha,normalizedTime);
-            mat.SetVector("_Color", new Vector4(c.r, c.g, c.b, c.a));
+            materiaL.SetVector("_Color", new Vector4(c.r, c.g, c.b, c.a));
              
             yield return null;
         }
@@ -188,7 +188,7 @@ public class Plant : Enemy
             float normalizedTime = t / duration;
 
             c = Color.Lerp(whiteAlpha, whiteFull, normalizedTime);
-            mat.SetVector("_Color", new Vector4(c.r, c.g, c.b, c.a));
+            materiaL.SetVector("_Color", new Vector4(c.r, c.g, c.b, c.a));
 
             yield return null;
         }
