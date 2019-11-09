@@ -8,10 +8,11 @@ public class CastState : PlayerState {
     private bool casting = false;
     public Vector3 castDirection;
     Vector2 movement;
-    public CastState(Player player,Vector3 worldPoint) : base(player) {
+    private Spell spell;
+    public CastState(Player player,Vector3 worldPoint,Spell spell) : base(player) {
 
         castDirection = (worldPoint - player.transform.position).normalized;
-
+        this.spell = spell;
     }
     public override void act() {
 
@@ -24,7 +25,7 @@ public class CastState : PlayerState {
 
             //Instantiate bullet prefab and shot(castDirection);
            // castDone = true;
-            player.StartCoroutine(CastCo());
+            player.StartCoroutine(CastCo(spell));
         }
 
         if (movement != Vector2.zero) {
@@ -36,15 +37,27 @@ public class CastState : PlayerState {
 
     }
 
-    public IEnumerator CastCo() {
+    public IEnumerator CastCo(Spell spell) {
         casting = true;
-        //Instantiate bullet prefab and shot(castDirection);
-        GameObject bullet = GameObject.Instantiate(player.boltPrefab, player.transform.position + castDirection.normalized, Quaternion.identity);
-     
+        if(spell == Spell.BOLT) {
+
+            //Instantiate bullet prefab and shot(castDirection);
+            GameObject bullet = GameObject.Instantiate(player.boltPrefab, player.transform.position + castDirection.normalized, Quaternion.identity);
+            yield return new WaitForSeconds(0.2f);
+            
+            bullet.GetComponent<Bullet>().shot(castDirection);
+            castDone = true;
+            yield break;
+        }
+       
+        if(spell == Spell.SHIELD) {
+
+            player.createShield();
+            castDone = true;
+        }
+  
         
-        yield return new WaitForSeconds(0.2f);
-        bullet.GetComponent<Bullet>().shot(castDirection);
-        castDone = true;
+        
     }
     public override PlayerState handleInput() {
 

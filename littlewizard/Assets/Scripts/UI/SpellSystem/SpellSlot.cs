@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Spell{NONE,BOLT,SHIELD,RANGE_ATTACK};
 public class SpellSlot : MonoBehaviour
 {
     private bool isSpellEnabled = false;
 
+    public Spell spell;
     private GameObject selectedImg;
    
     void Start()
@@ -25,5 +27,9 @@ public class SpellSlot : MonoBehaviour
     public bool spellEnabled() {
 
         return this.isSpellEnabled;
+    }
+
+    public Spell getSpell() {
+        return this.spell;
     }
 }

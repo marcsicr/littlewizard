@@ -18,6 +18,10 @@ public class Player : Character{
     public ObservableInt stamina;
     public Signal gameOverSignal;
 
+    private CastManager castManager;
+
+    private Shield shield;
+
     private float nextSTRecup;
     private float recuPInterval = 2f;
 
@@ -25,6 +29,13 @@ public class Player : Character{
 
     public void Awake() {
         mat = gameObject.GetComponent<SpriteRenderer>().material;
+        castManager = GameObject.FindWithTag("CastManager").GetComponent<CastManager>();
+        if (castManager == null)
+            Debug.Log("CastManager is null");
+
+        shield = GameObject.Find("Shield").GetComponent<Shield>();
+        if (shield == null)
+            Debug.Log("Shield is null");
     }
 
 
@@ -40,7 +51,12 @@ public class Player : Character{
         
     }
 
-   public Animator getAnimator() {
+    public void createShield() {
+
+        shield.create();
+    }
+
+    public Animator getAnimator() {
 
         return this.myAnimator;
     }
@@ -51,8 +67,6 @@ public class Player : Character{
         currentState = currentState.handleInput();
 
     }
-
-
 
     public Vector2 movingDirection() {
 
@@ -72,7 +86,11 @@ public class Player : Character{
         }
     }
 
+    public Spell getActiveSpell() {
 
+        return castManager.castSpell();
+
+    }
     public void decreaseSP() {
         //this.playerSP.runtimeValue -= 5;
     }
