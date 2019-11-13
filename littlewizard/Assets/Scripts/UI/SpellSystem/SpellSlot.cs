@@ -8,17 +8,23 @@ public class SpellSlot : MonoBehaviour
     private bool isSpellEnabled = false;
 
     public Spell spell;
-    private GameObject selectedImg;
+    public float reloadSpeed;
+    private SpellState spellState;
    
     void Start()
     {
-        selectedImg = transform.Find("selImg").gameObject;
+        spellState = transform.Find("SpellState").gameObject.GetComponent<SpellState>();
+        spellState.setReloadSpeed(reloadSpeed);
      
     }
 
-    public void setSelected(bool selected) {
+    public bool setSelected(bool selected) {
+       return spellState.setSelected(selected);
+    }
 
-        selectedImg.SetActive(selected);
+    public void spellCasted() {
+
+        spellState.setReloading();
     }
 
     /**
@@ -29,7 +35,8 @@ public class SpellSlot : MonoBehaviour
         return this.isSpellEnabled;
     }
 
-    public Spell getSpell() {
+    public Spell getSpellToCast() {
+        spellState.setCasted();
         return this.spell;
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 785789911455106269}
   - component: {fileID: 785789911455106243}
   - component: {fileID: 785789911455106268}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Mushroom
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -210,6 +210,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 785789911455106270}
     m_Modifications:
+    - target: {fileID: 8728764855889290183, guid: 545c2213207b62e449ab0454107caaee,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemyHPBar
+      objectReference: {fileID: 0}
     - target: {fileID: 8728764855889290182, guid: 545c2213207b62e449ab0454107caaee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -264,11 +269,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8728764855889290183, guid: 545c2213207b62e449ab0454107caaee,
-        type: 3}
-      propertyPath: m_Name
-      value: EnemyHPBar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 545c2213207b62e449ab0454107caaee, type: 3}

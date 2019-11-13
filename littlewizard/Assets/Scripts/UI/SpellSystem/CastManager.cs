@@ -46,9 +46,12 @@ public class CastManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1)){
 
-            cursor.setShotCursor();
-            spell1.setSelected(true);
-            active = spell1;
+
+            if (spell1.setSelected(true)) {
+                active = spell1;
+                cursor.setShotCursor();
+            }
+               
             spell2.setSelected(false);
             spell3.setSelected(false);
             Debug.Log("Spell on slot 1 selected");
@@ -58,7 +61,7 @@ public class CastManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
 
-              spell2.setSelected(true);
+              if(spell2.setSelected(true))
               active = spell2;
               spell1.setSelected(false);
               spell3.setSelected(false);
@@ -68,8 +71,8 @@ public class CastManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
 
-            spell3.setSelected(true);
-            active = spell3;
+            if (spell3.setSelected(true))
+                active = spell3;
             spell1.setSelected(false);
             spell2.setSelected(false);
             Debug.Log("Spell on slot 3 selected");
@@ -82,7 +85,7 @@ public class CastManager : MonoBehaviour
         if (active == null)
             return Spell.NONE;
 
-        Spell selected = active.getSpell();
+        Spell selected = active.getSpellToCast();
         resetSelected();
         return selected;
     }

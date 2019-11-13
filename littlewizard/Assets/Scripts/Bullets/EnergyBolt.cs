@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnergyBolt : Bullet {
-    public override void onCollision() {
+    public override void onCollision(Vector2 collisionPoint) {
 
-        Destroy(gameObject);
+        Vector2 hitDirection = collisionPoint - (Vector2)transform.position;
+        myAnimator.SetFloat("moveX", hitDirection.x);
+        myAnimator.SetFloat("moveY", hitDirection.y);
+
+        myAnimator.SetTrigger("explode");
+        Destroy(transform.Find("trail").gameObject);
+        activeSpeed = 0;
+        //Destroy(gameObject);
     }
 
     public override void shot(Vector2 direction) {
         
         
+        
         gameObject.SetActive(true);
+        transform.Find("trail").gameObject.SetActive(true);
         myAnimator.SetFloat("moveX", direction.x);
         myAnimator.SetFloat("moveY", direction.y);
         startMoving(direction);

@@ -19,6 +19,9 @@ public class Player : Character{
     public Signal gameOverSignal;
 
     private CastManager castManager;
+    public Signal boltCasted;
+    public Signal shieldCasted;
+    public Signal rangeAtkCasted;
 
     private Shield shield;
     private bool isInvencible;
@@ -27,6 +30,7 @@ public class Player : Character{
     private float recuPInterval = 2f;
 
     public GameObject boltPrefab;
+    public GameObject rayAttkPrefab;
 
     public void Awake() {
         mat = gameObject.GetComponent<SpriteRenderer>().material;

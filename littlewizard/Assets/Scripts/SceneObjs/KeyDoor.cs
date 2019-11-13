@@ -9,13 +9,17 @@ public class KeyDoor : MonoBehaviour
     private void Awake() {
 
         inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
-           // transform.Find("Inventory").gameObject.GetComponent<Inventory>();
         myAnimator = gameObject.GetComponent<Animator>();
     }
     public void OnTriggerEnter2D(Collider2D other) {
 
-        if (inventory.useKey()) {
-            myAnimator.SetBool("open", true);
+        if (other.CompareTag("Player")) {
+            
+            if (inventory.useKey()) {
+                myAnimator.SetBool("open", true);
+            }
         }
+
+        
     }
 }

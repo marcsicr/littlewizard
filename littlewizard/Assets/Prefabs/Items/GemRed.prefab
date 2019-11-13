@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3688574656620067447}
   - component: {fileID: 3688574656620067446}
   - component: {fileID: 3688574656620067444}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: GemRed
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,4 +149,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gemsOnLevel: {fileID: 11400000, guid: 913b303f065a9104fa5d3c1e41983ca5, type: 2}
-  gemsCaught: {fileID: 11400000, guid: 61aafdca274525a4ba7f67f7b86461e6, type: 2}
+  gemsCaught: {fileID: 0}

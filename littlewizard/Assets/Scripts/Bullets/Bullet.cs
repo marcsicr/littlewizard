@@ -16,11 +16,13 @@ public abstract class Bullet : MonoBehaviour
     protected Rigidbody2D myRigidBody;
     protected Animator myAnimator;
     protected Vector2 direction;
-
+    private bool collided = false;
     private void Awake() {
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
     }
+
+    
 
     // Update is called once per frame
     public virtual void FixedUpdate(){
@@ -29,7 +31,39 @@ public abstract class Bullet : MonoBehaviour
 
     public abstract void shot(Vector2 direction);
 
-    void OnTriggerEnter2D(Collider2D other) {
+
+    private void OnCollisionEnter2D(Collision2D other ) {
+
+        if (collided)
+            return;
+
+        ContactPoint2D contactPoint = other.GetContact(0);
+       // Vector2 hitDirection = point.point - (Vector2)transform.position;
+
+        if (target == BulletTarget.Player && other.gameObject.tag == "Player") {
+           
+            Player p = other.gameObject.GetComponent<Player>();
+            onCollision(contactPoint.point);
+            p.OnGetKicked(damage);
+
+        } else if (target == BulletTarget.Enemy && other.gameObject.tag == "Enemy") {
+
+            Enemy e = other.gameObject.GetComponent<Enemy>();
+            onCollision(contactPoint.point);
+            e.OnGetKicked(damage);
+        } else {
+
+
+            onCollision(contactPoint.point);
+
+        }
+
+        collided = true;
+
+        
+
+    }
+   /* void OnTriggerEnter2D(Collider2D other) {
     
         if(target == BulletTarget.Player && other.tag == "Player") {
                
@@ -41,16 +75,37 @@ public abstract class Bullet : MonoBehaviour
 
             Enemy e = other.GetComponent<Enemy>();
             onCollision();
+           
             e.OnGetKicked(damage);
-        }   
-    }
+        } else {
+
+
+            RaycastHit2D ray = Physics2D.Raycast(transform.position, direction);
+            Vector2 hitDirection = (Vector2)transform.position - ray.point;
+
+                myAnimator.SetFloat("moveX", direction.x);
+                myAnimator.SetFloat("moveY", direction.y);
+           
+            
+
+            //Debug.Log(ray.normal);
+
+            //Debug.Log(otherPosition);
+
+            onCollision();
+            
+        } 
+    }*/
 
     /*Handle Bullet collision effects*/
-    public abstract void onCollision();
+    public abstract void onCollision(Vector2 collisionPoint);
 
     protected void startMoving(Vector2 direction) {
 
         this.direction = direction;
         this.activeSpeed = speed;
+        Collider2D collider = this.GetComponent<Collider2D>();
+        collider.enabled = true;
+
     }
 }

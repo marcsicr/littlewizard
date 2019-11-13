@@ -51,6 +51,7 @@ public class AttackState : PlayerState {
             started_co = true;
         }
 
+        //Debug.Log("Attack state");
     }
 
     IEnumerator StaffKickCo() {

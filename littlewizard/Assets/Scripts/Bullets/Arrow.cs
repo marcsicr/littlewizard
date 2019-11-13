@@ -18,7 +18,7 @@ public class Arrow : Bullet
         Destroy(gameObject, lifetime);
     }
 
-    public override void onCollision() {
+    public override void onCollision(Vector2 collisionPoint) {
         Destroy(gameObject);
     }
 }

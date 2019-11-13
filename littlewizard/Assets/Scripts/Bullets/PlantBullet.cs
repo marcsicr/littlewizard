@@ -19,7 +19,7 @@ public class PlantBullet : Bullet
         Destroy(gameObject);
     }
 
-    public override void onCollision() {
+    public override void onCollision(Vector2 collisionPoint) {
        StartCoroutine(explodeCo());
     }
 

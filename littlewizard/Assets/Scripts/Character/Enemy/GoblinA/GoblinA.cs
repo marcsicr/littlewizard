@@ -37,6 +37,7 @@ public class GoblinA : Enemy
         Vector2 direction = getTargetDirection();
         yield return new WaitForSeconds(0.1f);
         GameObject arrow = Instantiate(arrowPrefab, new Vector3(transform.position.x + direction.x, transform.position.y + direction.y, transform.position.z), Quaternion.identity);
+        Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         arrow.GetComponent<Arrow>().shot(direction);
         //arrow.shot();
     }

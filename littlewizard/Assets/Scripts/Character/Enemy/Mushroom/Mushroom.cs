@@ -35,6 +35,7 @@ public class Mushroom : Enemy
 
       //  Debug.Log("MagicBullet shot");
        GameObject bulletObj =  Instantiate(magicBullet, shootPoint.transform.position,Quaternion.identity);
+        Physics2D.IgnoreCollision(bulletObj.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
        Bullet bullet = bulletObj.GetComponent<Bullet>();
        bullet.shot(getTargetDirection());

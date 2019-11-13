@@ -55,7 +55,7 @@ public class MushroomShot : Bullet
         Destroy(gameObject, lifetime);
     }
 
-    public override void onCollision() {
+    public override void onCollision(Vector2 collisionPoint) {
         StartCoroutine(explodeCo());
 
     }

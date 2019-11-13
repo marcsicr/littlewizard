@@ -33,8 +33,9 @@ public class WalkState : PlayerState {
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        
 
-        playerAnimator.SetFloat("magnitude", movement.sqrMagnitude);
+      
 
         if (movement != Vector2.zero) {
             return this;
@@ -52,9 +53,12 @@ public class WalkState : PlayerState {
         if (movement != Vector2.zero) {
             playerAnimator.SetFloat("moveX", movement.x);
             playerAnimator.SetFloat("moveY", movement.y);
+            playerAnimator.SetFloat("magnitude", movement.sqrMagnitude);
             movement.Normalize();
             playerRB.MovePosition((Vector2)playerRB.position + movement * player.speed * Time.fixedDeltaTime);
         }
+
+       // Debug.Log("Walking");
     }
 
 
