@@ -25,7 +25,7 @@ public class Pushable : MonoBehaviour {
 
     }
 
-    private void OnCollisionStay2D(Collision2D other) {
+    /*private void OnCollisionStay2D(Collision2D other) {
         if (other.gameObject.CompareTag("Player") && !isPushed) {
            
             Player p = other.gameObject.GetComponent<Player>();
@@ -36,13 +36,19 @@ public class Pushable : MonoBehaviour {
 
            // Debug.Log("Is Pushed");
         }
-    }
+    }*/
 
-    private void OnCollisionExit2D(Collision2D other) {
+    /*private void OnCollisionExit2D(Collision2D other) {
         if (other.gameObject.CompareTag("Player")) {
             isPushed = false;
             StopAllCoroutines();
         }
+    }*/
+
+    private void OnCollisionExit2D(Collision2D collision) {
+
+        myRigidbody.velocity = Vector2.zero;
+        myRigidbody.angularVelocity = 0;
     }
     private IEnumerator pushCo() {
         yield return new WaitForSeconds(pushWait);

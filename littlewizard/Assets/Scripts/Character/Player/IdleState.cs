@@ -38,6 +38,7 @@ public class IdleState : PlayerState {
     }
     public override void act() {
 
+        
         playerRB.velocity = Vector2.zero;
         playerRB.angularVelocity = 0;
     }

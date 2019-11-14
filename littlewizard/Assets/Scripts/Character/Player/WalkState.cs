@@ -40,6 +40,8 @@ public class WalkState : PlayerState {
         if (movement != Vector2.zero) {
             return this;
         } else {
+
+            playerAnimator.SetFloat("magnitude", 0);
             return player.idleState;
         }
     }
