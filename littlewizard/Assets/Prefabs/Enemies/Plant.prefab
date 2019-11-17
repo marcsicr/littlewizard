@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   debugCharacter: 0
-  HP: 15
+  HP: 50
   chaseRadius: 5
   attackRadius: 10
   attackPower: 10

@@ -83,7 +83,8 @@ public class Plant : Enemy
 
         float duration = 0.5f;
         float maxOutlineWidth = 0.0032f;
-        materiaL.SetVector("_OutlineColor", new Vector4(1f, 0, 0, 1f));
+        Vector4 color = new Vector4 (1f,0.8f,0f,1f);
+        materiaL.SetVector("_OutlineColor", color);
         materiaL.SetFloat("_Brightness", 1f);
         for (float t = 0f; t < duration; t += Time.deltaTime) {
             float normalizedTime = t / duration;

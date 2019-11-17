@@ -109,7 +109,13 @@ Shader "Custom/OutlineFlash"
 				c.rgb = lerp(c.rgb, _FlashColor.rgb, _FlashAmount);
 				c.rgb *= c.a;
 				
-				c.rgb = c.rgb + outlines;
+				if (result > 0) {
+					c.rgba = c.rgba + fixed4(1, 1, 1, 0.5) * outlines;
+				}
+				else {
+					c.rgb = c.rgb + outlines;//  +outlines;
+				}
+				
 				return c;
 			}
 		ENDCG

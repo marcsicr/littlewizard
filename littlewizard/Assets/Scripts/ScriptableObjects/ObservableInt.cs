@@ -19,10 +19,6 @@ public class ObservableInt : ScriptableObject, ISerializationCallbackReceiver {
        
     }
 
-    public void Awake() {
-        Debug.Log("Observable Awake");
-    }
-
     public void UpdateValue(int i) {
         this.runtimeValue = i;
         NotifyObservers();

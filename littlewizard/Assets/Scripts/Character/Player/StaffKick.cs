@@ -13,11 +13,14 @@ public class StaffKick : MonoBehaviour
 
 
         if (other.gameObject.tag == Enemy.ENEMY_TAG) {
-
-           
             Enemy enemy = (Enemy) other.gameObject.GetComponent(typeof(Enemy));
             enemy.OnGetKicked(KickPower);
             
+        }else if (other.CompareTag("Pot")) {
+
+            Pot pot = other.GetComponent<Pot>();
+            pot.destroy();
         }
+
     }
 }

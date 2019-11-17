@@ -138,6 +138,11 @@ public class Player : Character{
         //Debug.Log("HP;" + playerHP.getRunTimeValue());
     }
 
+    public void showAlertBubble(bool show) {
+
+        transform.Find("AlertBubble").gameObject.SetActive(show);
+    }
+
 
     public void OnCollectPotion(int points,PotionType type) {
 

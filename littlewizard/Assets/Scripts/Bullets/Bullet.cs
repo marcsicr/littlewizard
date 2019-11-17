@@ -48,13 +48,20 @@ public abstract class Bullet : MonoBehaviour
 
         } else if (target == BulletTarget.Enemy && other.gameObject.tag == "Enemy") {
 
+           
             Enemy e = other.gameObject.GetComponent<Enemy>();
             onCollision(contactPoint.point);
             e.OnGetKicked(damage);
+            
+           
         } else {
 
+            if (other.gameObject.tag == "Pot") {
+                Pot pot = other.gameObject.GetComponent<Pot>();
+                pot.destroy();
+            }
 
-            onCollision(contactPoint.point);
+                onCollision(contactPoint.point);
 
         }
 
@@ -107,5 +114,15 @@ public abstract class Bullet : MonoBehaviour
         Collider2D collider = this.GetComponent<Collider2D>();
         collider.enabled = true;
 
+    }
+
+    public Vector2 getDirection() {
+        return direction;
+    }
+    public void setDirection(Vector2 direction) {
+
+        this.direction = direction;
+        
+        //direction = Quaternion.AngleAxis(degrees, Vector3.forward) * direction;
     }
 }
