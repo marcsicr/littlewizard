@@ -38,7 +38,7 @@ public class IdleState : PlayerState {
     }
     public override void act() {
 
-        
+        playerAnimator.SetFloat("magnitude", 0);
         playerRB.velocity = Vector2.zero;
         playerRB.angularVelocity = 0;
     }

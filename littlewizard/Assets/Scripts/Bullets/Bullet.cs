@@ -70,39 +70,7 @@ public abstract class Bullet : MonoBehaviour
         
 
     }
-   /* void OnTriggerEnter2D(Collider2D other) {
-    
-        if(target == BulletTarget.Player && other.tag == "Player") {
-               
-            Player p = other.GetComponent<Player>();
-            onCollision();
-            p.OnGetKicked(damage);
-            
-        } else if(target == BulletTarget.Enemy && other.tag == "Enemy") {
-
-            Enemy e = other.GetComponent<Enemy>();
-            onCollision();
-           
-            e.OnGetKicked(damage);
-        } else {
-
-
-            RaycastHit2D ray = Physics2D.Raycast(transform.position, direction);
-            Vector2 hitDirection = (Vector2)transform.position - ray.point;
-
-                myAnimator.SetFloat("moveX", direction.x);
-                myAnimator.SetFloat("moveY", direction.y);
-           
-            
-
-            //Debug.Log(ray.normal);
-
-            //Debug.Log(otherPosition);
-
-            onCollision();
-            
-        } 
-    }*/
+   
 
     /*Handle Bullet collision effects*/
     public abstract void onCollision(Vector2 collisionPoint);
@@ -122,7 +90,6 @@ public abstract class Bullet : MonoBehaviour
     public void setDirection(Vector2 direction) {
 
         this.direction = direction;
-        
-        //direction = Quaternion.AngleAxis(degrees, Vector3.forward) * direction;
+       
     }
 }

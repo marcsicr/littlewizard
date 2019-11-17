@@ -11,6 +11,7 @@ public class EnergyBolt : Bullet {
 
         myAnimator.SetTrigger("explode");
         Destroy(transform.Find("trail").gameObject);
+        Destroy(GetComponent<Collider2D>());
         activeSpeed = 0;
         //Destroy(gameObject);
     }

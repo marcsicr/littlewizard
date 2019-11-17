@@ -20,14 +20,22 @@ public class Mirror : MonoBehaviour
 
             Vector2 direction = bullet.getDirection();
 
-            direction.x = Mathf.Round(direction.x);
-            direction.y = Mathf.Round(direction.y);
+            direction = roundDirection(direction);
             Vector2 newDirection = Vector2.Reflect(direction, mirrorNormal);
 
+            newDirection = roundDirection(newDirection);
             bullet.setDirection(newDirection);
            
             Debug.Log("New angle" + Vector2.SignedAngle(Vector2.right,newDirection));
         }
         
+    }
+
+    private Vector2 roundDirection(Vector2 direction) {
+
+        direction.x = Mathf.Round(direction.x * 10f) / 10f;
+        direction.y = Mathf.Round(direction.y * 10f) / 10f;
+
+        return direction;
     }
 }

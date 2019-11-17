@@ -9,6 +9,7 @@ TagManager:
   - CastManager
   - Item
   - Pot
+  - Staff
   layers:
   - Default
   - TransparentFX

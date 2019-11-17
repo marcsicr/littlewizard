@@ -6,8 +6,7 @@ using TMPro;
 public class GemCounter : IntObserver {
     public TextMeshProUGUI text;
     public IntVar gemCount;
-    public IntVar gemsCaught;
-    
+  
     // Start is called before the first frame update
     void Start() {
         text = gameObject.GetComponent<TextMeshProUGUI>();
@@ -22,11 +21,13 @@ public class GemCounter : IntObserver {
     }
 
     public void UpdateCounter(ObservableInt count) {
-        text.SetText(count.getRunTimeValue().ToString() + "/" + gemCount.runtimeValue.ToString());
+        text.SetText(base.var.getRunTimeValue().ToString() + "/" + gemCount.runtimeValue.ToString());
     }
 
     public void resetCounter() {
-        gemsCaught.reset();
+
+     
+        base.var.reset();
         gemCount.reset();
     }
 }

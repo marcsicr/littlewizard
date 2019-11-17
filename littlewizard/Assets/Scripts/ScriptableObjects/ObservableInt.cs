@@ -51,6 +51,7 @@ public class ObservableInt : ScriptableObject, ISerializationCallbackReceiver {
 
     public void reset() {
         this.runtimeValue = initialValue;
+        //NotifyObservers();
     }
 }
 

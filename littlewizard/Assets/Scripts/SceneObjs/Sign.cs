@@ -44,7 +44,7 @@ public class Sign : MonoBehaviour
 
             Player p = other.gameObject.GetComponent<Player>();
             p.showAlertBubble(false);
-            inRange = true;
+            inRange = false;
             textBox.hide();
         }
     }
