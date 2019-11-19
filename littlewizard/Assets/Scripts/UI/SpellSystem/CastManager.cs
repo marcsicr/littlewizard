@@ -98,4 +98,12 @@ public class CastManager : MonoBehaviour
         active = null;
         cursor.setDefaultCursor();
     }
+
+    public Spell getSelectedSpell() {
+
+        if (active == null)
+            return Spell.NONE;
+
+        return active.getSpell();
+    }
 }

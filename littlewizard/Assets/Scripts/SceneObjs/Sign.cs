@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class Sign : MonoBehaviour
 {
-    public DialogBox textBox;
+    private DialogBox textBox;
     public string message;
     private bool inRange = false;
     private bool showing = false;
 
+    void Start() {
+
+        textBox = GameObject.Find("UILayout").GetComponentInChildren<DialogBox>();
+
+       // textBox = GameObject.Find("/UILayout/")).GetComponent<DialogBox>
+       if (textBox == null)
+           Debug.Log("error");
+    }
     private void Update() {
         
         if(inRange && Input.GetKeyDown(KeyCode.Space)) {

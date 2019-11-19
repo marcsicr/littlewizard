@@ -17,14 +17,16 @@ public class EnergyBolt : Bullet {
     }
 
     public override void shot(Vector2 direction) {
-        
-        
+
+
+        //Debug.Log("Bullet start:" + transform.position + "Bullet direction:" + direction);
         
         gameObject.SetActive(true);
         transform.Find("trail").gameObject.SetActive(true);
         myAnimator.SetFloat("moveX", direction.x);
         myAnimator.SetFloat("moveY", direction.y);
         startMoving(direction);
+      
         Destroy(gameObject, lifetime);
 
     }

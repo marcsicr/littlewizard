@@ -39,4 +39,8 @@ public class SpellSlot : MonoBehaviour
         spellState.setCasted();
         return this.spell;
     }
+
+    public Spell getSpell() {
+        return this.spell;
+    }
 }

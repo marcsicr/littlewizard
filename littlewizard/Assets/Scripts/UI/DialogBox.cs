@@ -6,9 +6,11 @@ using TMPro;
 public class DialogBox : MonoBehaviour
 {
     private TextMeshProUGUI text;
+    public GameObject panel;
     void Awake()
     {
-        text = transform.Find("Text").GetComponent<TextMeshProUGUI>();
+        panel.SetActive(false);
+        text = transform.Find("Panel/Text").GetComponent<TextMeshProUGUI>();
     }
 
 
@@ -16,11 +18,11 @@ public class DialogBox : MonoBehaviour
     public void show(string message) {
 
         
-        gameObject.SetActive(true);
+        panel.SetActive(true);
         text.text = message;
     }
 
     public void hide() {
-        gameObject.SetActive(false);
+        panel.SetActive(false);
     }
 }
