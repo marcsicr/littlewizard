@@ -15,11 +15,11 @@ public class WalkState : PlayerState {
     public override PlayerState handleInput() {
         //Check first if we should change to another state
         
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
+        if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject()) {
 
             Spell s = player.getActiveSpell();
             if(s != Spell.NONE) {
-                return new CastState(player, Camera.main.ScreenToWorldPoint(Input.mousePosition), s);
+                return new CastState(player, Camera.main.ScreenToWorldPoint(Input.mousePosition), s,movement);
             }
 
             //If no spell is selected try to hit with staff

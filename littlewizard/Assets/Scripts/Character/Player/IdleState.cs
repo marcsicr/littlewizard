@@ -14,11 +14,11 @@ public class IdleState : PlayerState {
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
 
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
+        if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject()) {
 
             Spell s = player.getActiveSpell();
             if (s != Spell.NONE) {
-                return new CastState(player, Camera.main.ScreenToWorldPoint(Input.mousePosition), s);
+                return new CastState(player, Camera.main.ScreenToWorldPoint(Input.mousePosition), s,Vector2.zero);
             }
 
             //If no spell is selected try to hit with staff

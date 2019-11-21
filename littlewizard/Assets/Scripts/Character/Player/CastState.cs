@@ -9,23 +9,17 @@ public class CastState : PlayerState {
     public Vector2 castDirection;
     Vector2 movement;
     private Spell spell;
-    public CastState(Player player,Vector3 worldPoint,Spell spell) : base(player) {
+    public CastState(Player player,Vector3 worldPoint,Spell spell,Vector2 movement) : base(player) {
 
         castDirection = (worldPoint - player.transform.position);
         castDirection.Normalize();
+        this.movement = movement;
         this.spell = spell;
     }
     public override void act() {
 
         playerAnimator.SetFloat("moveX", castDirection.x);
         playerAnimator.SetFloat("moveY", castDirection.y);
-        if (!casting) {
-
-            playerAnimator.SetTrigger("cast");
-
-            //Instantiate bullet prefab and shot(castDirection);
-            player.StartCoroutine(CastCo(spell));
-        }
 
         if (movement != Vector2.zero) {
             playerAnimator.SetFloat("moveX", movement.x);
@@ -35,15 +29,31 @@ public class CastState : PlayerState {
             playerRB.MovePosition((Vector2)playerRB.position + movement * player.speed * Time.fixedDeltaTime);
         }
 
+        if (!casting) {
+
+            Vector2 offset = castPointOffset();
+            playerAnimator.SetTrigger("cast");
+
+            //Instantiate bullet prefab and shot(castDirection);
+            player.StartCoroutine(CastCo(spell,offset));
+        }
+
+
        // Debug.Log("Cast state");
     }
 
-    public IEnumerator CastCo(Spell spell) {
+    private Vector2 castPointOffset() {
+
+        return movement;
+    }
+
+    public IEnumerator CastCo(Spell spell,Vector2 offset) {
         casting = true;
+        Vector2 spawn = (Vector2)player.transform.position + offset;
         if(spell == Spell.BOLT) {
 
             //Instantiate bullet prefab and shot(castDirection);
-            GameObject bullet = GameObject.Instantiate(player.boltPrefab, player.transform.position, Quaternion.identity);
+            GameObject bullet = GameObject.Instantiate(player.boltPrefab, spawn, Quaternion.identity);
             Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), bullet.GetComponent<Collider2D>());
             yield return new WaitForSeconds(0.2f);
 
@@ -63,9 +73,9 @@ public class CastState : PlayerState {
 
         if(spell == Spell.RANGE_ATTACK) {
 
-            GameObject rayAttack = GameObject.Instantiate(player.rayAttkPrefab, player.transform.position, Quaternion.identity);
+            GameObject rayAttack = GameObject.Instantiate(player.rayAttkPrefab, spawn, Quaternion.identity);
             RangeAttk ray = rayAttack.GetComponent<RangeAttk>();
-
+            yield return new WaitForSeconds(0.2f);
             ray.shot(castDirection);
 
             player.rangeAtkCasted.Raise();
