@@ -7,8 +7,10 @@ public abstract class Enemy : Character{
 
     [HideInInspector]
     public static readonly string ENEMY_TAG = "Enemy"; //This tag must be defined first on inspector
-    
-    protected Transform target;
+
+ 
+
+    protected Player target;
 
     public int HP = 100;
     public float chaseRadius = 5f;
@@ -19,11 +21,14 @@ public abstract class Enemy : Character{
     protected float nextAttackAvailable;
     protected Vector2 spawnLocation;
 
+
+    
+
     protected EnemyBar bar;
     public override void Start() {
         base.Start();
-    
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         
         gameObject.tag = ENEMY_TAG;
        
@@ -43,6 +48,24 @@ public abstract class Enemy : Character{
             Debug.Log("No Enemy HP bar component found");
         }
 
+    }
+
+    public override void onTransferEnter() {
+
+        
+        myAnimator.SetBool("freeze", true);
+    }
+
+    public override void onTransferLeave() {
+
+        StartCoroutine(defrostCo());
+
+    }
+
+    private IEnumerator defrostCo() {
+
+        yield return new WaitForSeconds(0.9f);
+        myAnimator.SetBool("freeze", false);
     }
 
     public int getHP() {
@@ -95,11 +118,11 @@ public abstract class Enemy : Character{
         }
     }
     public bool isPlayerInChaseRadius(){
-       return  Vector3.Distance(target.position, transform.position) <= chaseRadius;
+       return  Vector3.Distance(target.transform.position, transform.position) <= chaseRadius;
     }
 
     public bool isPlayerInAttackRadius() {
-        return Vector3.Distance(target.position, transform.position) <= attackRadius;
+        return Vector3.Distance(target.transform.position, transform.position) <= attackRadius;
     }
 
     public float distanceFromPlayer() {
@@ -108,7 +131,7 @@ public abstract class Enemy : Character{
     }
 
     public Transform getTarget() {
-        return this.target;
+        return this.target.transform;
     }
    
     public void move(Vector2 position) {
@@ -144,6 +167,11 @@ public abstract class Enemy : Character{
 
     public virtual bool isAttackReady() {
         return Time.time > nextAttackAvailable;
+    }
+
+    public virtual void onGameOver() {
+
+        myAnimator.SetTrigger("gameOver");
     }
     
 }

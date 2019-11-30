@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SettingsPanel : MonoBehaviour {
 
+
+
     public void resumeGame() {
 
         Time.timeScale = 1;

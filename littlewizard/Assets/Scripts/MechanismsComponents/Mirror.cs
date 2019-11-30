@@ -16,15 +16,18 @@ public class Mirror : MonoBehaviour
 
         if (other.CompareTag("Bullet")) {
 
-            Bullet bullet = other.GetComponent<Bullet>();
+            LinearBullet bullet = other.GetComponent<LinearBullet>();
 
-            Vector2 direction = bullet.getDirection();
+            if (bullet != null) {
 
-           
-            Vector2 newDirection = reflect(direction);
-            bullet.setDirection(newDirection);
-           
-            Debug.Log("New angle" + Vector2.SignedAngle(Vector2.right,newDirection));
+                Vector2 direction = bullet.getDirection();
+
+                Vector2 newDirection = reflect(direction);
+                bullet.setDirection(newDirection);
+
+                //Debug.Log("New angle" + Vector2.SignedAngle(Vector2.right, newDirection));
+            }
+
         }
         
     }

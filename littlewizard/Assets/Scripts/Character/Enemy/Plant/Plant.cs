@@ -38,7 +38,7 @@ public class Plant : Enemy
         }
 
         state = PlantState.IDLE;
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<Player>();
 
         gameObject.tag = ENEMY_TAG;
      
@@ -200,5 +200,9 @@ public class Plant : Enemy
         state = PlantState.IDLE;
     }
 
+    public override void onGameOver() {
+        
+
+    }
 
 }

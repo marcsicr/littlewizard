@@ -15,21 +15,20 @@ public abstract class Bullet : MonoBehaviour
     public BulletTarget target;
     protected Rigidbody2D myRigidBody;
     protected Animator myAnimator;
-    protected Vector2 direction;
+    
+    
     private bool collided = false;
+
+    public abstract void shot(Vector2 worldPoint);
+    
+    /*Handle Bullet collision effects*/
+    public abstract void onCollision(Vector2 collisionPoint);
+
     private void Awake() {
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
     }
 
-    
-
-    // Update is called once per frame
-    public virtual void FixedUpdate(){
-        myRigidBody.velocity = direction * activeSpeed;
-    }
-
-    public abstract void shot(Vector2 direction);
 
 
     private void OnCollisionEnter2D(Collision2D other ) {
@@ -67,29 +66,8 @@ public abstract class Bullet : MonoBehaviour
 
         collided = true;
 
-        
 
     }
+
    
-
-    /*Handle Bullet collision effects*/
-    public abstract void onCollision(Vector2 collisionPoint);
-
-    protected void startMoving(Vector2 direction) {
-
-        this.direction = direction;
-        this.activeSpeed = speed;
-        Collider2D collider = this.GetComponent<Collider2D>();
-        collider.enabled = true;
-
-    }
-
-    public Vector2 getDirection() {
-        return direction;
-    }
-    public void setDirection(Vector2 direction) {
-
-        this.direction = direction;
-       
-    }
 }

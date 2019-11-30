@@ -8,7 +8,6 @@ public class GoblinA : Enemy
 
     public Vector2[] patrolPoints;
     public GameObject arrowPrefab;
-   
 
     public override void OnGetKicked(int attack) {
         base.OnGetKicked(attack);
@@ -36,9 +35,12 @@ public class GoblinA : Enemy
     public IEnumerator waitShotCo() {
         Vector2 direction = getTargetDirection();
         yield return new WaitForSeconds(0.1f);
+
         GameObject arrow = Instantiate(arrowPrefab, new Vector3(transform.position.x + direction.x, transform.position.y + direction.y, transform.position.z), Quaternion.identity);
         Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        arrow.GetComponent<Arrow>().shot(direction);
+        
+        
+        arrow.GetComponent<Arrow>().shot(target.getCollisionCenterPoint());
         //arrow.shot();
     }
 }

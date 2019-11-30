@@ -22,7 +22,7 @@ public class CameraPlayer : MonoBehaviour
         RectBoundaries bounds = initialBounds.getBoundaries();
         computeCamBundaries(bounds.topLeft, bounds.bottomRight);
         //computeCamBundaries(topLeft, bottomRight);
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        //target = GameObject.FindGameObjectWithTag("Player").transform;
         cam = gameObject.GetComponent<Camera>();
         //Debug.Log("Pixel width :" + cam.pixelWidth + " Pixel height : " + cam.pixelHeight);
        

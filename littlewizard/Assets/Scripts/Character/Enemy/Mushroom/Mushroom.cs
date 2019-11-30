@@ -38,7 +38,7 @@ public class Mushroom : Enemy
         Physics2D.IgnoreCollision(bulletObj.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
        Bullet bullet = bulletObj.GetComponent<Bullet>();
-       bullet.shot(getTargetDirection());
+       bullet.shot((Vector2)target.getCollisionCenterPoint());
         
     }
 

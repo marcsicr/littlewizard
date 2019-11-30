@@ -10,12 +10,19 @@ public abstract class Character : MonoBehaviour{
     protected Animator myAnimator;
     protected Material mat;
 
+
+    
     protected bool isFlashing;
     protected bool kickAnimation;
     private float flashSpeed = 4f;
 
+
     public virtual void Start() {
+
+        
+
         //Debug.Log("Character");
+
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
 
@@ -24,8 +31,11 @@ public abstract class Character : MonoBehaviour{
         myAnimator.SetFloat("moveY", -1.0f);
 
         mat = gameObject.GetComponent<SpriteRenderer>().material;
+        
     }
 
+    public abstract void onTransferEnter();
+    public abstract void onTransferLeave();
 
     public abstract void OnGetKicked(int attack);
 

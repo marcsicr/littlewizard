@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergyBolt : Bullet {
+public class EnergyBolt : LinearBullet {
     public override void onCollision(Vector2 collisionPoint) {
 
         Vector2 hitDirection = collisionPoint - (Vector2)transform.position;
@@ -25,8 +25,12 @@ public class EnergyBolt : Bullet {
         transform.Find("trail").gameObject.SetActive(true);
         myAnimator.SetFloat("moveX", direction.x);
         myAnimator.SetFloat("moveY", direction.y);
-        startMoving(direction);
-      
+
+        this.direction = direction;
+        this.activeSpeed = speed;
+        Collider2D collider = this.GetComponent<Collider2D>();
+        collider.enabled = true;
+
         Destroy(gameObject, lifetime);
 
     }

@@ -26,14 +26,21 @@ public class Player : Character{
     private Shield shield;
     private bool isInvencible;
 
+
     private float nextSTRecup;
     private float recuPInterval = 2f;
+    private bool freeze = false;
 
     public GameObject boltPrefab;
     public GameObject rayAttkPrefab;
 
+    public Color flashColor;
+    
+
     public void Awake() {
         mat = gameObject.GetComponent<SpriteRenderer>().material;
+        mat.SetVector("_FlashColor", flashColor);
+
         castManager = GameObject.FindWithTag("CastManager").GetComponent<CastManager>();
         if (castManager == null)
             Debug.Log("CastManager is null");
@@ -70,7 +77,11 @@ public class Player : Character{
     public override void Update() {
 
         base.Update();
-        currentState = currentState.handleInput();
+
+        if (!freeze) {
+            currentState = currentState.handleInput();
+        }
+        
 
     }
 
@@ -81,8 +92,11 @@ public class Player : Character{
    
  
     public void FixedUpdate() {
-
-        currentState.act();
+        
+        if (!freeze) {
+            currentState.act();
+        }
+      
         if(Time.time > nextSTRecup) {
             if(stamina.getRunTimeValue() < stamina.getInitialValue()) {
                 stamina.UpdateValue(stamina.getRunTimeValue() + 1);
@@ -168,24 +182,48 @@ public class Player : Character{
     
     }
 
-    
+    public override void onTransferEnter() {
+        freeze = true;
+        myAnimator.SetFloat("magnitude", 0);
+        
+    }
+
+    public override void onTransferLeave() {
+        
+        StartCoroutine(defrostCo());
+    }
+
+    public IEnumerator defrostCo() {
+
+        yield return new WaitForSeconds(0.9f);
+        freeze = false;
+    }
+
+
     public void die() {
         SpriteRenderer r = gameObject.GetComponent<SpriteRenderer>();
         BoxCollider2D b = gameObject.GetComponent<BoxCollider2D>();
         r.enabled = false;
         b.enabled = false;
         currentState = dieState;
-        
 
-        StartCoroutine(gameOverTimeoutCo());
-    }
-
-    public IEnumerator gameOverTimeoutCo() {
 
         playerHP.reset();
         playerSP.reset();
         stamina.reset();
-        yield return new WaitForSeconds(1);
-        gameOverSignal.Raise(); //Show game over UI
+        gameOverSignal.Raise(); 
+
+    }
+
+    public Vector3 getCollisionCenterPoint() {
+
+
+        Vector3 pos = transform.position;
+
+        BoxCollider2D col = GetComponent<BoxCollider2D>();
+
+        pos.y += col.offset.y - col.size.y/2;
+
+        return pos;
     }
 }

@@ -126,6 +126,8 @@ GameObject:
   - component: {fileID: 575718415559048952}
   - component: {fileID: 575718415559048935}
   - component: {fileID: 575718415559048933}
+  - component: {fileID: 8778736662827728646}
+  - component: {fileID: 2228237915022915689}
   m_Layer: 16
   m_Name: Player
   m_TagString: Player
@@ -253,7 +255,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00740844, y: -0.41556048}
+  m_Offset: {x: 0.06, y: -0.39912844}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -264,7 +266,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4612369, y: 0.4253111}
+  m_Size: {x: 0.5, y: 0.392447}
   m_EdgeRadius: 0
 --- !u!114 &575718415559048933
 MonoBehaviour:
@@ -291,6 +293,61 @@ MonoBehaviour:
     type: 3}
   rayAttkPrefab: {fileID: 5682960449793754693, guid: d0ff362d271fc4543bb781a0c83e14c7,
     type: 3}
+  flashColor: {r: 0.9811321, g: 0.0509078, b: 0.0509078, a: 0}
+--- !u!114 &8778736662827728646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575718415559048930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f8592610e6b824b974ef74467e1254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: aaaf588520c254b4db538886e117c925, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 575718415559048933}
+        m_MethodName: onTransferEnter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2228237915022915689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575718415559048930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f8592610e6b824b974ef74467e1254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: c80a84e606434c24b82c4dee434698a7, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 575718415559048933}
+        m_MethodName: onTransferLeave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1615048052249654985
 GameObject:
   m_ObjectHideFlags: 0

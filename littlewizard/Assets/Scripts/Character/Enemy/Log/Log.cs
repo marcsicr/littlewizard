@@ -8,7 +8,8 @@ public class Log : Enemy
     //private float minDistance = 2f;
     public GameObject root;
     private RootAttack aRoot;
-    
+
+    private bool hitted = false;
     
     public override void  Start(){
         base.Start();
@@ -23,6 +24,9 @@ public class Log : Enemy
     public override void OnGetKicked(int attack) {
         base.OnGetKicked(attack);
         this.HP -= attack;
+
+        hitted = true;       
+
         if (this.HP <= 0) {
 
             Destroy(gameObject);
@@ -31,8 +35,18 @@ public class Log : Enemy
         bar.updateBar(HP);
 
     }
+
+
     
     public bool shouldWakeUp() {
+
+        if (hitted) {
+
+            hitted = false;
+            return true;
+        }
+            
+
         return distanceFromPlayer() <= wakeDistance ? true : false;
     }
 

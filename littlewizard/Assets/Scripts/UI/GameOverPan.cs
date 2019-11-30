@@ -23,8 +23,14 @@ public class GameOverPan : MonoBehaviour
         Application.Quit();
     }
 
-    public void show() {
+    public void onGameOver() {
 
+        StartCoroutine(showCo());
+    }
+
+    private IEnumerator showCo() {
+
+        yield return new WaitForSeconds(1);
         holder.SetActive(true);
     }
 }

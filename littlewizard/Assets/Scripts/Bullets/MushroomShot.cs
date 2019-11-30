@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MushroomShot : Bullet
+public class MushroomShot : LinearBullet
 {
     
   
@@ -45,14 +45,14 @@ public class MushroomShot : Bullet
         Destroy(gameObject);
     }
 
-    public override void shot(Vector2 direction) {
+    public override void shot(Vector2 point) {
+
+        base.shot(point);
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        gameObject.SetActive(true);
-        startMoving(direction);
-        Destroy(gameObject, lifetime);
+       
     }
 
     public override void onCollision(Vector2 collisionPoint) {

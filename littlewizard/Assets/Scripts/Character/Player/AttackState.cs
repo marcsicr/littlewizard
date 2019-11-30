@@ -45,6 +45,10 @@ public class AttackState : PlayerState {
 
             playerAnimator.SetFloat("attackX", direction.x);
             playerAnimator.SetFloat("attackY", direction.y);
+
+            playerAnimator.SetFloat("moveX", direction.normalized.x);
+            playerAnimator.SetFloat("moveY", direction.normalized.y);
+
             player.StartCoroutine(StaffKickCo());
             player.decreaseStamina(1);
            
