@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Bar : IntObserver
+public class Bar : MonoBehaviour
 {
+    public ObservableInteger var;
+    private IntegerObserver observer;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+
+    private void Awake() {
+        observer = new IntegerObserver(var, updateBar);
         transform.localScale = new Vector3(1f, 1f);
     }
 
-
-    public void updateBar(ObservableInt var) {
-        //Debug.Log("Update bar called");
-        float barLength = computeBarLength(var.getInitialValue(),var.getRunTimeValue());
+    public void updateBar(int newValue) {
+        float barLength = computeBarLength(var.getInitialValue(),newValue);
         transform.localScale = new Vector3(barLength, 1f);
     }
 
@@ -31,4 +31,7 @@ public class Bar : IntObserver
     }
 
 
+    private void OnDisable() {
+        observer.stopObserving(); //Important!
+    }
 }

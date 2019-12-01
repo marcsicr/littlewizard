@@ -15,12 +15,13 @@ public class GameOverPan : MonoBehaviour
 
    public void Retry() {
 
-        SceneManager.LoadScene(sceneIndex);
+        GameManager.Instance.restartLevel();
         holder.SetActive(false);
     }
 
     public void exitGame() {
-        Application.Quit();
+
+        GameManager.Instance.QuitGame();
     }
 
     public void onGameOver() {

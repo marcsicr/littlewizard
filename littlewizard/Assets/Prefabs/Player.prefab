@@ -282,9 +282,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   debugCharacter: 0
-  playerHP: {fileID: 11400000, guid: 4da7d19b8b1269240980f525e15e12da, type: 2}
-  playerSP: {fileID: 11400000, guid: c503ea58add4e7a43b463bbcdabddd5c, type: 2}
-  stamina: {fileID: 11400000, guid: b837b5b8aec15a14581e1889a36b3d80, type: 2}
+  playerHP: {fileID: 11400000, guid: b68f0ff6255a3a742b2ad200613504fc, type: 2}
+  playerSP: {fileID: 11400000, guid: bc0753e494d55b048927fa5d31ccb8d0, type: 2}
+  stamina: {fileID: 11400000, guid: 8f556433ab61e3c478d1658f70949f59, type: 2}
   gameOverSignal: {fileID: 11400000, guid: 8622d57c1f2891d42bbb0058c89fb19f, type: 2}
   boltCasted: {fileID: 11400000, guid: 577117b55f3799044b40899aee146bee, type: 2}
   shieldCasted: {fileID: 11400000, guid: 2faa3458cbe86e0489a5154bb0aa29a6, type: 2}
@@ -292,6 +292,8 @@ MonoBehaviour:
   boltPrefab: {fileID: 8322000851611868158, guid: 77983ce53cb67894aba2e8c142ea5bf1,
     type: 3}
   rayAttkPrefab: {fileID: 5682960449793754693, guid: d0ff362d271fc4543bb781a0c83e14c7,
+    type: 3}
+  levelPortalPrefab: {fileID: 5546852018706223798, guid: 82751d49412fb5047bccdaa3e257d3bb,
     type: 3}
   flashColor: {r: 0.9811321, g: 0.0509078, b: 0.0509078, a: 0}
 --- !u!114 &8778736662827728646
@@ -672,7 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ca89d4e91294f4bbbb06ac51acd26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KickPower: 5
+  KickPower: 10
 --- !u!1 &8379309463051919044
 GameObject:
   m_ObjectHideFlags: 0

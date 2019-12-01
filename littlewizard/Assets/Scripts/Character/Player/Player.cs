@@ -13,9 +13,9 @@ public class Player : Character{
 
     private PlayerState currentState;
 
-    public ObservableInt playerHP;
-    public ObservableInt playerSP;
-    public ObservableInt stamina;
+    public ObservableInteger playerHP;
+    public ObservableInteger playerSP;
+    public ObservableInteger stamina;
     public Signal gameOverSignal;
 
     private CastManager castManager;
@@ -29,12 +29,17 @@ public class Player : Character{
 
     private float nextSTRecup;
     private float recuPInterval = 2f;
-    private bool freeze = false;
+    private bool freeze = true;
 
     public GameObject boltPrefab;
     public GameObject rayAttkPrefab;
 
+    public GameObject levelPortalPrefab;
+
     public Color flashColor;
+
+    private SpriteRenderer spriteRenderer;
+    private BoxCollider2D boxCollider;
     
 
     public void Awake() {
@@ -49,6 +54,14 @@ public class Player : Character{
         if (shield == null)
             Debug.Log("Shield is null");
         isInvencible = false;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = false;
+
+        boxCollider = GetComponent<BoxCollider2D>();
+        boxCollider.enabled = false;
+
+        
     }
 
 
@@ -61,7 +74,56 @@ public class Player : Character{
         walkState = new WalkState(this);
         dieState = new DieState(this);
         currentState = idleState;
+
+
+        StartCoroutine(PlayerAppearCo());
         
+    }
+
+    private IEnumerator PlayerAppearCo(){
+
+        Vector3 portalPos = transform.position;
+        portalPos.y += 0.2f; //Center portal on player sprite position
+
+        GameObject portalInstance = Instantiate(levelPortalPrefab, portalPos, Quaternion.identity, null);
+        LevelPortal portal = portalInstance.GetComponent<LevelPortal>();
+        portal.appear(0,false);
+        yield return new WaitForSeconds(1);
+       
+        transform.localScale = Vector3.zero;
+        spriteRenderer.enabled = true;
+
+        mat.SetVector("_FlashColor", Color.white);
+        for (float scale = 0; scale < 1; scale += 0.1f){
+
+            mat.SetFloat("_FlashAmount", 1-scale);
+            transform.localScale = new Vector3(scale, scale, 0);
+            yield return null;
+        }
+        mat.SetFloat("_FlashAmount", 0);
+        mat.SetVector("_FlashColor", flashColor);
+        portal.disappear();
+        yield return null;
+
+        Destroy(portal.gameObject, 1);
+        yield return new WaitForSeconds(0.5f);
+
+        freeze = false;
+        boxCollider.enabled = true;
+       
+    }
+
+    private IEnumerator PlayerDissapearCo() {
+
+        mat.SetVector("_FlashColor", Color.white);
+        for (float scale = 0; scale < 1; scale += 0.1f) {
+
+            mat.SetFloat("_FlashAmount", 1 - scale);
+            transform.localScale = new Vector3(1-scale, 1-scale, 0);
+            yield return null;
+        }
+
+        spriteRenderer.enabled = false;
     }
 
     public void createShield() {
@@ -148,8 +210,6 @@ public class Player : Character{
 
             kickAnimation = true;
         }
-
-        //Debug.Log("HP;" + playerHP.getRunTimeValue());
     }
 
     public void showAlertBubble(bool show) {
@@ -168,7 +228,7 @@ public class Player : Character{
 
     }
 
-    private void usePotion(int points, ObservableInt var) {
+    private void usePotion(int points, ObservableInteger var) {
 
         int current = var.getRunTimeValue();
         int max = var.getInitialValue();
@@ -225,5 +285,15 @@ public class Player : Character{
         pos.y += col.offset.y - col.size.y/2;
 
         return pos;
+    }
+
+
+    public void dissapear() {
+
+        freeze = true;
+        boxCollider.enabled = false;
+        StartCoroutine(PlayerDissapearCo());
+        
+   
     }
 }
