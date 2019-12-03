@@ -26,7 +26,7 @@ public class IdleCobra : StateMachineBehaviour
             return;
         }
 
-        Vector2 direction = enemy.getTargetDirection();
+        Vector2 direction = enemy.getDirectionToPlayer();
         animator.SetFloat("moveX", direction.x);
         animator.SetFloat("moveY", direction.y);
 

@@ -22,7 +22,7 @@ public class GoblinA : Enemy
 
     protected override void attackAction() {
 
-        Vector2 direction = getTargetDirection();
+        Vector2 direction = getDirectionToPlayer();
         myAnimator.SetFloat("moveX",direction.x);
         myAnimator.SetFloat("moveY", direction.y);
         myAnimator.SetTrigger("shot");
@@ -33,14 +33,14 @@ public class GoblinA : Enemy
     }
 
     public IEnumerator waitShotCo() {
-        Vector2 direction = getTargetDirection();
+        Vector2 direction = getDirectionToPlayer();
         yield return new WaitForSeconds(0.1f);
 
         GameObject arrow = Instantiate(arrowPrefab, new Vector3(transform.position.x + direction.x, transform.position.y + direction.y, transform.position.z), Quaternion.identity);
         Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         
         
-        arrow.GetComponent<Arrow>().shot(target.getCollisionCenterPoint());
+        arrow.GetComponent<Arrow>().shot(player.getCollisionCenterPoint());
         //arrow.shot();
     }
 }

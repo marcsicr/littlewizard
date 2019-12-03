@@ -28,8 +28,8 @@ public class MushroomChase : StateMachineBehaviour {
         }
 
   
-        animator.SetFloat("moveX", enemy.getTargetDirection().x);
-        animator.SetFloat("moveY", enemy.getTargetDirection().y);
+        animator.SetFloat("moveX", enemy.getDirectionToPlayer().x);
+        animator.SetFloat("moveY", enemy.getDirectionToPlayer().y);
 
         if (enemy.isPlayerInAttackRadius() && enemy.isAttackReady()) {
             //Attack
@@ -39,7 +39,7 @@ public class MushroomChase : StateMachineBehaviour {
         } else if(enemy.distanceFromPlayer() >= minPlayerDist) {
 
             Vector3 enemyPos = animator.transform.position;
-            Vector3 targetPos = enemy.getTarget().position;
+            Vector3 targetPos = enemy.getPlayerTransform().position;
 
             Vector3 step = Vector3.MoveTowards(enemyPos, targetPos, enemy.speed * Time.deltaTime);
             enemy.move(step);

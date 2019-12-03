@@ -6,12 +6,12 @@ using UnityEngine;
 public class RangeAttk : MonoBehaviour
 {
     private struct EnemyRay {
-        public Enemy enemy;
+        public AbstractEnemy enemy;
         public LineRenderer line;
         public GameObject jointPoint;
         
 
-        public EnemyRay(Enemy enemy, LineRenderer line,GameObject jointPoint) { this.enemy = enemy; this.line = line; this.jointPoint = jointPoint; }
+        public EnemyRay(AbstractEnemy enemy, LineRenderer line,GameObject jointPoint) { this.enemy = enemy; this.line = line; this.jointPoint = jointPoint; }
 
     }
 
@@ -53,7 +53,7 @@ public class RangeAttk : MonoBehaviour
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, radius, ENEMY_LAYER);
 
         foreach (Collider2D e in enemies) {
-            Enemy enemy = e.GetComponent<Enemy>();
+            AbstractEnemy enemy = e.GetComponent<AbstractEnemy>();
             CreateLine(enemy);
         }
 
@@ -155,7 +155,7 @@ public class RangeAttk : MonoBehaviour
         r.line.SetPosition(i, enemyPos);
     }
 
-    void CreateLine(Enemy e) {
+    void CreateLine(AbstractEnemy e) {
 
 
         GameObject lineContainer = new GameObject();

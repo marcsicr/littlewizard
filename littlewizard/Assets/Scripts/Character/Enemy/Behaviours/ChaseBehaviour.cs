@@ -24,7 +24,7 @@ public class ChaseBehaviour : StateMachineBehaviour {
         } else if(enemy.isPlayerInChaseRadius()) {
 
             Vector3 enemyPos = animator.transform.position;
-            Vector3 targetPos = enemy.getTarget().position;
+            Vector3 targetPos = enemy.getPlayerTransform().position;
 
             Vector3 step = Vector3.MoveTowards(enemyPos, targetPos, enemy.speed * Time.deltaTime);
             Vector3 faceDirection = Vector3.Normalize(step - enemyPos);

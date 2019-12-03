@@ -27,7 +27,7 @@ public class IdleLog : StateMachineBehaviour {
         } else if(log.isPlayerInAttackRadius()) {
 
 
-            Vector2 direction = log.getTargetDirection();
+            Vector2 direction = log.getDirectionToPlayer();
             animator.SetFloat("moveX", direction.x);
             animator.SetFloat("moveY", direction.y);
             log.attackAtempt();//rootAttack();

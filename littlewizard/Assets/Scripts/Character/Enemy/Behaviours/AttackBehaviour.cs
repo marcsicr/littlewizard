@@ -23,7 +23,7 @@ public class AttackBehaviour : StateMachineBehaviour {
 
         if (enemy.isPlayerInAttackRadius()) {
 
-            Vector2 direction = enemy.getTargetDirection();
+            Vector2 direction = enemy.getDirectionToPlayer();
             animator.SetFloat("moveX", direction.x);
             animator.SetFloat("moveY", direction.y);
             

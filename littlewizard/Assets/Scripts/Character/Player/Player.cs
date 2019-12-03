@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class Player : Character{
 
+    [HideInInspector]
+    public static readonly string TAG = "Player"; //This tag must be defined first on inspector
+
     //States that can be reused
     public IdleState idleState; 
     public WalkState walkState;

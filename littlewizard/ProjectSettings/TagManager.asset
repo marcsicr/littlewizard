@@ -12,6 +12,7 @@ TagManager:
   - Staff
   - Mirror
   - UI
+  - Boss
   layers:
   - Default
   - TransparentFX

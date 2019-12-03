@@ -38,9 +38,9 @@ public class Plant : Enemy
         }
 
         state = PlantState.IDLE;
-        target = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<Player>();
+        player = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<Player>();
 
-        gameObject.tag = ENEMY_TAG;
+        gameObject.tag = TAG;
      
 
         base.nextAttackAvailable = Time.time + attackInterval;

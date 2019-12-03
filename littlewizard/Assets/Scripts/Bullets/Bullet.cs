@@ -48,7 +48,7 @@ public abstract class Bullet : MonoBehaviour
         } else if (target == BulletTarget.Enemy && other.gameObject.tag == "Enemy") {
 
            
-            Enemy e = other.gameObject.GetComponent<Enemy>();
+            AbstractEnemy e = other.gameObject.GetComponent<AbstractEnemy>();
             onCollision(contactPoint.point);
             e.OnGetKicked(damage);
             

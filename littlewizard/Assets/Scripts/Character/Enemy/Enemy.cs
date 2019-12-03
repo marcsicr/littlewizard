@@ -3,17 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public abstract class Enemy : Character{
+public abstract class Enemy : AbstractEnemy{
 
-    [HideInInspector]
-    public static readonly string ENEMY_TAG = "Enemy"; //This tag must be defined first on inspector
-
- 
-
-    protected Player target;
-
-    public int HP = 100;
-    public float chaseRadius = 5f;
+  
+    public float playerDiscoverRadius = 5f;
     public float attackRadius = 2f;
     public int attackPower = 10;
     public float minDistance = 2.5f;
@@ -22,17 +15,9 @@ public abstract class Enemy : Character{
     protected Vector2 spawnLocation;
 
 
-    
-
     protected EnemyBar bar;
     public override void Start() {
         base.Start();
-
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        
-        gameObject.tag = ENEMY_TAG;
-       
-        myRigidBody.useFullKinematicContacts = true;
 
         nextAttackAvailable = Time.time + attackInterval;
 
@@ -73,12 +58,10 @@ public abstract class Enemy : Character{
         return this.HP;
     }
 
-    public override void OnGetKicked(int attack) {
-        kickAnimation = true;
-    }
+  
 
     protected void debugStart(){
-        DrawCircle(chaseRadius, Color.cyan);
+        DrawCircle(playerDiscoverRadius, Color.cyan);
         DrawCircle(attackRadius, Color.red);
     }
 
@@ -118,38 +101,19 @@ public abstract class Enemy : Character{
         }
     }
     public bool isPlayerInChaseRadius(){
-       return  Vector3.Distance(target.transform.position, transform.position) <= chaseRadius;
+       return  Vector3.Distance(player.transform.position, transform.position) <= playerDiscoverRadius;
     }
 
     public bool isPlayerInAttackRadius() {
-        return Vector3.Distance(target.transform.position, transform.position) <= attackRadius;
+        return Vector3.Distance(player.transform.position, transform.position) <= attackRadius;
     }
 
-    public float distanceFromPlayer() {
-
-        return Vector3.Distance(target.transform.position, transform.position);
-    }
-
-    public Transform getTarget() {
-        return this.target.transform;
-    }
-   
+  
     public void move(Vector2 position) {
         myRigidBody.MovePosition(position);
     }
 
-    public Vector2 getTargetDirection() {
-
-        Vector3 direction = target.transform.position - transform.position;
-        return new Vector2(direction.x, direction.y).normalized;
-
-    }
-
-    public void resetSpeed() {
-        myRigidBody.velocity = Vector2.zero;
-        myRigidBody.angularVelocity = 0;
-    }
-
+   
     protected abstract void attackAction();
 
     /*Try to initiate attack if attempt is successfull return true*/
