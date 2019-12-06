@@ -71,15 +71,15 @@ public class Plant : Enemy
     //Instantiate bullets and shot
     private IEnumerator plantShotCo() {
         
-        GameObject bulletUp = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + 0.9f, transform.position.z), Quaternion.identity);
-        GameObject bulletUpR = Instantiate(bullet, new Vector3(transform.position.x+0.8f, transform.position.y + 0.9f, transform.position.z), Quaternion.identity);
-        GameObject bulletUpL = Instantiate(bullet, new Vector3(transform.position.x - 0.8f, transform.position.y + 0.9f, transform.position.z), Quaternion.identity);
-        GameObject bulletDown = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
-        GameObject bulletDownL = Instantiate(bullet, new Vector3(transform.position.x-0.8f, transform.position.y - 1f, transform.position.z), Quaternion.identity);
-        GameObject bulletDownR = Instantiate(bullet, new Vector3(transform.position.x+0.8f, transform.position.y - 1f, transform.position.z), Quaternion.identity);
-        
-        GameObject bulletLeft = Instantiate(bullet, new Vector3(transform.position.x - 0.8f, transform.position.y, transform.position.z), Quaternion.identity);
-        GameObject bulletRight = Instantiate(bullet, new Vector3(transform.position.x + 0.8f, transform.position.y, transform.position.z), Quaternion.identity);
+        PlantBullet bulletUp = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + 0.9f, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
+        PlantBullet bulletUpR = Instantiate(bullet, new Vector3(transform.position.x+0.8f, transform.position.y + 0.9f, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
+        PlantBullet bulletUpL = Instantiate(bullet, new Vector3(transform.position.x - 0.8f, transform.position.y + 0.9f, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
+        PlantBullet bulletDown = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
+        PlantBullet bulletDownL = Instantiate(bullet, new Vector3(transform.position.x-0.8f, transform.position.y - 1f, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
+        PlantBullet bulletDownR = Instantiate(bullet, new Vector3(transform.position.x+0.8f, transform.position.y - 1f, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
+
+        PlantBullet bulletLeft = Instantiate(bullet, new Vector3(transform.position.x - 0.8f, transform.position.y, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
+        PlantBullet bulletRight = Instantiate(bullet, new Vector3(transform.position.x + 0.8f, transform.position.y, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
 
         float duration = 0.5f;
         float maxOutlineWidth = 0.0032f;
@@ -95,14 +95,25 @@ public class Plant : Enemy
         }
         materiaL.SetFloat("_Width", maxOutlineWidth);
 
-        bulletUp.GetComponent<PlantBullet>().shot(Vector2.up);
-        bulletDown.GetComponent<PlantBullet>().shot(Vector2.down);
-        bulletLeft.GetComponent<PlantBullet>().shot(Vector2.left);
-        bulletRight.GetComponent<PlantBullet>().shot(Vector2.right);
-        bulletUpR.GetComponent<PlantBullet>().shot(new Vector2(1,1));
-        bulletUpL.GetComponent<PlantBullet>().shot(new Vector2(-1,1));
-        bulletDownR.GetComponent<PlantBullet>().shot(new Vector2(1,-1));
-        bulletDownL.GetComponent<PlantBullet>().shot(new Vector2(-1,-1));
+        int height = getMapHeight();
+
+        bulletUp.setShotHeight(height);
+        bulletDown.setShotHeight(height);
+        bulletLeft.setShotHeight(height);
+        bulletRight.setShotHeight(height);
+        bulletUpR.setShotHeight(height);
+        bulletUpL.setShotHeight(height);
+        bulletDownR.setShotHeight(height);
+        bulletDownL.setShotHeight(height);
+
+        bulletUp.shot(Vector2.up);
+        bulletDown.shot(Vector2.down);
+        bulletLeft.shot(Vector2.left);
+        bulletRight.shot(Vector2.right);
+        bulletUpR.shot(new Vector2(1,1));
+        bulletUpL.shot(new Vector2(-1,1));
+        bulletDownR.shot(new Vector2(1,-1));
+        bulletDownL.shot(new Vector2(-1,-1));
         
    
 

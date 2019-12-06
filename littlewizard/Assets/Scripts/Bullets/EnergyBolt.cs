@@ -10,28 +10,45 @@ public class EnergyBolt : LinearBullet {
         myAnimator.SetFloat("moveY", hitDirection.y);
 
         myAnimator.SetTrigger("explode");
-        Destroy(transform.Find("trail").gameObject);
+        transform.Find("trail").gameObject.SetActive(false);
         Destroy(GetComponent<Collider2D>());
         activeSpeed = 0;
-        //Destroy(gameObject);
+        collided = true;
+        Destroy(gameObject,2);
+    }
+
+    public override void setShotHeight(int height) {
+
+        base.setShotHeight(height);
+        TrailRenderer r = transform.Find("trail").gameObject.GetComponent<TrailRenderer>();
+        r.sortingOrder = height;
+
+        //pos.z -= 0.1f;
+       // r.transform.position = pos;
+        //Debug.Log("Trail:" + r.transform.position +"Order in Layer " + r.sortingOrder + "Layer name" + r.sortingLayerName + "|" + "Bullet" + renderer.transform.position + "Order in Layer " + renderer.sortingOrder + "Layer name" + renderer.sortingLayerName);
     }
 
     public override void shot(Vector2 direction) {
 
 
         //Debug.Log("Bullet start:" + transform.position + "Bullet direction:" + direction);
+
+
         
         gameObject.SetActive(true);
         transform.Find("trail").gameObject.SetActive(true);
         myAnimator.SetFloat("moveX", direction.x);
         myAnimator.SetFloat("moveY", direction.y);
 
-        this.direction = direction;
-        this.activeSpeed = speed;
-        Collider2D collider = this.GetComponent<Collider2D>();
-        collider.enabled = true;
 
-        Destroy(gameObject, lifetime);
+        base.shot(direction);
+
+        //this.direction = direction;
+        //this.activeSpeed = speed;
+        //Collider2D collider = this.GetComponent<Collider2D>();
+        //collider.enabled = true;
+
+        //Destroy(gameObject, lifetime);
 
     }
 }

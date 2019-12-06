@@ -1,8 +1,7 @@
-﻿using System;
+﻿
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Tilemaps;
 
 public class Player : Character{
 
@@ -43,7 +42,8 @@ public class Player : Character{
 
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
-    
+
+
 
     public void Awake() {
         mat = gameObject.GetComponent<SpriteRenderer>().material;
@@ -147,7 +147,6 @@ public class Player : Character{
             currentState = currentState.handleInput();
         }
         
-
     }
 
     public Vector2 movingDirection() {
@@ -280,15 +279,15 @@ public class Player : Character{
 
     public Vector3 getCollisionCenterPoint() {
 
-
         Vector3 pos = transform.position;
-
         BoxCollider2D col = GetComponent<BoxCollider2D>();
 
         pos.y += col.offset.y - col.size.y/2;
 
         return pos;
     }
+
+  
 
 
     public void dissapear() {

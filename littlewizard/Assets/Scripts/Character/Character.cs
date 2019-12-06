@@ -59,4 +59,8 @@ public abstract class Character : MonoBehaviour{
         isFlashing = false;
 
     }
+
+    public int getMapHeight() {
+        return LevelManager.Instance.getTileLevel(transform.position);
+    }
 }

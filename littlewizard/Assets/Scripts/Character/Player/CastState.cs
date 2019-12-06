@@ -6,6 +6,8 @@ public class CastState : PlayerState {
 
     public bool castDone = false;
     private bool casting = false;
+
+    public Vector3 worldPoint;
     public Vector2 castDirection;
     Vector2 movement;
     private Spell spell;
@@ -13,6 +15,7 @@ public class CastState : PlayerState {
 
         castDirection = (worldPoint - player.transform.position);
         castDirection.Normalize();
+        this.worldPoint = worldPoint;
         this.movement = movement;
         this.spell = spell;
     }
@@ -53,11 +56,12 @@ public class CastState : PlayerState {
         if(spell == Spell.BOLT) {
 
             //Instantiate bullet prefab and shot(castDirection);
-            GameObject bullet = GameObject.Instantiate(player.boltPrefab, spawn, Quaternion.identity);
+            LinearBullet bullet = GameObject.Instantiate(player.boltPrefab, spawn, Quaternion.identity).GetComponent<LinearBullet>();
             Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), bullet.GetComponent<Collider2D>());
             yield return new WaitForSeconds(0.2f);
 
-            bullet.GetComponent<Bullet>().shot(castDirection);
+            bullet.setShotHeight(player.getMapHeight());
+            bullet.shot(worldPoint);
             castDone = true;
             player.boltCasted.Raise();
             yield break;

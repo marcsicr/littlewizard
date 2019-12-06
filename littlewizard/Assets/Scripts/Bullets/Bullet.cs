@@ -8,7 +8,8 @@ public abstract class Bullet : MonoBehaviour
 {
     public int damage;
     public int lifetime;
-    
+ 
+
     public int speed;
     protected int activeSpeed;
 
@@ -17,7 +18,7 @@ public abstract class Bullet : MonoBehaviour
     protected Animator myAnimator;
     
     
-    private bool collided = false;
+    protected bool collided = false;
 
     public abstract void shot(Vector2 worldPoint);
     
@@ -31,7 +32,7 @@ public abstract class Bullet : MonoBehaviour
 
 
 
-    private void OnCollisionEnter2D(Collision2D other ) {
+    protected virtual void OnCollisionEnter2D(Collision2D other ) {
 
         if (collided)
             return;

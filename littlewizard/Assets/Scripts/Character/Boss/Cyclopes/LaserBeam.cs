@@ -48,7 +48,7 @@ public class LaserBeam : MonoBehaviour
 
         line.useWorldSpace = true;
         line.alignment = LineAlignment.TransformZ;
-
+        line.numCapVertices = 4;
     }
 
     /*public IEnumerator dissapear() {

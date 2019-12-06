@@ -38,9 +38,9 @@ public class MushroomShot : LinearBullet
 
         bulletSparks.Stop();
         explosionParticles.Play();
-        speed = 0;
+        activeSpeed = 0;
         rend.enabled = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         
         Destroy(gameObject);
     }

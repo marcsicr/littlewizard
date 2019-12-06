@@ -29,7 +29,7 @@ public class Mushroom : Enemy
     private void shot() {
 
         Transform shootPoint = transform.Find("ShotPoint").gameObject.transform;
-        //Transform shootPoint = gameObject.GetComponentInChildren<Transform>();
+    
         if (shootPoint == null)
             Debug.Log("Error: No shootPoint");
 
@@ -37,8 +37,9 @@ public class Mushroom : Enemy
        GameObject bulletObj =  Instantiate(magicBullet, shootPoint.transform.position,Quaternion.identity);
         Physics2D.IgnoreCollision(bulletObj.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
-       Bullet bullet = bulletObj.GetComponent<Bullet>();
-       bullet.shot((Vector2)player.getCollisionCenterPoint());
+       LinearBullet bullet = bulletObj.GetComponent<LinearBullet>();
+        bullet.setShotHeight(getMapHeight());
+        bullet.shot((Vector2)player.getCollisionCenterPoint());
         
     }
 

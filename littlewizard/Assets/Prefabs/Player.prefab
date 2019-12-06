@@ -604,6 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDelay: 0.15
+  maxDistance: 11
 --- !u!1 &8239499120534258125
 GameObject:
   m_ObjectHideFlags: 0

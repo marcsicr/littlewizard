@@ -8,7 +8,7 @@ public class LinePointer : MonoBehaviour{
     private LineRenderer line;
     private LineRenderer reflectedLine;
     public float spawnDelay;
-
+    public float maxDistance;
     private float timeDown = 0;
     int layerMask;
 
@@ -69,26 +69,38 @@ public class LinePointer : MonoBehaviour{
         // Debug.Log("Direction:" + direction);
 
 
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.2f, direction, Mathf.Infinity, layerMask);
+        RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.2f, direction, maxDistance, layerMask);
         line.positionCount = 2;
         line.SetPosition(0, transform.position);
-        line.SetPosition(1, hit.point);
+        if(hit.collider == null) {
 
+            Vector2 pos = (Vector2)transform.position + direction * maxDistance;
+            line.SetPosition(1, pos);
+            reflectedLine.enabled = false;
+            return;
+        } 
+
+       
         if (hit.collider.CompareTag("Mirror")) {
 
-            //Debug.Log("Line start:" + transform.position + "Line direction:" + direction);
+                //Debug.Log("Line start:" + transform.position + "Line direction:" + direction);
 
-            Mirror m = hit.collider.gameObject.GetComponent<Mirror>();
-
-            reflectedLine.positionCount = 2;
-            reflectedLine.SetPosition(0, hit.point);
-            reflectedLine.SetPosition(1, hit.point + m.reflect(direction) * 3);
-            reflectedLine.enabled = true;
+                Mirror m = hit.collider.gameObject.GetComponent<Mirror>();
+                line.SetPosition(1, hit.point);
+                reflectedLine.positionCount = 2;
+                reflectedLine.SetPosition(0, hit.point);
+                reflectedLine.SetPosition(1, hit.point + m.reflect(direction) * 3);
+                reflectedLine.enabled = true;
 
         } else {
 
+            line.SetPosition(1, hit.point);
             reflectedLine.enabled = false;
         }
+        
+        
+
+      
     }
 
     void hideLine() {

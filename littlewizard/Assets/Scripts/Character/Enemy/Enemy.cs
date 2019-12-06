@@ -101,14 +101,35 @@ public abstract class Enemy : AbstractEnemy{
         }
     }
     public bool isPlayerInChaseRadius(){
-       return  Vector3.Distance(player.transform.position, transform.position) <= playerDiscoverRadius;
+
+       /* int enemyHeight = getMapHeight();
+        if (enemyHeight == player.getMapHeight()) {*/
+
+            return Vector3.Distance(player.transform.position, transform.position) <= playerDiscoverRadius;
+       // }
+
+       // return false;
+       
     }
 
     public bool isPlayerInAttackRadius() {
-        return Vector3.Distance(player.transform.position, transform.position) <= attackRadius;
+
+
+        //int enemyHeight = getMapHeight();
+        //if (enemyHeight == player.getMapHeight()) {
+
+            return Vector3.Distance(player.transform.position, transform.position) <= attackRadius;
+       // }
+
+        //return false;
     }
 
-  
+    public bool isPlayerInSameHeight() {
+
+        int enemyHeight = getMapHeight();
+        return enemyHeight == player.getMapHeight();
+    }
+
     public void move(Vector2 position) {
         myRigidBody.MovePosition(position);
     }

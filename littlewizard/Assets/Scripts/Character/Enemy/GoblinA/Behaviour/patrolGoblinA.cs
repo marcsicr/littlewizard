@@ -13,6 +13,9 @@ public class patrolGoblinA : StateMachineBehaviour {
         nextWalk = Time.time + timeOutWalk;
         archer = animator.gameObject.GetComponent<GoblinA>();
 
+        Vector3[] patrolPoints = archer.getPatrolPoints();
+        int r = Random.Range(0, patrolPoints.Length);
+        targetPosition = patrolPoints[r];
     }
 
     //If player is in attackRadius attack && ! in danger zone
@@ -31,13 +34,18 @@ public class patrolGoblinA : StateMachineBehaviour {
             animator.SetBool("chase", true);
         }
 
+
+
         if(Time.time > nextWalk || isArcherOnTarget()) {
+            
+            Vector3[] patrolPoints = archer.getPatrolPoints();
+            
             //Pick Random point & go there
-            int r = Random.Range(0, archer.patrolPoints.Length-1);
-            Vector2 point = archer.patrolPoints[r];
+            int r = Random.Range(0, patrolPoints.Length);
+            Vector2 point = patrolPoints[r];
 
             //Convert local space position to world space
-            targetPosition = archer.transform.parent.TransformPoint(new Vector3(point.x, point.y, archer.transform.position.z));
+            targetPosition = point; //archer.transform.parent.TransformPoint(new Vector3(point.x, point.y, archer.transform.position.z));
             nextWalk = Time.time + timeOutWalk;
             //Debug.Log("New Archer target " + targetPosition);
            

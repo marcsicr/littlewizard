@@ -31,7 +31,7 @@ public class MushroomChase : StateMachineBehaviour {
         animator.SetFloat("moveX", enemy.getDirectionToPlayer().x);
         animator.SetFloat("moveY", enemy.getDirectionToPlayer().y);
 
-        if (enemy.isPlayerInAttackRadius() && enemy.isAttackReady()) {
+        if (enemy.isPlayerInAttackRadius() && enemy.isAttackReady() && enemy.isPlayerInSameHeight()) {
             //Attack
             animator.SetTrigger("attack");
             return;
