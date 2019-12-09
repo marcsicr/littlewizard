@@ -16,10 +16,10 @@ public class StaffKick : MonoBehaviour
             AbstractEnemy enemy = other.gameObject.GetComponent<AbstractEnemy>();
             enemy.OnGetKicked(KickPower);
             
-        }else if (other.CompareTag("Pot")) {
+        }else if (other.CompareTag(ItemContainer.TAG)) {
 
-            Pot pot = other.GetComponent<Pot>();
-            pot.destroy();
+            ItemContainer container = other.GetComponent<ItemContainer>();
+            container.open();
         }
 
     }

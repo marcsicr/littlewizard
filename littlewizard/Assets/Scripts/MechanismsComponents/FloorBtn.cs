@@ -7,7 +7,12 @@ public class FloorBtn : Activator
     Animator myAnimator;
 
     private int objectsAbove = 0;
-     protected override void Start() {
+
+    public override void Reset() {
+        myAnimator.SetBool("activate", false);
+    }
+
+    protected override void Start() {
 
         base.Start();
 

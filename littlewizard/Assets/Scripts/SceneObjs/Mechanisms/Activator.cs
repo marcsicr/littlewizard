@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Activator : MonoBehaviour
+public abstract class Activator : MonoBehaviour
 {
     protected Mechanism mechanism;
     protected bool state;
@@ -19,7 +19,7 @@ public class Activator : MonoBehaviour
         mechanism.registerActivator(this);
     }
 
-    
+    public abstract void Reset();
 
 
     public bool getState() {

@@ -14,6 +14,7 @@ TagManager:
   - UI
   - Boss
   - HeightsMap
+  - ItemContainer
   layers:
   - Default
   - TransparentFX
@@ -35,7 +36,7 @@ TagManager:
   - Item
   - Bullet
   - 
-  - 
+  - EnemyWall
   - 
   - Arrow
   - 

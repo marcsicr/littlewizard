@@ -7,7 +7,7 @@ public class BookBtn : MonoBehaviour
     GameObject spellBook;
     void Start()
     {
-        spellBook = transform.parent.parent.Find("SpellBook").gameObject;
+        spellBook = transform.parent.parent.Find("SpellsBook").gameObject;
         
     }
 

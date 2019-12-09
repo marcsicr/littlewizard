@@ -10,8 +10,8 @@ public abstract class Bullet : MonoBehaviour
     public int lifetime;
  
 
-    public int speed;
-    protected int activeSpeed;
+    public float speed;
+    protected float activeSpeed;
 
     public BulletTarget target;
     protected Rigidbody2D myRigidBody;
@@ -56,9 +56,9 @@ public abstract class Bullet : MonoBehaviour
            
         } else {
 
-            if (other.gameObject.tag == "Pot") {
-                Pot pot = other.gameObject.GetComponent<Pot>();
-                pot.destroy();
+            if (other.gameObject.CompareTag(ItemContainer.TAG)) {
+                ItemContainer container = other.gameObject.GetComponent<ItemContainer>();
+                container.open();
             }
 
                 onCollision(contactPoint.point);

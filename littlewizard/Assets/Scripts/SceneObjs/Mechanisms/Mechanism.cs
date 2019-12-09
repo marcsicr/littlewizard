@@ -6,13 +6,13 @@ public class Mechanism : MonoBehaviour
 {
     List<Activable> activables;
     //List<Activator> activators; // Objects that must be activated to activite the mechanism
-    private Dictionary<int, bool> activators;
+    private Dictionary<int, Activator> activators;
 
     
     void Awake()
     {
         activables = new List<Activable>(); // Objects to be activated by mechanism
-        activators = new Dictionary<int, bool>();
+        activators = new Dictionary<int, Activator>();
     }
 
     // Update is called once per frame
@@ -28,12 +28,14 @@ public class Mechanism : MonoBehaviour
 
     public void registerActivator(Activator activator) {
 
-        activators.Add(activator.GetInstanceID(), activator.getState());
+        activators.Add(activator.GetInstanceID(), activator);
     }
+
+  
 
     public void notifyStatusChange(Activator activator) {
 
-        activators[activator.GetInstanceID()] = activator.getState();
+        activators[activator.GetInstanceID()] = activator;
 
         //Calculate if mechanism is activated
 
@@ -45,9 +47,9 @@ public class Mechanism : MonoBehaviour
 
         bool activate = true;
 
-        foreach( KeyValuePair<int,bool> id in activators) {
+        foreach( KeyValuePair<int,Activator> pair in activators) {
 
-            activate &= id.Value;
+            activate &= pair.Value.getState();
         }
 
         notifyMechanismStatus(activate);
@@ -68,5 +70,16 @@ public class Mechanism : MonoBehaviour
         }
         
     }
-  
+
+    public void Reset() {
+        
+        foreach(Activable activable in activables) {
+            activable.Desactivate();
+        }
+
+        foreach (KeyValuePair<int,Activator> pair in activators) {
+            pair.Value.Reset();
+        }
+    }
+
 }

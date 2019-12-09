@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4174473792916449633}
   - component: {fileID: 4174473792916449634}
   - component: {fileID: 4174473792916449635}
+  - component: {fileID: 3835903483008909377}
   m_Layer: 0
   m_Name: LeverH
   m_TagString: Untagged
@@ -174,3 +175,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc503104f3c38246a2ae760e0087bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &3835903483008909377
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4174473792916449636}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4

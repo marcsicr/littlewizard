@@ -10,7 +10,11 @@ public class GameManager : MonoBehaviour{
     public bool isGamePaused { get; private set; }
 
     public ObservableInteger playerHP;
-    
+
+    public int baseBoltLvl { get; private set; }
+    public int baseShieldLvl { get; private set; }
+    public int baseRayLvl { get; private set; }
+
 
     IntegerObserver valueObserver;
 
@@ -94,14 +98,16 @@ public class GameManager : MonoBehaviour{
 
     public void restartLevel() {
 
-        LevelManager.Instance.resetInstance();
+
+        Destroy(LevelManager.Instance.gameObject);
+        // LevelManager.Instance.resetInstance();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
 
     public void goToNextLevel() {
 
-        LevelManager.Instance.resetInstance();
+        Destroy(LevelManager.Instance.gameObject);
 
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         levelCompleteSignal.Raise();

@@ -6,7 +6,12 @@ using System.Text.RegularExpressions;
 
 public class LevelManager : MonoBehaviour {
 
+
     public static LevelManager Instance { get; private set; }
+
+    public int boltLevel { get; private set; }
+    public int shieldLevel { get; private set; }
+    public int rayLevel { get; private set; }
 
     public Signal gemCaughtSignal;
     private Tilemap heightsMap;
@@ -28,7 +33,15 @@ public class LevelManager : MonoBehaviour {
 
             Destroy(gameObject);
         }
+
     }
+
+    void Start() { 
+        boltLevel = GameManager.Instance.baseBoltLvl;
+        shieldLevel = GameManager.Instance.baseShieldLvl;
+        rayLevel = GameManager.Instance.baseRayLvl;
+    }
+
 
     public void registerGem(GameObject gem) {
         dictionary.Add(gem.GetInstanceID(), gem);
@@ -54,7 +67,15 @@ public class LevelManager : MonoBehaviour {
 
         dictionary = new Dictionary<int, GameObject>();
         gemsCaught = new List<GameObject>();
+        boltLevel = GameManager.Instance.baseBoltLvl;
+        shieldLevel = GameManager.Instance.baseShieldLvl;
+        rayLevel = GameManager.Instance.baseRayLvl;
     }
+
+    public void destory() {
+        Instance = null;
+    }
+
 
     public int getTileLevel(Vector3 worldPosition) {
 
@@ -67,5 +88,24 @@ public class LevelManager : MonoBehaviour {
         Match m = regex.Match(tile.sprite.name);
         return int.Parse(m.Value);
     }
+
+   public void spellLvlUp(Spell spell) {
+
+        if(spell == Spell.BOLT) {
+            boltLevel += 1;
+            return;
+        }
+
+        if (spell == Spell.SHIELD) {
+            shieldLevel += 1;
+            return;
+        }
+
+        if (spell == Spell.RANGE_ATTACK) {
+            rayLevel += 1;
+            return;
+        }
+
+   }
 
 }

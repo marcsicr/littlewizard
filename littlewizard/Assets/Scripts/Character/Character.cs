@@ -61,6 +61,9 @@ public abstract class Character : MonoBehaviour{
     }
 
     public int getMapHeight() {
-        return LevelManager.Instance.getTileLevel(transform.position);
+
+        Vector3 playerPosition = transform.position;
+       
+        return LevelManager.Instance.getTileLevel(playerPosition);
     }
 }

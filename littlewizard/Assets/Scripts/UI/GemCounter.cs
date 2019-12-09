@@ -5,17 +5,14 @@ using TMPro;
 
 public class GemCounter : MonoBehaviour {
     private TextMeshProUGUI text;
-    
-  
+
+    private void Awake() {
+        text = gameObject.GetComponent<TextMeshProUGUI>();
+    }
     // Start is called before the first frame update
     void Start() {
-        text = gameObject.GetComponent<TextMeshProUGUI>();
-        UpdateCounter();
-    }
-
-    // Update is called once per frame
-    void Update() {
-
+       // text = gameObject.GetComponent<TextMeshProUGUI>();
+        //UpdateCounter();
     }
 
     public void UpdateCounter() {
