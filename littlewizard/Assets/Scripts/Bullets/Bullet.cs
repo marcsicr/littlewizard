@@ -56,7 +56,7 @@ public abstract class Bullet : MonoBehaviour
            
         } else {
 
-            if (other.gameObject.CompareTag(ItemContainer.TAG)) {
+            if (other.gameObject.CompareTag(ItemContainer.TAG) && target == BulletTarget.Enemy) {
                 ItemContainer container = other.gameObject.GetComponent<ItemContainer>();
                 container.open();
             }

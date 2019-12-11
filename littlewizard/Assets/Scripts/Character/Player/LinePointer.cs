@@ -44,7 +44,7 @@ public class LinePointer : MonoBehaviour{
     void LateUpdate()
     {
         
-        if (Input.GetMouseButton(0) && castMgr.getSelectedSpell() == Spell.BOLT ) {
+       /* if (Input.GetMouseButton(0) && castMgr.getSelectedSpell() == Spell.BOLT ) {
 
             timeDown += Time.deltaTime;
 
@@ -56,54 +56,99 @@ public class LinePointer : MonoBehaviour{
 
             timeDown = 0;
             hideLine();
-        }
+        }*/
     }
 
-    private void showLine() {
+    //private void showLine() {
+
+    //    line.enabled = true;
+    //    Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //    Vector2 direction = position - transform.position;
+
+    //    direction.Normalize();
+    //    // Debug.Log("Direction:" + direction);
+
+
+    //    RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.2f, direction, maxDistance, layerMask);
+    //    line.positionCount = 2;
+    //    line.SetPosition(0, transform.position);
+    //    if(hit.collider == null) {
+
+    //        Vector2 pos = (Vector2)transform.position + direction * maxDistance;
+    //        line.SetPosition(1, pos);
+    //        reflectedLine.enabled = false;
+    //        return;
+    //    } 
+
+       
+    //    if (hit.collider.CompareTag("Mirror")) {
+
+    //            //Debug.Log("Line start:" + transform.position + "Line direction:" + direction);
+
+    //            Mirror m = hit.collider.gameObject.GetComponent<Mirror>();
+    //            line.SetPosition(1, hit.point);
+    //            reflectedLine.positionCount = 2;
+    //            reflectedLine.SetPosition(0, hit.point);
+    //            reflectedLine.SetPosition(1, hit.point + m.reflect(direction) * 3);
+    //            reflectedLine.enabled = true;
+
+    //    } else {
+
+    //        line.SetPosition(1, hit.point);
+    //        reflectedLine.enabled = false;
+    //    }
+        
+        
+
+      
+    //}
+
+
+    public void show(Vector3 startPoint, Vector2 direction) {
 
         line.enabled = true;
-        Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = position - transform.position;
+       // Vector2 direction = endPoint - startPoint;
 
         direction.Normalize();
         // Debug.Log("Direction:" + direction);
 
 
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.2f, direction, maxDistance, layerMask);
+        RaycastHit2D hit = Physics2D.CircleCast(startPoint, 0.2f, direction, maxDistance, layerMask);
         line.positionCount = 2;
-        line.SetPosition(0, transform.position);
-        if(hit.collider == null) {
+        line.SetPosition(0, startPoint);
+        if (hit.collider == null) {
 
-            Vector2 pos = (Vector2)transform.position + direction * maxDistance;
+            Vector2 pos = (Vector2)startPoint + direction * maxDistance;
             line.SetPosition(1, pos);
             reflectedLine.enabled = false;
             return;
-        } 
+        }
 
-       
+
         if (hit.collider.CompareTag("Mirror")) {
 
-                //Debug.Log("Line start:" + transform.position + "Line direction:" + direction);
+            //Debug.Log("Line start:" + transform.position + "Line direction:" + direction);
 
-                Mirror m = hit.collider.gameObject.GetComponent<Mirror>();
-                line.SetPosition(1, hit.point);
-                reflectedLine.positionCount = 2;
-                reflectedLine.SetPosition(0, hit.point);
-                reflectedLine.SetPosition(1, hit.point + m.reflect(direction) * 3);
-                reflectedLine.enabled = true;
+            Mirror m = hit.collider.gameObject.GetComponent<Mirror>();
+            line.SetPosition(1, hit.point);
+            reflectedLine.positionCount = 2;
+            reflectedLine.SetPosition(0, hit.point);
+            reflectedLine.SetPosition(1, hit.point + m.reflect(direction) * 3);
+            reflectedLine.enabled = true;
 
         } else {
 
             line.SetPosition(1, hit.point);
             reflectedLine.enabled = false;
         }
-        
-        
 
-      
+
+
+
     }
 
-    void hideLine() {
+
+   public void hideLine() {
        
         line.enabled = false;
         reflectedLine.enabled = false;

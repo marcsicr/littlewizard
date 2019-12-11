@@ -13,7 +13,13 @@ public class SettingsBtn : MonoBehaviour{
 
             GameManager.Instance.resumeGame();
         }
-       
+    }
 
+    void Update() {
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+
+            settingsBtnClick();
+        }
     }
 }

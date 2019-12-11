@@ -5,17 +5,16 @@ using UnityEngine;
 public class FloorBtn : Activator
 {
     Animator myAnimator;
-
     private int objectsAbove = 0;
 
     public override void Reset() {
         myAnimator.SetBool("activate", false);
+        objectsAbove = 0;
     }
 
     protected override void Start() {
 
         base.Start();
-
         myAnimator = GetComponent<Animator>();
         myAnimator.SetBool("activate", false);
 
@@ -37,8 +36,6 @@ public class FloorBtn : Activator
             myAnimator.SetBool("activate", false);
             mechanism.notifyStatusChange(this);
         }
-        
-        
       
     }
 }

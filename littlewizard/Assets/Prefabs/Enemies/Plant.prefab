@@ -165,17 +165,12 @@ MonoBehaviour:
   speed: 2
   debugCharacter: 0
   HP: 50
-  chaseRadius: 5
-  attackRadius: 10
+  playerDiscoverRadius: 5
+  attackRadius: 12
   attackPower: 10
   minDistance: 2.5
-  attackInterval: 3
+  attackInterval: 2
   bullet: {fileID: 5285576163405724483, guid: 2b4a6351c511e7447b2f255bf49a74d5, type: 3}
-  teleportPoints:
-  - {x: -11, y: 11}
-  - {x: -19, y: 11}
-  - {x: -9, y: 8}
-  - {x: -10, y: 5}
   teleportInterval: 2
 --- !u!1001 &1398805069248563378
 PrefabInstance:

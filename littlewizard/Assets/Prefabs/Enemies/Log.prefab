@@ -166,10 +166,10 @@ MonoBehaviour:
   speed: 3
   debugCharacter: 0
   HP: 100
-  playerDiscoverRadius: 5
-  attackRadius: 6
+  playerDiscoverRadius: 8
+  attackRadius: 5
   attackPower: 10
-  minDistance: 2.5
+  minDistance: 4
   attackInterval: 2.5
   root: {fileID: 2765603285404945252, guid: c30febc31504962458c8183cb4132100, type: 3}
 --- !u!114 &114659489416217360

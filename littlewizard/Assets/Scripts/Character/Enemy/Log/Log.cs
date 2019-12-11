@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Log : Enemy
 {
-    private float wakeDistance = 2f;
+    private float wakeDistance = 3f;
     //private float minDistance = 2f;
     public GameObject root;
     private RootAttack aRoot;
@@ -14,7 +14,6 @@ public class Log : Enemy
     public override void  Start(){
         base.Start();
 
-        minDistance = 2f;
         root = Instantiate(root, transform.position, Quaternion.identity);
         aRoot = root.GetComponent<RootAttack>();
         aRoot.setAttackPower(this.attackPower);

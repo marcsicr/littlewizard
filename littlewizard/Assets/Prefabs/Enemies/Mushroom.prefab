@@ -122,11 +122,11 @@ MonoBehaviour:
   speed: 2
   debugCharacter: 0
   HP: 10
-  playerDiscoverRadius: 5
+  playerDiscoverRadius: 7
   attackRadius: 6
   attackPower: 10
   minDistance: 2.5
-  attackInterval: 1
+  attackInterval: 1.5
   magicBullet: {fileID: 2258838508735124573, guid: 38a24d387371882499091774cf1edec6,
     type: 3}
 --- !u!50 &785789911455106243

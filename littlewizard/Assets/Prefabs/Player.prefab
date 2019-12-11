@@ -282,10 +282,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   debugCharacter: 0
+  faceDirection: {x: 0, y: 0}
   playerHP: {fileID: 11400000, guid: b68f0ff6255a3a742b2ad200613504fc, type: 2}
   playerSP: {fileID: 11400000, guid: bc0753e494d55b048927fa5d31ccb8d0, type: 2}
   stamina: {fileID: 11400000, guid: 8f556433ab61e3c478d1658f70949f59, type: 2}
   gameOverSignal: {fileID: 11400000, guid: 8622d57c1f2891d42bbb0058c89fb19f, type: 2}
+  castManager: {fileID: 0}
   boltCasted: {fileID: 11400000, guid: 577117b55f3799044b40899aee146bee, type: 2}
   shieldCasted: {fileID: 11400000, guid: 2faa3458cbe86e0489a5154bb0aa29a6, type: 2}
   rangeAtkCasted: {fileID: 11400000, guid: 574abb877b150a34aa9a6728eeda1187, type: 2}
@@ -604,7 +606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDelay: 0.15
-  maxDistance: 11
+  maxDistance: 12
 --- !u!1 &8239499120534258125
 GameObject:
   m_ObjectHideFlags: 0

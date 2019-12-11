@@ -18,7 +18,8 @@ public class RootAttack : MonoBehaviour
 
     public void attack(Transform t) {
 
-        Vector3 dest = new Vector3(t.transform.position.x + 0.1f, t.transform.position.y + 0.1f);
+        Vector2 random = Random.insideUnitCircle;
+        Vector3 dest = new Vector3(t.transform.position.x + random.x, t.transform.position.y + random.y);
         transform.position = dest;
         myAnimator.SetTrigger("attack");
         

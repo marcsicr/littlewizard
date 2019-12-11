@@ -10,9 +10,10 @@ public class PlantBullet : LinearBullet
         base.direction = direction;
     }
 
-    public IEnumerator explodeCo() { 
-        speed = 0;
-        yield return null;
+    public IEnumerator explodeCo() {
+        activeSpeed = 0;
+        myAnimator.SetTrigger("explode");
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
 

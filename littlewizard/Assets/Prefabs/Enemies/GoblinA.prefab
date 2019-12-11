@@ -199,10 +199,10 @@ MonoBehaviour:
   speed: 3
   debugCharacter: 0
   HP: 50
-  playerDiscoverRadius: 5
-  attackRadius: 6
+  playerDiscoverRadius: 10
+  attackRadius: 7
   attackPower: 10
-  minDistance: 0
+  minDistance: 1
   attackInterval: 1
   arrowPrefab: {fileID: 2166835186345104390, guid: 5acd491c4e35d3a4d97dee1d0a91d89c,
     type: 3}

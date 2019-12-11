@@ -7,8 +7,8 @@ public class Plant : Enemy
 {
     PlantState state;
     public GameObject bullet;
-    public Vector2[] teleportPoints;
-    public float teleportInterval = 2f;
+  
+    public float teleportInterval = 4.5f;
     private float nextTeleport;
     private Material materiaL;
     private int currentPosIndex;
@@ -161,6 +161,10 @@ public class Plant : Enemy
     public bool teleportAtempt() {
 
         if (Time.time > nextTeleport) {
+            materiaL.SetFloat("_Width", 0);
+            materiaL.SetFloat("_Brightness", 0);
+            StopAllCoroutines();
+
             StartCoroutine(TeletransportCo());
             return true;
         }
@@ -185,15 +189,9 @@ public class Plant : Enemy
             yield return null;
         }
 
-        if(teleportPoints.Length > 0) { //Pick another position different from current
-            int random;
-            do {
-                random = Random.Range(0, teleportPoints.Length - 1);
-            } while (random == currentPosIndex);
-            currentPosIndex = random;
-        }
+        transform.position = spawnLocation + Random.insideUnitCircle * playerDiscoverRadius;
         
-        transform.position = new Vector3(teleportPoints[currentPosIndex].x, teleportPoints[currentPosIndex].y, transform.position.z);
+        
         yield return null;
 
         for (float t = 0f; t < duration; t += Time.deltaTime) {

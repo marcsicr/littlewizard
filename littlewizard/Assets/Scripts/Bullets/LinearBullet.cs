@@ -26,7 +26,7 @@ public abstract class LinearBullet : Bullet{
         if (!collided) {
 
             if (LevelManager.Instance.getTileLevel(transform.position) > shotHeight) {
-                Debug.Log("Destroyed by level");
+               // Debug.Log("Destroyed by level");
                 onCollision(transform.position);
             }
         }

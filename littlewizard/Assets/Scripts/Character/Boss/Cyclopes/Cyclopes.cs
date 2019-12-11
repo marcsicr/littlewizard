@@ -35,7 +35,7 @@ public class Cyclopes : Boss {
         base.Update();
 
         Vector2 direction = getDirectionToPlayer();
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.L)) {
           
             myAnimator.SetFloat("throwX", direction.x);
             myAnimator.SetFloat("throwY", direction.y);

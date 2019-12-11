@@ -49,7 +49,7 @@ public class CastManager : MonoBehaviour
 
             if (spell1.setSelected(true)) {
                 active = spell1;
-                cursor.setShotCursor();
+                //cursor.setShotCursor();
             }
                
             spell2.setSelected(false);
@@ -96,7 +96,7 @@ public class CastManager : MonoBehaviour
         spell2.setSelected(false);
         spell3.setSelected(false);
         active = null;
-        cursor.setDefaultCursor();
+       // cursor.setDefaultCursor();
     }
 
     public Spell getSelectedSpell() {

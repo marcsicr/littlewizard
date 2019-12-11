@@ -11,12 +11,21 @@ public class CastState : PlayerState {
     public Vector2 castDirection;
     Vector2 movement;
     private Spell spell;
+    //public CastState(Player player,Vector3 worldPoint,Spell spell,Vector2 movement) : base(player) {
+
+    //    castDirection = (worldPoint - player.transform.position);
+    //    castDirection.Normalize();
+    //    this.worldPoint = worldPoint;
+    //    this.movement = movement;
+    //    this.spell = spell;
+    //}
+
     public CastState(Player player,Vector3 worldPoint,Spell spell,Vector2 movement) : base(player) {
 
-        castDirection = (worldPoint - player.transform.position);
-        castDirection.Normalize();
-        this.worldPoint = worldPoint;
-        this.movement = movement;
+       castDirection = (worldPoint - player.getPlayerCastPoint());
+       castDirection.Normalize();
+       this.worldPoint = worldPoint;
+       this.movement = movement;
         this.spell = spell;
     }
     public override void act() {
@@ -34,25 +43,18 @@ public class CastState : PlayerState {
 
         if (!casting) {
 
-            Vector2 offset = castPointOffset();
+            
             playerAnimator.SetTrigger("cast");
 
             //Instantiate bullet prefab and shot(castDirection);
-            player.StartCoroutine(CastCo(spell,offset));
+            player.StartCoroutine(CastCo(spell));
         }
 
-
-       // Debug.Log("Cast state");
     }
 
-    private Vector2 castPointOffset() {
-
-        return movement;
-    }
-
-    public IEnumerator CastCo(Spell spell,Vector2 offset) {
+    public IEnumerator CastCo(Spell spell) {
         casting = true;
-        Vector2 spawn = (Vector2)player.transform.position + offset;
+        Vector2 spawn = (Vector2)player.getPlayerCastPoint();
         if(spell == Spell.BOLT) {
 
             //Instantiate bullet prefab and shot(castDirection);

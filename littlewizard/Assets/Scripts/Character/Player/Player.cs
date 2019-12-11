@@ -8,25 +8,28 @@ public class Player : Character{
     [HideInInspector]
     public static readonly string TAG = "Player"; //This tag must be defined first on inspector
 
+    public Vector2 faceDirection;
+
     //States that can be reused
     public IdleState idleState; 
     public WalkState walkState;
     public DieState dieState;
 
-    private PlayerState currentState;
+    public PlayerState currentState;
 
     public ObservableInteger playerHP;
     public ObservableInteger playerSP;
     public ObservableInteger stamina;
     public Signal gameOverSignal;
 
-    private CastManager castManager;
+    public CastManager castManager;
     public Signal boltCasted;
     public Signal shieldCasted;
     public Signal rangeAtkCasted;
 
     private Shield shield;
     private bool isInvencible;
+    public bool showingAlertBubble = false;
 
 
     private float nextSTRecup;
@@ -216,6 +219,7 @@ public class Player : Character{
 
     public void showAlertBubble(bool show) {
 
+        showingAlertBubble = show;
         transform.Find("AlertBubble").gameObject.SetActive(show);
     }
 
@@ -268,7 +272,8 @@ public class Player : Character{
         r.enabled = false;
         b.enabled = false;
         currentState = dieState;
-
+        myRigidBody.velocity = Vector2.zero;
+        myRigidBody.angularVelocity = 0;
 
         playerHP.reset();
         playerSP.reset();
@@ -281,13 +286,19 @@ public class Player : Character{
 
         Vector3 pos = transform.position;
         BoxCollider2D col = GetComponent<BoxCollider2D>();
-
         pos.y += col.offset.y - col.size.y/2;
-
         return pos;
     }
 
   
+    public Vector3 getPlayerCastPoint() {
+
+        Vector3 pos = transform.position;
+        pos.x += 0.1f;
+        pos.y -= 0.22f;
+
+        return pos;
+    }
 
 
     public void dissapear() {

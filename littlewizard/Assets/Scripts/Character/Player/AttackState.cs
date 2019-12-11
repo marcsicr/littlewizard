@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackState : PlayerState {
 
-    private float maxDist = 0.8f;
+    private static float maxDist = 0.8f;
 
     Vector3 clickPoint;
     Vector2 direction;
@@ -60,17 +60,19 @@ public class AttackState : PlayerState {
 
     IEnumerator StaffKickCo() {
 
+
         Vector3 destination = playerRB.position + direction * maxDist;
         Vector3 step = Vector3.Lerp(playerRB.transform.position, destination, 0.7f);
-        playerRB.MovePosition(step);
+
+        playerRB.MovePosition(step);   
         yield return null;
 
         step = Vector3.Lerp(playerRB.transform.position, destination, 0.6f);
-        playerRB.MovePosition(step);
+
         yield return null;
 
         playerRB.MovePosition(destination);
-        done = true;
-     }
+         done = true;
+    }
   
 }

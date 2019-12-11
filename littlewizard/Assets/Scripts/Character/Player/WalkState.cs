@@ -14,8 +14,8 @@ public class WalkState : PlayerState {
 
     public override PlayerState handleInput() {
         //Check first if we should change to another state
-        
-        if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject()) {
+
+        /*if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject()) {
 
             Spell s = player.getActiveSpell();
             if(s != Spell.NONE) {
@@ -28,8 +28,11 @@ public class WalkState : PlayerState {
             }
 
 
-        }
+        }*/
 
+        PlayerState state = handleAttack();
+        if (state != null)
+            return state;
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -38,6 +41,7 @@ public class WalkState : PlayerState {
       
 
         if (movement != Vector2.zero) {
+            player.faceDirection = movement.normalized;
             return this;
         } else {
 

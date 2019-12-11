@@ -6,7 +6,6 @@ public abstract class ItemContainer : MonoBehaviour{
 
     public static string TAG = "ItemContainer";
     protected Animator myAnimator;
-    public Vector2 throwDirection = Vector2.up;
     public Item throwItem;
 
     private void Awake() {

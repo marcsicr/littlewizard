@@ -9,8 +9,8 @@ public class MushroomShot : LinearBullet
     public ParticleSystem explosion;
     public ParticleSystem bulletSparks;
     private Renderer rend;
-    
 
+    private bool exploding = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,7 @@ public class MushroomShot : LinearBullet
        
 
         ParticleSystem explosionParticles = Instantiate(explosion,gameObject.transform.position,Quaternion.identity,gameObject.transform);
-        //particle.loop = false; //OLD API?
+       
 
         bulletSparks.Stop();
         explosionParticles.Play();
@@ -56,7 +56,12 @@ public class MushroomShot : LinearBullet
     }
 
     public override void onCollision(Vector2 collisionPoint) {
-        StartCoroutine(explodeCo());
+
+        if (!exploding) {
+            exploding = true;
+            StartCoroutine(explodeCo());
+        }
+       
 
     }
 }
