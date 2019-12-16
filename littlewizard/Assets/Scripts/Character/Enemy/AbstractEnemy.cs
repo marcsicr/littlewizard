@@ -7,6 +7,7 @@ public abstract class AbstractEnemy : Character {
     [HideInInspector]
     public static readonly string TAG = "Enemy"; //This tag must be defined first on inspector
 
+    protected Vector2 spawnLocation;
     protected Player player;
     public int HP = 100;
     
@@ -15,6 +16,7 @@ public abstract class AbstractEnemy : Character {
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         gameObject.tag = TAG;
+        spawnLocation = transform.position;
     }
 
     public override void OnGetKicked(int attack) {
@@ -32,6 +34,11 @@ public abstract class AbstractEnemy : Character {
     public Vector2 getDirectionToPlayer() {
         Vector3 direction = player.transform.position - transform.position;
         return new Vector2(direction.x, direction.y).normalized;
+    }
+
+    public float getDistanceToPlayer() {
+
+        return Vector3.Distance(transform.position, player.transform.position);
     }
 
     public void resetSpeed() {

@@ -12,7 +12,7 @@ public abstract class Enemy : AbstractEnemy{
     public float minDistance = 2.5f;
     public float attackInterval = 2f; // Minium time between attacks
     protected float nextAttackAvailable;
-    protected Vector2 spawnLocation;
+   
 
 
     protected EnemyBar bar;
@@ -21,7 +21,7 @@ public abstract class Enemy : AbstractEnemy{
 
         nextAttackAvailable = Time.time + attackInterval;
 
-        spawnLocation = transform.position;
+        
 
         if (debugCharacter)
         {

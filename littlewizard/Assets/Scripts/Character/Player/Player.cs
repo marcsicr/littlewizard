@@ -22,7 +22,10 @@ public class Player : Character{
     public ObservableInteger stamina;
     public Signal gameOverSignal;
 
-    public CastManager castManager;
+    
+
+    public Signal spellCasted;
+
     public Signal boltCasted;
     public Signal shieldCasted;
     public Signal rangeAtkCasted;
@@ -31,6 +34,9 @@ public class Player : Character{
     private bool isInvencible;
     public bool showingAlertBubble = false;
 
+    public bool startOnPortal = false;
+
+    private GameObject stunnedEffect;
 
     private float nextSTRecup;
     private float recuPInterval = 2f;
@@ -52,10 +58,6 @@ public class Player : Character{
         mat = gameObject.GetComponent<SpriteRenderer>().material;
         mat.SetVector("_FlashColor", flashColor);
 
-        castManager = GameObject.FindWithTag("CastManager").GetComponent<CastManager>();
-        if (castManager == null)
-            Debug.Log("CastManager is null");
-
         shield = GameObject.Find("Shield").GetComponent<Shield>();
         if (shield == null)
             Debug.Log("Shield is null");
@@ -67,6 +69,8 @@ public class Player : Character{
         boxCollider = GetComponent<BoxCollider2D>();
         boxCollider.enabled = false;
 
+        stunnedEffect = GameObject.Find("StunnedEffect");
+        stunnedEffect.SetActive(false);
         
     }
 
@@ -81,8 +85,14 @@ public class Player : Character{
         dieState = new DieState(this);
         currentState = idleState;
 
+        if (startOnPortal) {
+            StartCoroutine(PlayerAppearCo());
+        } else {
+            spriteRenderer.enabled = true;
+            freeze = false;
+            boxCollider.enabled = true;
+        }
 
-        StartCoroutine(PlayerAppearCo());
         
     }
 
@@ -171,11 +181,13 @@ public class Player : Character{
 
             nextSTRecup = Time.time + recuPInterval;
         }
+
+        
     }
 
     public Spell getActiveSpell() {
 
-        return castManager.castSpell();
+        return LevelManager.Instance.selectedSpell;
 
     }
     public void decreaseSP() {
@@ -190,6 +202,27 @@ public class Player : Character{
     public void decreaseStamina(int points) {
         int currentST = stamina.getRunTimeValue();
         stamina.UpdateValue(currentST - points);
+    }
+
+    public void stun(float timeOut) {
+
+        StartCoroutine(stunCo(timeOut));
+    }
+
+    private IEnumerator stunCo(float timeOut) {
+
+        freeze = true;
+        myAnimator.SetFloat("magnitude", 0);
+        yield return new WaitForSeconds(0.2f);
+        stunnedEffect.SetActive(true);
+
+        while(timeOut > 0) {
+            timeOut -= Time.deltaTime;
+            yield return null;
+        }
+
+        freeze = false;
+        stunnedEffect.SetActive(false);
     }
 
 

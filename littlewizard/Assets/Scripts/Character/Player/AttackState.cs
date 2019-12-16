@@ -50,6 +50,8 @@ public class AttackState : PlayerState {
             playerAnimator.SetFloat("moveY", direction.normalized.y);
 
             player.StartCoroutine(StaffKickCo());
+            
+
             player.decreaseStamina(1);
            
             started_co = true;
@@ -61,18 +63,16 @@ public class AttackState : PlayerState {
     IEnumerator StaffKickCo() {
 
 
-        Vector3 destination = playerRB.position + direction * maxDist;
-        Vector3 step = Vector3.Lerp(playerRB.transform.position, destination, 0.7f);
+       Vector3 destination = playerRB.position + direction * maxDist;
+       Vector3 step = Vector3.Lerp(playerRB.transform.position, destination, 0.8f);
+       yield return new WaitForFixedUpdate();
+       playerRB.MovePosition(step);   
+      
 
-        playerRB.MovePosition(step);   
-        yield return null;
-
-        step = Vector3.Lerp(playerRB.transform.position, destination, 0.6f);
-
-        yield return null;
-
-        playerRB.MovePosition(destination);
-         done = true;
+       step = Vector3.Lerp(playerRB.transform.position, destination, 0.6f);
+       yield return new WaitForFixedUpdate();
+       playerRB.MovePosition(destination);
+       done = true;
     }
   
 }

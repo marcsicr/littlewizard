@@ -5,6 +5,8 @@ TextureImporter:
     21300000: mirror_0
     21300002: mirror_1
     21300004: mirror_2
+    21300006: mirror_3
+    21300008: mirror_4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -95,13 +97,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e98f285d460ddf479efb02fc4890ae2
+      spriteID: 066a38feb6fc17b479650cf3222941f9
       vertices: []
       indices: 
       edges: []
@@ -115,13 +117,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9306811281872de47b8d09fc4c0e45df
+      spriteID: f6e53ab145ba2d3478339a8f689a5dbc
       vertices: []
       indices: 
       edges: []
@@ -135,13 +137,53 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ab80a21e2d3a564aa3546eaa127f1fe
+      spriteID: 4034a3be528da144bb7b2bb8e6ca01bb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mirror_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83a9c19c212d2f148be016263c39d9bf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mirror_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba51393f2a934544b93c014bb4d8da13
       vertices: []
       indices: 
       edges: []

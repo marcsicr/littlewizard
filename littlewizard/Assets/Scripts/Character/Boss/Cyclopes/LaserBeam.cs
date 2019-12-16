@@ -5,9 +5,11 @@ using UnityEngine;
 public class LaserBeam : MonoBehaviour
 {
     public Material laserMaterial;
+    public GameObject hitPrefab;
     private LineRenderer line;
 
 
+    private GameObject laserHit;
     private int LASER_HIT_LAYER;
     
 
@@ -30,7 +32,11 @@ public class LaserBeam : MonoBehaviour
         lineContainer.transform.localPosition = Vector3.zero;
 
         line = lineContainer.AddComponent<LineRenderer>();
-     
+        laserHit = Instantiate(hitPrefab, null, true);
+        laserHit.SetActive(false);
+
+       
+
         
     }
 
@@ -79,18 +85,22 @@ public class LaserBeam : MonoBehaviour
 
         exit = true;
         yield return null;
-       
-       
+
+        Vector3 initialScale = laserHit.transform.localScale;
+        Vector3 decreaseStep = new Vector3(0.01f, 0.01f, 0.1f);
         float currentWidth = line.startWidth;
         while(currentWidth > 0) {
 
             line.startWidth = currentWidth;
             line.endWidth = currentWidth;
-
+            
             currentWidth -= 0.01f;
+            laserHit.transform.localScale -= decreaseStep;
             yield return null;
         }
- 
+
+        laserHit.SetActive(false);
+        laserHit.transform.localScale = initialScale;
         line.positionCount = 0;
         
     }
@@ -132,6 +142,11 @@ public class LaserBeam : MonoBehaviour
 
                   hit.collider.gameObject.GetComponent<Player>().OnGetKicked(1);
                 }
+
+                laserHit.transform.position = hit.point;
+                laserHit.SetActive(true);
+            } else {
+                laserHit.SetActive(false);
             }
          
             //Debug.Log("beamVector" + newVector);
@@ -140,12 +155,12 @@ public class LaserBeam : MonoBehaviour
             if(hit.point != Vector2.zero) {
                 line.SetPosition(1, hit.point);
             } else {
-                line.SetPosition(1, newDirection * radius);
+                line.SetPosition(1, (Vector2) transform.position + newDirection * radius);
             }
-           
 
 
-            z += 1.5f*Time.deltaTime;
+
+            z += 1.5f *Time.deltaTime;
            
            
             yield return null;
@@ -156,16 +171,20 @@ public class LaserBeam : MonoBehaviour
 
     public IEnumerator resizeEffectCo() {
 
+        Vector3 initScale = laserHit.transform.localScale;
         while (!exit) {
 
             float offsetSize = Random.Range(-widthOffset, widthOffset);
 
             line.startWidth = width + offsetSize;
             line.endWidth = width + offsetSize;
-          
+
+            laserHit.transform.localScale = initScale  + offsetSize *2 * new Vector3(1,1,1) ;
+            
             yield return new WaitForSeconds(0.08f);
         }
 
+        laserHit.transform.localScale = new Vector3(0.8f, 0.8f, 1);
         yield return null;
     }
 }

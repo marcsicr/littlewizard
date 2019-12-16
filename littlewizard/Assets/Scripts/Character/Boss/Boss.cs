@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Boss : AbstractEnemy {
 
+    
     public Signal bossDefeatedSignal;
 
 }

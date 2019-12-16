@@ -25,6 +25,8 @@ public class Mirror : MonoBehaviour
                 Vector2 newDirection = reflect(direction);
                 bullet.setDirection(newDirection);
 
+                
+
                 //Debug.Log("New angle" + Vector2.SignedAngle(Vector2.right, newDirection));
             }
 

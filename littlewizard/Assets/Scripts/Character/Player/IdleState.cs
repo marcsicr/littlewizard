@@ -45,7 +45,7 @@ public class IdleState : PlayerState {
             showingLine = false;
         }
 
-        if (timeDown > 0.3f && !showingLine && player.castManager.getSelectedSpell() == Spell.BOLT) {
+        if (timeDown > 0.3f && !showingLine && LevelManager.Instance.selectedSpell == Spell.BOLT) {
             lineDirection = player.faceDirection;
             linePointer.show(player.getPlayerCastPoint(), lineDirection);
             showingLine = true;

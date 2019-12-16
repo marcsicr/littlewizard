@@ -8,7 +8,8 @@ public abstract class Character : MonoBehaviour{
     
     protected Rigidbody2D myRigidBody;
     protected Animator myAnimator;
-    protected Material mat;
+    [HideInInspector]
+    public Material mat { get; protected set; }
 
 
     

@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: f2a4c4696080ebd4699a17c6e2745ccd
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: cb0f727e559e1a3439395ae53eca16d5
-  - enabled: 1
     path: Assets/Scenes/BenchmarkScene.unity
     guid: e00cbdd5f3e89ed4da37158661fe645d
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: cb0f727e559e1a3439395ae53eca16d5
   - enabled: 1
     path: Assets/Scenes/CopyScene.unity
     guid: 090e3eae44b9d0b419a2190dbe05a605

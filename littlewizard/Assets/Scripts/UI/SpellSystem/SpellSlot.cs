@@ -1,30 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public enum Spell{NONE,BOLT,SHIELD,RANGE_ATTACK};
-public class SpellSlot : MonoBehaviour
-{
+
+public class SpellSlot : MonoBehaviour {
     private bool isSpellEnabled = false;
 
+    private bool isSelected = false;
     public Spell spell;
-    public float reloadSpeed;
+
     private SpellState spellState;
-   
-    void Start()
-    {
+
+    void Start() {
         spellState = transform.Find("SpellState").gameObject.GetComponent<SpellState>();
-        spellState.setReloadSpeed(reloadSpeed);
-     
+        //spellState.setReloadSpeed(reloadSpeed);
+
     }
 
-    public bool setSelected(bool selected) {
-       return spellState.setSelected(selected);
-    }
+    public void setSelected(bool selected) {
 
-    public void spellCasted() {
-
-        spellState.setReloading();
+        spellState.setSelected(selected);
     }
 
     /**
@@ -35,12 +31,8 @@ public class SpellSlot : MonoBehaviour
         return this.isSpellEnabled;
     }
 
-    public Spell getSpellToCast() {
-        spellState.setCasted();
-        return this.spell;
+    public void showSpellTimeOut() {
+        spellState.setReloading(spell);
     }
 
-    public Spell getSpell() {
-        return this.spell;
-    }
 }

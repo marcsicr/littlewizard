@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public class SpellsBook : MonoBehaviour{
@@ -22,36 +23,16 @@ public class SpellsBook : MonoBehaviour{
 
     private void Awake() {
 
-       SpellIndex[] indices = transform.GetComponentsInChildren<SpellIndex>();
-
-        Debug.Log("Found indices:" + indices.Length);
-
-        foreach(SpellIndex index in indices) {
-
-            if (index.spell == Spell.BOLT) {
-                boltIndex = index;
-                Debug.Log("Index bolt");
-            }
-
-            if (index.spell == Spell.SHIELD) {
-                shieldIndex = index;
-                Debug.Log("Index shield");
-              
-            }
-
-            if (index.spell == Spell.RANGE_ATTACK) {
-                rayIndex = index;
-                Debug.Log("Index range");
-           
-            }
-
-            Debug.Log("Index none");
-        }
+        boltIndex = transform.Find("BoltIndex").GetComponent<SpellIndex>();
+        shieldIndex = transform.Find("ShieldIndex").GetComponent<SpellIndex>();
+        rayIndex = transform.Find("RayIndex").GetComponent<SpellIndex>();
 
     }
 
     private void OnEnable() {
         refreshUI();
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(boltIndex.gameObject);
     }
 
     private void refreshUI() {

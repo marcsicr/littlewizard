@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 949135000}
   - component: {fileID: 949135003}
   - component: {fileID: 949135002}
+  - component: {fileID: 949135004}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -326,6 +327,18 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
+--- !u!114 &949135004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949134998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca62ea1c53c065448636e24f3d3e683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1093647375
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +418,6 @@ GameObject:
   - component: {fileID: 1100301675}
   - component: {fileID: 1100301674}
   - component: {fileID: 1100301677}
-  - component: {fileID: 1100301678}
   m_Layer: 5
   m_Name: BtnStart
   m_TagString: Untagged
@@ -446,7 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 2
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -474,7 +486,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1100301678}
+      - m_Target: {fileID: 949135004}
         m_MethodName: startGame
         m_Mode: 1
         m_Arguments:
@@ -540,18 +552,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &1100301678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100301672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ca62ea1c53c065448636e24f3d3e683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1447108880
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,7 +1393,6 @@ GameObject:
   - component: {fileID: 7137008127083446840}
   - component: {fileID: 7137008127083446847}
   - component: {fileID: 7137008127083446846}
-  - component: {fileID: 7137008127083446849}
   - component: {fileID: 7137008127083446848}
   m_Layer: 5
   m_Name: BtnQuit
@@ -1463,7 +1462,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7137008127083446849}
+      - m_Target: {fileID: 949135004}
         m_MethodName: exitGame
         m_Mode: 1
         m_Arguments:
@@ -1521,15 +1520,3 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &7137008127083446849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7137008127083446844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ca62ea1c53c065448636e24f3d3e683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

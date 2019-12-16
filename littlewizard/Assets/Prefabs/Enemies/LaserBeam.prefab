@@ -93,6 +93,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserMaterial: {fileID: 2100000, guid: 4867ac58d7f75d7439dd844b3f235442, type: 2}
+  hitPrefab: {fileID: 4553006922654855842, guid: 2f1319c4d47ae8a43bcb670ec981eaa3,
+    type: 3}
   width: 0.22
   widthOffset: 0.12
-  radius: 10
+  radius: 14

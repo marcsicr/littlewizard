@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LinePointer : MonoBehaviour{
 
-    private CastManager castMgr;
+   
     private LineRenderer line;
     private LineRenderer reflectedLine;
     public float spawnDelay;
@@ -12,10 +12,7 @@ public class LinePointer : MonoBehaviour{
     private float timeDown = 0;
     int layerMask;
 
-     void Awake() {
-
-        castMgr = GameObject.FindWithTag("CastManager").GetComponent<CastManager>();
-    }
+   
 
     void Start(){
 

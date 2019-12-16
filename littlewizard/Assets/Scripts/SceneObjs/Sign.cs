@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Sign : MonoBehaviour
 {
-    private DialogBox textBox;
+    private SignMessageBox textBox;
+    
+    [TextArea(2,8)]
     public string message;
     private bool inRange = false;
     private bool showing = false;
 
     void Start() {
 
-        textBox = GameObject.Find("UILayout").GetComponentInChildren<DialogBox>();
-
-       // textBox = GameObject.Find("/UILayout/")).GetComponent<DialogBox>
+        textBox = GameObject.Find("UILayout").GetComponentInChildren<SignMessageBox>();
        if (textBox == null)
            Debug.Log("error");
     }
@@ -30,8 +30,7 @@ public class Sign : MonoBehaviour
                 textBox.hide();
                 showing = false;
             }
-            
-            
+
         }
     }
 

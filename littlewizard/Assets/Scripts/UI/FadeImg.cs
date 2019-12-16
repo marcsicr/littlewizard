@@ -6,8 +6,11 @@ public class FadeImg : MonoBehaviour
 {
     Image img;
     bool fade = false;
-    Color whiteAlpha = new Color(1f, 1f, 1f, 0);
-    Color whiteFull = new Color(1f, 1f, 1f, 1f);
+
+    Color whiteAlpha = new Color(0f, 0f, 0f, 0);
+    Color whiteFull = new Color(0f, 0f, 0f, 1f);
+    //Color whiteAlpha = new Color(1f, 1f, 1f, 0);
+    //Color whiteFull = new Color(1f, 1f, 1f, 1f);
     public void Awake() {
         img = gameObject.GetComponent<Image>(); 
     }
@@ -49,4 +52,27 @@ public class FadeImg : MonoBehaviour
         fade = false;
     }
 
+    public void setOpaque() {
+        img.color = whiteFull;
+        
+    }
+
+    public void onlyFadeIn(float duration) {
+
+        StartCoroutine(OnlyFadeIn(whiteFull, whiteAlpha, duration));
+    }
+    IEnumerator OnlyFadeIn(Color start, Color end, float duration) {
+
+        yield return new WaitForSeconds(0.6f);
+
+        for (float t = 0f; t < duration; t += Time.deltaTime) {
+            float normalizedTime = t / duration;
+
+            img.color = Color.Lerp(start, end, normalizedTime);
+            yield return null;
+        }
+        img.color = end;
+
+        fade = false;
+    }
 }

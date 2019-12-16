@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour{
  
     private void onPlayerHPChanged(int newValue) {
 
-        Debug.Log(newValue);
+        //Debug.Log(newValue);
 
         if (newValue <= 0) {
             gameOverSignal.Raise();
@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour{
 
 
         Destroy(LevelManager.Instance.gameObject);
+        Destroy(DialogManager.Instance.gameObject);
         // LevelManager.Instance.resetInstance();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
@@ -108,7 +109,7 @@ public class GameManager : MonoBehaviour{
     public void goToNextLevel() {
 
         Destroy(LevelManager.Instance.gameObject);
-
+        Destroy(DialogManager.Instance.gameObject);
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         levelCompleteSignal.Raise();
 

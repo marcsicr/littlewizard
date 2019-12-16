@@ -35,7 +35,11 @@ public class Rock : ElipticalBullet
 
 
 
-        for (float t = 0; t <= 1; t += 0.01f + speed * Time.deltaTime) {
+        float dist = 0.3f;
+        Vector2 v1 = 2 * start - 4 * middle + 2 * end;
+        Vector2 v2 = -2 * start + 2 * middle;
+
+        for (float t = 0; t <= 1; t += dist / (t * v1 + v2).magnitude) {
 
             myRigidBody.position = quadraticBezierPoint(t, start, middle, end);
 
@@ -45,10 +49,32 @@ public class Rock : ElipticalBullet
             yield return new WaitForEndOfFrame();
         }
 
-        Destroy(gameObject, 1);
+        GetComponent<Collider2D>().enabled = false;
+        StartCoroutine(dissapearCo(1));
+
+        
+
+
 
     }
 
+
+    IEnumerator dissapearCo(float duration) {
+
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        Color start = renderer.color;
+        Color end = start;
+        end.a = 0;
+
+        for (float t = 0f; t < duration; t += Time.deltaTime) {
+            float normalizedTime = t / duration;
+
+            renderer.color = Color.Lerp(start, end, normalizedTime);
+            yield return null;
+        }
+
+        Destroy(gameObject);
+    }
 
     private void Update() {
 
