@@ -6,6 +6,6 @@ public class MessageTrigger : MonoBehaviour
 {
     private void OnEnable() {
 
-        DialogManager.Instance.displayMessage("Farlopa");
+        DialogManager.Instance.displayMessage("Test");
     }
 }
