@@ -6,21 +6,22 @@ using TMPro;
 public class SignMessageBox : MonoBehaviour
 {
     private TextMeshProUGUI text;
-    public GameObject panel;
-    void Awake()
-    {
-        panel.SetActive(false);
-        text = transform.Find("DialogPanel/Text").GetComponent<TextMeshProUGUI>();
+    bool showing = false;
+    void Awake(){
+      
+        text = transform.Find("Text").GetComponent<TextMeshProUGUI>();
     }
 
     public void show(string message) {
-
-        gameObject.SetActive(true);
-        panel.SetActive(true);
+        showing = true;
         text.text = message;
     }
 
     public void hide() {
-        panel.SetActive(false);
+        if (showing) {
+            showing = false;
+            Destroy(gameObject);
+        }
+       
     }
 }

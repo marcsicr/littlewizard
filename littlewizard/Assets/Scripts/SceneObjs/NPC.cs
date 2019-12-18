@@ -13,6 +13,7 @@ public class NPC : MonoBehaviour{
 
     public void showDialog() {
 
+       showing = true;
        DialogManager.Instance.displayConversation(messages);
     }
 
@@ -23,7 +24,7 @@ public class NPC : MonoBehaviour{
 
     private void Update() {
 
-        if (inRange && Input.GetKeyDown(KeyCode.Space)) {
+        if (inRange && Input.GetKeyDown(KeyCode.Space ) && !showing) {
                 showDialog();
         }
     }

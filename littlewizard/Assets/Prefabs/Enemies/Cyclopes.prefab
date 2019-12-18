@@ -373,6 +373,8 @@ GameObject:
   - component: {fileID: 6498065792096964291}
   - component: {fileID: 6498065792096964349}
   - component: {fileID: 6498065792096964351}
+  - component: {fileID: 8637537763339551203}
+  - component: {fileID: 7327969306071711588}
   m_Layer: 15
   m_Name: Cyclopes
   m_TagString: Boss
@@ -535,12 +537,68 @@ MonoBehaviour:
     type: 3}
   laserPrefab: {fileID: 2469648369168075580, guid: d5c7d9d1bdc2c9041bc6a9f7dfd0aa99,
     type: 3}
+  isLaserStateSheduled: 0
   laserDuration: 3
-  laserTimeout: 10
+  SPRecoverTime: 16
+  isShooting: 0
+  isDead: 0
   stunTimeout: 8
-  patrolIndex: 0
-  isLaserReady: 0
   isStunReady: 0
+  patrolIndex: 0
+--- !u!114 &8637537763339551203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6498065792096964289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f8592610e6b824b974ef74467e1254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 51bf1e4af2a4c814ba610869febb751e, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6498065792096964351}
+        m_MethodName: onTransferEnter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7327969306071711588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6498065792096964289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f8592610e6b824b974ef74467e1254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: ede5c5006796e8f4ea2f8d109c64b462, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6498065792096964351}
+        m_MethodName: onTransferLeave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7128263447854526207
 GameObject:
   m_ObjectHideFlags: 0

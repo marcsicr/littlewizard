@@ -57,9 +57,9 @@ public class FadeImg : MonoBehaviour
         
     }
 
-    public void onlyFadeIn(float duration) {
+    public IEnumerator onlyFadeIn(float duration) {
 
-        StartCoroutine(OnlyFadeIn(whiteFull, whiteAlpha, duration));
+        yield return StartCoroutine(OnlyFadeIn(whiteFull, whiteAlpha, duration));
     }
     IEnumerator OnlyFadeIn(Color start, Color end, float duration) {
 

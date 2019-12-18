@@ -140,11 +140,12 @@ public class Cyclopes : Boss {
         return spawnLocation;
     }
     public override void onTransferEnter() {
-        throw new System.NotImplementedException();
+
+        myAnimator.SetBool("stop", true);
     }
 
     public override void onTransferLeave() {
-        throw new System.NotImplementedException();
+        myAnimator.SetBool("stop", false);
     }
 
 

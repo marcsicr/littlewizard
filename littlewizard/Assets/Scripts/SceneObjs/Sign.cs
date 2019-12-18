@@ -11,23 +11,17 @@ public class Sign : MonoBehaviour
     private bool inRange = false;
     private bool showing = false;
 
-    void Start() {
-
-        textBox = GameObject.Find("UILayout").GetComponentInChildren<SignMessageBox>();
-       if (textBox == null)
-           Debug.Log("error");
-    }
     private void Update() {
         
         if(inRange && Input.GetKeyDown(KeyCode.Space)) {
 
             if (!showing) {
                 showing = true;
-                textBox.show(message);
+                DialogManager.Instance.displayMessage(message);
                 Debug.Log("Show message");
 
             } else{
-                textBox.hide();
+                DialogManager.Instance.hideMessage();
                 showing = false;
             }
 
@@ -52,9 +46,11 @@ public class Sign : MonoBehaviour
             Player p = other.gameObject.GetComponent<Player>();
             p.showAlertBubble(false);
             inRange = false;
-            textBox.hide();
+            if (showing) {
+                DialogManager.Instance.hideMessage();
+            }
+            
         }
     }
-
 
 }

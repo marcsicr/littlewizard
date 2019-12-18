@@ -1,6 +1,5 @@
 ﻿using System;
-
-
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +7,8 @@ public class GameManager : MonoBehaviour{
   public static GameManager Instance { get; private set; }
 
     public bool isGamePaused { get; private set; }
+
+    private AsyncOperation asyncLoad;
 
     public ObservableInteger playerHP;
 
@@ -116,5 +117,17 @@ public class GameManager : MonoBehaviour{
         SceneManager.LoadScene(nextSceneIndex);
     }
 
+    public void goToFirstLevel() {
+
+        asyncLoad.allowSceneActivation = true;
+        Destroy(LevelManager.Instance.gameObject);
+    }
+
+
+    public void loadFirstLevelAsync() {
+
+        asyncLoad = SceneManager.LoadSceneAsync(2);
+        asyncLoad.allowSceneActivation = false;
+    }
     
 }

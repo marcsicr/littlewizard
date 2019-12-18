@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class Player : Character{
 
+    RuntimeAnimatorController playerRAC;
+
     [HideInInspector]
     public static readonly string TAG = "Player"; //This tag must be defined first on inspector
 
@@ -77,7 +79,8 @@ public class Player : Character{
 
     public override void Start() {
         base.Start();
-
+        
+        
         nextSTRecup = Time.time + recuPInterval;
        
         idleState = new IdleState(this);
@@ -161,6 +164,16 @@ public class Player : Character{
         }
         
     }
+
+    public void onTimelineStart() {
+        /*playerRAC = GetComponent<Animator>().runtimeAnimatorController;
+        GetComponent<Animator>().runtimeAnimatorController = null;*/
+    }
+
+    public void onTimelineEnd() {
+       /* myAnimator.runtimeAnimatorController = playerRAC;*/
+    }
+
 
     public Vector2 movingDirection() {
 

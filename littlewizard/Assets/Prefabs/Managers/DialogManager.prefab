@@ -43,5 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9adbebef933624bbdf629fde4fb35c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogPrefab: {fileID: 4520861763746468059, guid: 52ad204bd2c23f0479cd70722387602b,
+    type: 3}
+  singMessagePrefab: {fileID: 8726602934645665400, guid: 40b0bc132604cc4459be3df436bdcb72,
+    type: 3}
   DialogStart: {fileID: 11400000, guid: 51bf1e4af2a4c814ba610869febb751e, type: 2}
   DialogEnd: {fileID: 11400000, guid: ede5c5006796e8f4ea2f8d109c64b462, type: 2}
