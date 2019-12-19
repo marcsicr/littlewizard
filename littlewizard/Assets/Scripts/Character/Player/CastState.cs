@@ -65,7 +65,9 @@ public class CastState : PlayerState {
             bullet.setShotHeight(player.getMapHeight());
             bullet.shot(worldPoint);
             castDone = true;
-            player.spellCasted.Raise();
+
+            player.spellCasted.Raise(spell);
+            //player.spellCasted.Raise();
             //boltCasted.Raise();
             yield break;
         }
@@ -73,7 +75,9 @@ public class CastState : PlayerState {
         if(spell == Spell.SHIELD) {
 
             player.createShield();
-            player.spellCasted.Raise();
+
+            player.spellCasted.Raise(spell);
+            //player.spellCasted.Raise();
             //player.shieldCasted.Raise();
             castDone = true;
             yield break;
@@ -86,7 +90,8 @@ public class CastState : PlayerState {
             yield return new WaitForSeconds(0.2f);
             ray.shot(castDirection);
 
-            player.spellCasted.Raise();
+            player.spellCasted.Raise(spell);
+            //player.spellCasted.Raise();
             //player.rangeAtkCasted.Raise();
             castDone = true;
             yield break;

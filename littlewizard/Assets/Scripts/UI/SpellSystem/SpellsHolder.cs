@@ -31,9 +31,11 @@ public class SpellsHolder : MonoBehaviour{
 
     }
 
-    public void onSpellSelectedChange() {
+    public void onSpellSelectedChange(Spell spell) {
 
-        Spell selected = LevelManager.Instance.selectedSpell;
+        //Spell selected = LevelManager.Instance.selectedSpell;
+
+        Spell selected = spell;
 
         if (selected == Spell.BOLT) {
 
@@ -67,7 +69,7 @@ public class SpellsHolder : MonoBehaviour{
         }
     }
 
-    public void OnSpellCasted() {
+    public void OnSpellCasted(Spell spell) {
         active.setSelected(false);
         active.showSpellTimeOut();
     }

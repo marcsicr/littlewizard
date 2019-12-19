@@ -9,6 +9,8 @@ public class SpellSlot : MonoBehaviour {
 
     private bool isSelected = false;
     public Spell spell;
+    
+   
 
     private SpellState spellState;
 
@@ -16,6 +18,15 @@ public class SpellSlot : MonoBehaviour {
         spellState = transform.Find("SpellState").gameObject.GetComponent<SpellState>();
         //spellState.setReloadSpeed(reloadSpeed);
 
+       if (LevelManager.Instance.getSpellLevel(spell) == 0)
+            GetComponent<Image>().color = new Color(0, 0, 0, 0);
+    }
+
+    public void OnSpellLvlUp(Spell spellLeveledUp) {
+
+        if(this.spell == spellLeveledUp) {
+            GetComponent<Image>().color = new Color(1,1, 1, 1);
+        }
     }
 
     public void setSelected(bool selected) {
@@ -23,13 +34,6 @@ public class SpellSlot : MonoBehaviour {
         spellState.setSelected(selected);
     }
 
-    /**
-     * @Return true if player knows the spell
-     */
-    public bool spellEnabled() {
-
-        return this.isSpellEnabled;
-    }
 
     public void showSpellTimeOut() {
         spellState.setReloading(spell);

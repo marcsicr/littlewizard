@@ -120,3 +120,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spell: 1
+  spellLvlUp: {fileID: 11400000, guid: 01e7925295e264a4aba6a07d0d592796, type: 2}

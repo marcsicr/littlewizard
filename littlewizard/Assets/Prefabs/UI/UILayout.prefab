@@ -595,6 +595,7 @@ GameObject:
   - component: {fileID: 476657742557417509}
   - component: {fileID: 476657742557417508}
   - component: {fileID: 476657742557417506}
+  - component: {fileID: 3463513852646938641}
   m_Layer: 5
   m_Name: Slot1
   m_TagString: Untagged
@@ -670,6 +671,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spell: 1
+--- !u!114 &3463513852646938641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476657742557417510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115640b575cc9a4408fdf421de9aad91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 01e7925295e264a4aba6a07d0d592796, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 476657742557417506}
+        m_MethodName: OnSpellLvlUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &476657742664850452
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,6 +831,7 @@ GameObject:
   - component: {fileID: 476657742901165031}
   - component: {fileID: 476657742901165030}
   - component: {fileID: 476657742901165028}
+  - component: {fileID: 5590024658652525388}
   m_Layer: 5
   m_Name: Slot2
   m_TagString: Untagged
@@ -878,6 +907,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spell: 2
+--- !u!114 &5590024658652525388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476657742901165032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115640b575cc9a4408fdf421de9aad91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 01e7925295e264a4aba6a07d0d592796, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 476657742901165028}
+        m_MethodName: OnSpellLvlUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &476657742966574770
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +946,7 @@ GameObject:
   - component: {fileID: 476657742966574769}
   - component: {fileID: 476657742966574768}
   - component: {fileID: 476657742966665550}
+  - component: {fileID: 6597812900685406301}
   m_Layer: 5
   m_Name: Slot3
   m_TagString: Untagged
@@ -965,6 +1022,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spell: 3
+--- !u!114 &6597812900685406301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476657742966574770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115640b575cc9a4408fdf421de9aad91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 01e7925295e264a4aba6a07d0d592796, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 476657742966665550}
+        m_MethodName: OnSpellLvlUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &476657743066008342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2137,8 +2221,8 @@ GameObject:
   - component: {fileID: 476657744405726606}
   - component: {fileID: 476657744405726705}
   - component: {fileID: 476657744405726607}
-  - component: {fileID: 895868566279992128}
-  - component: {fileID: 406467029029552099}
+  - component: {fileID: 4586806961258015948}
+  - component: {fileID: 5733707951677381453}
   m_Layer: 5
   m_Name: SpellsHolder
   m_TagString: CastManager
@@ -2218,7 +2302,7 @@ MonoBehaviour:
   slot1: {fileID: 476657742557417511}
   slot2: {fileID: 476657742901165033}
   slot3: {fileID: 476657742966574771}
---- !u!114 &895868566279992128
+--- !u!114 &4586806961258015948
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2227,16 +2311,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 476657744405726707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0f8592610e6b824b974ef74467e1254, type: 3}
+  m_Script: {fileID: 11500000, guid: 115640b575cc9a4408fdf421de9aad91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: 403d332015868bf43a12e6ea5111f407, type: 2}
+  signal: {fileID: 11400000, guid: ed4bb6cd787372c42ab6d3d4681d3b73, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 476657744405726607}
-        m_MethodName: onSpellSelectedChange
-        m_Mode: 1
+        m_MethodName: OnSpellCasted
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2245,7 +2329,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &406467029029552099
+--- !u!114 &5733707951677381453
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2254,16 +2338,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 476657744405726707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0f8592610e6b824b974ef74467e1254, type: 3}
+  m_Script: {fileID: 11500000, guid: 115640b575cc9a4408fdf421de9aad91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: 2103db25ba0237549aa7a9531e86c44a, type: 2}
+  signal: {fileID: 11400000, guid: e7243554e0fa75b4ca06edfd7b2d7804, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 476657744405726607}
-        m_MethodName: OnSpellCasted
-        m_Mode: 1
+        m_MethodName: onSpellSelectedChange
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

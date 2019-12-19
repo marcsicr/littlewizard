@@ -292,10 +292,7 @@ MonoBehaviour:
   playerSP: {fileID: 11400000, guid: bc0753e494d55b048927fa5d31ccb8d0, type: 2}
   stamina: {fileID: 11400000, guid: 8f556433ab61e3c478d1658f70949f59, type: 2}
   gameOverSignal: {fileID: 11400000, guid: 8622d57c1f2891d42bbb0058c89fb19f, type: 2}
-  spellCasted: {fileID: 11400000, guid: 2103db25ba0237549aa7a9531e86c44a, type: 2}
-  boltCasted: {fileID: 11400000, guid: 577117b55f3799044b40899aee146bee, type: 2}
-  shieldCasted: {fileID: 11400000, guid: 2faa3458cbe86e0489a5154bb0aa29a6, type: 2}
-  rangeAtkCasted: {fileID: 11400000, guid: 574abb877b150a34aa9a6728eeda1187, type: 2}
+  spellCasted: {fileID: 11400000, guid: ed4bb6cd787372c42ab6d3d4681d3b73, type: 2}
   showingAlertBubble: 0
   startOnPortal: 1
   boltPrefab: {fileID: 8322000851611868158, guid: 77983ce53cb67894aba2e8c142ea5bf1,

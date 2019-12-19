@@ -47,7 +47,8 @@ public class RangeAttk : MonoBehaviour
     public void shot(Vector2 direction) {
 
         gameObject.SetActive(true);
-        transform.position += new Vector3(direction.x, direction.y, 0);
+        //transform.position += new Vector3(direction.x, direction.y, 0);
+       
         nextUpdate = Time.time;
         //Obtenir els enemics que es troben dins del cercle
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, radius, ENEMY_LAYER);
@@ -107,9 +108,37 @@ public class RangeAttk : MonoBehaviour
     void Update(){
 
         if (fired) {
+
+            UpdateEnemies();
             UpdatLines();
         }
        
+    }
+
+    void UpdateEnemies() {
+        Collider2D[] updatedEnemies = Physics2D.OverlapCircleAll(transform.position, radius, ENEMY_LAYER);
+
+        Stack<Collider2D> newEnemies = new Stack<Collider2D>();
+        foreach (Collider2D collider in updatedEnemies) {
+
+            bool found = false;
+            foreach(EnemyRay er in lines) {
+
+                if(er.enemy.gameObject.GetInstanceID() == collider.gameObject.GetInstanceID()) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                newEnemies.Push(collider);
+            }
+        }
+
+        foreach (Collider2D e in newEnemies) {
+            AbstractEnemy enemy = e.GetComponent<AbstractEnemy>();
+            CreateLine(enemy);
+        }
     }
 
     void UpdatLines() {

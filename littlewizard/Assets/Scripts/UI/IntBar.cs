@@ -14,6 +14,10 @@ public class IntBar : MonoBehaviour
         transform.localScale = new Vector3(1f, 1f);
     }
 
+    void Start() {
+        updateBar(var.getRunTimeValue());
+    }
+
     public void updateBar(int newValue) {
         float barLength = computeBarLength(var.getInitialValue(),newValue);
         transform.localScale = new Vector3(barLength, 1f);

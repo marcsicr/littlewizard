@@ -16,8 +16,8 @@ public class LevelManager : MonoBehaviour {
 
     public Signal gemCaughtSignal;
     public Spell selectedSpell = Spell.NONE;
-    public Signal spellSelected;
-
+    
+    public SpellSignal spellSelected;
     public float boltTimeOut{ get; private set; }
     public float shieldTimeOut{ get; private set; }
     public float rayAtkTimeOut { get; private set; }
@@ -100,15 +100,19 @@ public class LevelManager : MonoBehaviour {
 
     private void handleSpellsInput() {
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) && boltTimeOut == 0 /*&& boltLevel >0*/) {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && boltTimeOut == 0 &&boltLevel >0 ) {
             selectedSpell = Spell.BOLT;
-            spellSelected.Raise();
-        } else if (Input.GetKeyDown(KeyCode.Alpha2) && shieldTimeOut == 0 /*&& shieldLevel >0*/) {
+            spellSelected.Raise(selectedSpell);
+           
+        } else if (Input.GetKeyDown(KeyCode.Alpha2) && shieldTimeOut == 0  && shieldLevel >0) {
             selectedSpell = Spell.SHIELD;
-            spellSelected.Raise();
-        } else if (Input.GetKeyDown(KeyCode.Alpha3) && rayAtkTimeOut == 0 /*&& rayLevel > 0*/) {
+            spellSelected.Raise(selectedSpell);
+           
+        } else if (Input.GetKeyDown(KeyCode.Alpha3) && rayAtkTimeOut == 0 && rayLevel > 0) {
+
             selectedSpell = Spell.RANGE_ATTACK;
-            spellSelected.Raise();
+            spellSelected.Raise(selectedSpell);
+          
         }
 
     }
@@ -119,10 +123,10 @@ public class LevelManager : MonoBehaviour {
         spellsTimeOutUpdate();
     }
 
-    public void OnSpellCasted() {
+    public void OnSpellCasted(Spell spell) {
 
-        float spellTimeOut = computeSpellTimeOut(selectedSpell);
-        setSpellTimeOut(selectedSpell,spellTimeOut);
+        float spellTimeOut = computeSpellTimeOut(spell);
+        setSpellTimeOut(spell,spellTimeOut);
         selectedSpell = Spell.NONE;
     }
 
@@ -198,6 +202,26 @@ public class LevelManager : MonoBehaviour {
         if(rayAtkTimeOut > 0) {
             rayAtkTimeOut = Mathf.Clamp(rayAtkTimeOut - Time.deltaTime, 0, rayAtkTimeOut);
         }
+    }
+
+    public int getSpellLevel(Spell spell) {
+
+        switch (spell) {
+
+            case Spell.BOLT: {
+                    return boltLevel;
+                }
+
+            case Spell.SHIELD: {
+                    return shieldLevel;
+                }
+
+            case Spell.RANGE_ATTACK: {
+                    return rayLevel;
+                }
+        }
+
+        return 0;
     }
 
     public float getSpellTimeout(Spell spell) {

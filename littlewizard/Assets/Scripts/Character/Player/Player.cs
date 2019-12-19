@@ -24,13 +24,9 @@ public class Player : Character{
     public ObservableInteger stamina;
     public Signal gameOverSignal;
 
-    
 
-    public Signal spellCasted;
+    public SpellSignal spellCasted;
 
-    public Signal boltCasted;
-    public Signal shieldCasted;
-    public Signal rangeAtkCasted;
 
     private Shield shield;
     private bool isInvencible;

@@ -109,6 +109,10 @@ public class GameManager : MonoBehaviour{
 
     public void goToNextLevel() {
 
+        baseBoltLvl = LevelManager.Instance.boltLevel;
+        baseShieldLvl = LevelManager.Instance.shieldLevel;
+        baseRayLvl = LevelManager.Instance.rayLevel;
+
         Destroy(LevelManager.Instance.gameObject);
         Destroy(DialogManager.Instance.gameObject);
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;

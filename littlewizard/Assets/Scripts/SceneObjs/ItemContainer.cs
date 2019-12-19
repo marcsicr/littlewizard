@@ -6,7 +6,7 @@ public abstract class ItemContainer : MonoBehaviour{
 
     public static string TAG = "ItemContainer";
     protected Animator myAnimator;
-    public Item throwItem;
+    public Item[] throwItems;
 
     private void Awake() {
         myAnimator = GetComponent<Animator>();
@@ -18,12 +18,12 @@ public abstract class ItemContainer : MonoBehaviour{
 
     public void throwLoot() {
 
-        if(throwItem != null)
-         StartCoroutine(throwLootCo());
-       
+        foreach(Item item in throwItems) {
+            StartCoroutine(throwLootCo(item));
+        }
     }
 
-    protected IEnumerator throwLootCo() {
+    protected IEnumerator throwLootCo(Item throwItem) {
         
         Vector2 start = transform.position;
         Vector2 end = start + Random.insideUnitCircle.normalized * 2;
