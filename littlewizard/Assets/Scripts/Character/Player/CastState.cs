@@ -45,8 +45,6 @@ public class CastState : PlayerState {
 
             
             playerAnimator.SetTrigger("cast");
-
-            //Instantiate bullet prefab and shot(castDirection);
             player.StartCoroutine(CastCo(spell));
         }
 
@@ -66,19 +64,19 @@ public class CastState : PlayerState {
             bullet.shot(worldPoint);
             castDone = true;
 
+           
+
+            UpdatePlayerSP(spell);
             player.spellCasted.Raise(spell);
-            //player.spellCasted.Raise();
-            //boltCasted.Raise();
             yield break;
         }
        
         if(spell == Spell.SHIELD) {
 
             player.createShield();
-
+            UpdatePlayerSP(spell);
             player.spellCasted.Raise(spell);
-            //player.spellCasted.Raise();
-            //player.shieldCasted.Raise();
+           
             castDone = true;
             yield break;
         }
@@ -91,9 +89,9 @@ public class CastState : PlayerState {
             ray.shot(castDirection);
 
             player.spellCasted.Raise(spell);
-            //player.spellCasted.Raise();
-            //player.rangeAtkCasted.Raise();
+            
             castDone = true;
+            UpdatePlayerSP(spell);
             yield break;
         }
 
@@ -120,5 +118,15 @@ public class CastState : PlayerState {
             return this;
         }
         
+    }
+
+    public void UpdatePlayerSP(Spell spell) {
+
+        int playerSP = player.playerSP.getRunTimeValue();
+
+        int points = SpellsManager.Instance.computeSPConsumed(spell);
+
+        playerSP -= points;
+        player.playerSP.UpdateValue(playerSP);
     }
 }

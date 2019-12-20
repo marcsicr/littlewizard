@@ -23,6 +23,8 @@ public class BtnReset : MonoBehaviour
         objectsAbove++;
         if (other.CompareTag(Player.TAG)) {
             myAnimator.SetBool("pushed", true);
+            
+            if(mechanism != null)
             mechanism.Reset();
             
             foreach(Pushable p in pushables) {

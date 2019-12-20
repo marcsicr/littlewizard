@@ -27,7 +27,13 @@ public abstract class PlayerState
 
             Spell s = player.getActiveSpell();
             if (s != Spell.NONE) {
-                return new CastState(player, point, s, Vector2.zero);
+
+                int spNeeded = SpellsManager.Instance.computeSPConsumed(s);
+
+                if (spNeeded < player.playerSP.getRunTimeValue()){
+                    return new CastState(player, point, s, Vector2.zero);
+                }
+                
             }
 
             //If no spell is selected try to hit with staff

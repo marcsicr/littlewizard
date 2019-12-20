@@ -8,7 +8,8 @@ public class Book : Item {
     public SpellSignal spellLvlUp;
     public override void onItemCollect(Player player) {
 
-        LevelManager.Instance.spellLvlUp(spell);
+        //LevelManager.Instance.spellLvlUp(spell);
+        SpellsManager.Instance.spellLvlUp(spell);
 
         spellLvlUp.Raise(spell);
     }

@@ -33,36 +33,7 @@ public class SpellState : MonoBehaviour
         StartCoroutine(spellTimeOutCo(spell));
         //myAnimator.SetBool("loading",true);
 
-
     }
-
-    /*public void finishReloading() {
-
-        myAnimator.SetBool("loading", false);
-        reloading = false;
-        img.color = transparent;
-    }*/
-
-
-    //public bool setSelected(bool selected) {
-
-    //    bool hasBeenSelected = false;
-    //    if (!reloading) {
-
-    //        img.sprite =  myAnimator.SetBool("selected", selected);
-
-    //        if (selected)
-    //            img.color = white;
-    //        else
-    //            img.color = transparent;
-
-    //        hasBeenSelected = true;
-    //    }
-
-    //    return hasBeenSelected;
-
-
-    //}
 
     public bool setSelected(bool selected) {
 
@@ -93,7 +64,7 @@ public class SpellState : MonoBehaviour
     private IEnumerator spellTimeOutCo(Spell spell) {
 
 
-        float timeOut = LevelManager.Instance.computeSpellTimeOut(spell);
+        float timeOut = SpellsManager.Instance.computeSpellTimeOut(spell);
         float frameRate = timeOut / reloadingFrames.Length;
 
        

@@ -146,6 +146,10 @@ public class Player : Character{
         shield.create();
     }
 
+    public void removeShield() {
+        shield.dissapear();
+    }
+
     public Animator getAnimator() {
 
         return this.myAnimator;
@@ -164,10 +168,12 @@ public class Player : Character{
     public void onTimelineStart() {
         /*playerRAC = GetComponent<Animator>().runtimeAnimatorController;
         GetComponent<Animator>().runtimeAnimatorController = null;*/
+        freeze = true;
     }
 
     public void onTimelineEnd() {
-       /* myAnimator.runtimeAnimatorController = playerRAC;*/
+        freeze = false;
+        /* myAnimator.runtimeAnimatorController = playerRAC;*/
     }
 
 
@@ -196,12 +202,13 @@ public class Player : Character{
 
     public Spell getActiveSpell() {
 
-        return LevelManager.Instance.selectedSpell;
+        return SpellsManager.Instance.selectedSpell;
+        //return LevelManager.Instance.selectedSpell;
 
     }
-    public void decreaseSP() {
-        //this.playerSP.runtimeValue -= 5;
-    }
+   
+
+    
 
     /*Set if enemies can hurt player*/
     public void setInvencible(bool isInvencible) {

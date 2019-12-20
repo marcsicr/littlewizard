@@ -9,7 +9,7 @@ public class WallShooter : MonoBehaviour
     public ShotDirection direction;
 
     public float offset;
-    public float shotRate;
+    public float shotRate; 
     private Vector2 _direction;
     public float bulletSpeed;
     void Start(){
@@ -43,12 +43,12 @@ public class WallShooter : MonoBehaviour
     private void shot() {
 
         LinearBullet bullet = Instantiate(linearBulletPrefab, transform.position, Quaternion.identity, null).GetComponent<LinearBullet>();
-        LevelManager.Instance.getTileLevel(transform.position);
+        int height = LevelManager.Instance.getTileLevel(transform.position);
         Vector3 scale = bullet.transform.localScale;
 
         bullet.speed = bulletSpeed;
         bullet.transform.localScale = scale * 1.2f;
-        bullet.setShotHeight(0);
+        bullet.setShotHeight(height);
         bullet.lifetime = 10;
         bullet.shot(_direction);
 

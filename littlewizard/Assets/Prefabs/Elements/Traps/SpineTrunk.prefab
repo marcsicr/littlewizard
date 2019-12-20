@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4546512956688796748}
   - component: {fileID: 4546512956688796749}
   - component: {fileID: 4546512956688796746}
+  - component: {fileID: 6086970196238959563}
   m_Layer: 11
   m_Name: SpineTrunk
   m_TagString: Untagged
@@ -114,10 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14958df27d1fc764fbf3564a0c752ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flip: 0
-  direction: 0
-  speed: 1
-  distance: 3
+  damage: 1
 --- !u!50 &4546512956688796749
 Rigidbody2D:
   serializedVersion: 4
@@ -155,3 +153,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0.027131686, y: -0.6130949}
   m_Size: {x: 0.8526328, y: 0.9830673}
   m_Direction: 0
+--- !u!114 &6086970196238959563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4546512956688796848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24a234fef463d04686770c0ddd1e21a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flip: 0
+  direction: 0
+  speed: 1
+  distance: 5

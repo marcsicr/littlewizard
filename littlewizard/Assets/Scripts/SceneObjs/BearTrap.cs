@@ -21,6 +21,7 @@ public class BearTrap : MonoBehaviour
           
             myAnimator.SetBool("close", true);
             player.OnGetKicked(damage);
+            player.removeShield();
             StartCoroutine(openCo());
         }
     }

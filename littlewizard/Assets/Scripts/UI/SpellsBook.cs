@@ -37,16 +37,16 @@ public class SpellsBook : MonoBehaviour{
 
     private void refreshUI() {
 
-        barBolt.setLevel(LevelManager.Instance.boltLevel);
-        barShield.setLevel(LevelManager.Instance.shieldLevel);
-        barRay.setLevel(LevelManager.Instance.rayLevel);
+        barBolt.setLevel(SpellsManager.Instance.boltLevel);
+        barShield.setLevel(SpellsManager.Instance.shieldLevel);
+        barRay.setLevel(SpellsManager.Instance.rayLevel);
     }
 
     public void showSpell(Spell spell) {
 
         if (spell == Spell.BOLT) {
             boltIndex.setSelected(true);
-            barBolt.setLevel(LevelManager.Instance.boltLevel);
+            barBolt.setLevel(SpellsManager.Instance.boltLevel);
             pageBolt.SetActive(true);
 
             pageShield.SetActive(false);
@@ -61,7 +61,7 @@ public class SpellsBook : MonoBehaviour{
 
             boltIndex.setSelected(false);
             shieldIndex.setSelected(true);
-            barShield.setLevel(LevelManager.Instance.shieldLevel);
+            barShield.setLevel(SpellsManager.Instance.shieldLevel);
             rayIndex.setSelected(false);
 
             pageBolt.SetActive(false);
@@ -76,7 +76,7 @@ public class SpellsBook : MonoBehaviour{
             boltIndex.setSelected(false);
             shieldIndex.setSelected(false);
             rayIndex.setSelected(true);
-            barRay.setLevel(LevelManager.Instance.rayLevel);
+            barRay.setLevel(SpellsManager.Instance.rayLevel);
 
             pageBolt.SetActive(false);
             pageShield.SetActive(false);

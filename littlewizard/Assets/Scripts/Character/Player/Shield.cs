@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    public float duration;
+
     float dissapearTime;
     
     private Animator myAnimator;
@@ -23,7 +23,7 @@ public class Shield : MonoBehaviour
             active = true;
             myAnimator.SetTrigger("create");
             player.setInvencible(true);
-            dissapearTime = Time.time + duration;
+            dissapearTime = Time.time + 2 + SpellsManager.Instance.shieldLevel;
             
         }
         
@@ -37,7 +37,7 @@ public class Shield : MonoBehaviour
         }
     }
 
-    private void dissapear() {
+    public void dissapear() {
 
         myAnimator.SetTrigger("dissapear");
         active = false;

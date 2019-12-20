@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4310237346428337722}
   - component: {fileID: 4310237346428337723}
-  - component: {fileID: 7804206289636314284}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -45,32 +44,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gemCaughtSignal: {fileID: 11400000, guid: c35c8200badf2064c91f097d080b919a, type: 2}
-  selectedSpell: 0
-  spellSelected: {fileID: 11400000, guid: e7243554e0fa75b4ca06edfd7b2d7804, type: 2}
---- !u!114 &7804206289636314284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4310237346428337721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115640b575cc9a4408fdf421de9aad91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: ed4bb6cd787372c42ab6d3d4681d3b73, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4310237346428337723}
-        m_MethodName: OnSpellCasted
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

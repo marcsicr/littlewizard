@@ -28,6 +28,7 @@ public class SpikeTrap : MonoBehaviour
         if (other.CompareTag(Player.TAG)) {
             Player p = other.gameObject.GetComponent<Player>();
             p.OnGetKicked(damage);
+            p.removeShield();
         }
     }
 
