@@ -41,7 +41,12 @@ public class WalkState : PlayerState {
       
 
         if (movement != Vector2.zero) {
-            player.faceDirection = movement.normalized;
+
+            Vector2 temp = movement.normalized;
+            temp.x = Mathf.Round(temp.x);
+            temp.y = Mathf.Round(temp.y);
+            player.faceDirection = temp;
+            //player.faceDirection = movement.normalized;
             return this;
         } else {
 

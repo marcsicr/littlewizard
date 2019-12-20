@@ -172,6 +172,7 @@ MonoBehaviour:
   attackInterval: 2
   bullet: {fileID: 5285576163405724483, guid: 2b4a6351c511e7447b2f255bf49a74d5, type: 3}
   teleportInterval: 2
+  teleportRadius: 5
 --- !u!1001 &1398805069248563378
 PrefabInstance:
   m_ObjectHideFlags: 0

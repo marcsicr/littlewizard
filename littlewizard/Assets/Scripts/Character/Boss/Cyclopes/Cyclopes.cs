@@ -92,6 +92,7 @@ public class Cyclopes : Boss {
                 BossHP.UpdateValue(BossHP.getRunTimeValue() - attack);
             } else {
                 BossHP.UpdateValue(0);
+                BossSP.UpdateValue(0);
             }
         }
 

@@ -38,7 +38,7 @@ public abstract class PlayerState
 
             //If no spell is selected try to hit with staff
             if (player.stamina.getRunTimeValue() > 0) {
-                return new AttackState(player, point);
+                return new AttackState(player, player.faceDirection);
             }
         }
 

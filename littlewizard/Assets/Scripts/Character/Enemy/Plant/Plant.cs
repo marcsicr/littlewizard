@@ -10,6 +10,7 @@ public class Plant : Enemy
   
     public float teleportInterval = 4.5f;
     private float nextTeleport;
+    public float teleportRadius;
     private Material materiaL;
     private int currentPosIndex;
     BoxCollider2D myCollider;
@@ -43,7 +44,7 @@ public class Plant : Enemy
         gameObject.tag = TAG;
      
 
-        base.nextAttackAvailable = Time.time + attackInterval;
+        base.nextAttackAvailable = Time.time + attackInterval+Random.Range(0,1);
         nextTeleport = Time.time + teleportInterval;
         currentPosIndex = 0;
         spawnLocation = transform.position;
@@ -137,11 +138,11 @@ public class Plant : Enemy
         switch (state) {
 
             case PlantState.IDLE:
-                if (attackAtempt()) {
+                if (attackAtempt() && isPlayerInAttackRadius()) {
                     state = PlantState.ATTACKING;
                 }
 
-                if (teleportAtempt()) {
+                if (teleportAtempt() && isPlayerInChaseRadius()) {
                     state = PlantState.TELEPORTING;
                 }
                   
@@ -189,7 +190,7 @@ public class Plant : Enemy
             yield return null;
         }
 
-        transform.position = spawnLocation + Random.insideUnitCircle * playerDiscoverRadius;
+        transform.position = spawnLocation + Random.insideUnitCircle * teleportRadius;
         
         
         yield return null;

@@ -12,19 +12,17 @@ public class AttackState : PlayerState {
     public bool started_co;
 
 
-    bool done;
-    public AttackState(Player player,Vector3 clickPoint) : base(player) { 
-        this.clickPoint = clickPoint;
-        this.clickPoint.z = 0;
+    bool done = false;
+    public AttackState(Player player,Vector3 direction) : base(player) {
 
+        direction.Normalize();
+        this.direction = direction;
        
 
-        done = false;
-        startPoint = new Vector3(playerRB.position.x, playerRB.position.y,0);
+        //startPoint = new Vector3(playerRB.position.x, playerRB.position.y,0);
 
-        direction = clickPoint - startPoint;
-        direction.Normalize();
-
+        //direction = clickPoint - startPoint;
+       
         playerAnimator.SetTrigger("attack");
 
     }
@@ -62,8 +60,12 @@ public class AttackState : PlayerState {
 
     IEnumerator StaffKickCo() {
 
+     
+        direction.x = Mathf.Round(direction.x);
+        direction.y = Mathf.Round(direction.y);
+       
 
-       Vector3 destination = playerRB.position + direction * maxDist;
+        Vector3 destination = playerRB.position + direction.normalized * maxDist;
        Vector3 step = Vector3.Lerp(playerRB.transform.position, destination, 0.8f);
        yield return new WaitForFixedUpdate();
        playerRB.MovePosition(step);   
