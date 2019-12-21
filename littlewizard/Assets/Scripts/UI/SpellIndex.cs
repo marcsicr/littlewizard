@@ -14,7 +14,7 @@ public class SpellIndex : MonoBehaviour
 
     private void Awake() {
 
-        book = transform.parent.GetComponent<SpellsBook>();
+        book = transform.parent.parent.GetComponent<SpellsBook>();
     }
 
     public void onClick() {

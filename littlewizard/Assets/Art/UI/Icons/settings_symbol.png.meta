@@ -5,6 +5,7 @@ TextureImporter:
     21300000: settings_symbol_0
     21300002: settings_symbol_1
     21300004: settings_symbol_2
+    21300006: settings_symbol_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -101,7 +102,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28e0fe45115a40e4ea536cc149d17cf8
+      spriteID: beb1e1a8ff6b76744a48a99b7b5cd05c
       vertices: []
       indices: 
       edges: []
@@ -121,7 +122,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e12080259275dae468d01a3cd717d59d
+      spriteID: 647689fe23b81b94abdef86fc2c7e6a4
       vertices: []
       indices: 
       edges: []
@@ -141,7 +142,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34b81a00fdbf5614abd1af338bcbf9eb
+      spriteID: 7ba9c226f90b77a429053e20bec281a6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: settings_symbol_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9d4bf8e69885ed4ea06e1cee589f54f
       vertices: []
       indices: 
       edges: []

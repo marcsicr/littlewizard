@@ -43,6 +43,9 @@ public class RangeAttk : MonoBehaviour
     }
 
    
+    public void setDuration(float duration) {
+        attackDuration = duration;
+    }
 
     public void shot(Vector2 direction) {
 
@@ -65,16 +68,30 @@ public class RangeAttk : MonoBehaviour
         fired = true;
 
         StartCoroutine(lifeTimeCo());
+        StartCoroutine(damageCo());
+    }
+
+    private IEnumerator damageCo() {
+
+        while (true) {
+            foreach (EnemyRay e in lines) {
+
+                if(e.enemy != null) {
+                    e.enemy.OnGetKicked(attackPower);
+                }
+               
+
+            }
+            yield return new WaitForSeconds(1f);
+        }
+        
     }
 
     private IEnumerator lifeTimeCo() {
         float dissapearTime = 0.2f;
         Color whiteAlpha = new Color(1f, 1f, 1f, 0);
         Color whiteFull = new Color(1f, 1f, 1f, 1f);
-        foreach (EnemyRay e in lines) {
-
-            e.enemy.OnGetKicked(attackPower);
-        }
+       
 
         yield return new WaitForSeconds(attackDuration);
 
@@ -124,6 +141,10 @@ public class RangeAttk : MonoBehaviour
             bool found = false;
             foreach(EnemyRay er in lines) {
 
+                if(er.enemy == null || collider.gameObject == null) {
+                    continue;
+                }
+                
                 if(er.enemy.gameObject.GetInstanceID() == collider.gameObject.GetInstanceID()) {
                     found = true;
                     break;
@@ -236,4 +257,8 @@ public class RangeAttk : MonoBehaviour
         return vec3;
     }
 
+    public void setDamage(int damage) {
+
+        attackPower = damage;
+    }
 }

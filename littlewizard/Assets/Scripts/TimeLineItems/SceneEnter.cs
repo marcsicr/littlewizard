@@ -27,14 +27,14 @@ public class SceneEnter : MonoBehaviour
     private IEnumerator sceneEnterCo() {
 
         float writeSpeed = 0.03f;
-        float timeout = 3f;
+        float timeout = 1f;
         fade.setOpaque();
         yield return new WaitForSeconds(0.5f);
         yield return StartCoroutine(text.writeEffectCo("Once upon a time in a magic land...", writeSpeed,timeout));
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         yield return StartCoroutine(text.fadeOutCo(timeout));
         yield return StartCoroutine(text.writeEffectCo("There was a young wizard who was about to undertake a mission he would never forget... ", writeSpeed,timeout));
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         yield return StartCoroutine(text.fadeOutCo(timeout));
 
         director.play();

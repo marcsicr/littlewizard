@@ -14,6 +14,9 @@ public class SpellsBook : MonoBehaviour{
     public GameObject pageShield;
     public GameObject rayPage;
 
+   
+    
+
     public SpellLevelBar barBolt;
     public SpellLevelBar barShield;
     public SpellLevelBar barRay;
@@ -23,9 +26,9 @@ public class SpellsBook : MonoBehaviour{
 
     private void Awake() {
 
-        boltIndex = transform.Find("BoltIndex").GetComponent<SpellIndex>();
-        shieldIndex = transform.Find("ShieldIndex").GetComponent<SpellIndex>();
-        rayIndex = transform.Find("RayIndex").GetComponent<SpellIndex>();
+        boltIndex = transform.Find("Indices/BoltIndex").GetComponent<SpellIndex>();
+        shieldIndex = transform.Find("Indices/ShieldIndex").GetComponent<SpellIndex>();
+        rayIndex = transform.Find("Indices/RayIndex").GetComponent<SpellIndex>();
 
     }
 

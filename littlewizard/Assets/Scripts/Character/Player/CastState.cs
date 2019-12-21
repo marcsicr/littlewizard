@@ -61,6 +61,9 @@ public class CastState : PlayerState {
             yield return new WaitForSeconds(0.2f);
 
             bullet.setShotHeight(player.getMapHeight());
+            int damage = SpellsManager.Instance.computeSpellDamage(spell);
+
+            bullet.setDamage(damage);
             bullet.shot(worldPoint);
             castDone = true;
 
@@ -73,7 +76,8 @@ public class CastState : PlayerState {
        
         if(spell == Spell.SHIELD) {
 
-            player.createShield();
+            float duration = SpellsManager.Instance.computeSpellDuration(spell);
+            player.createShield(duration);
             UpdatePlayerSP(spell);
             player.spellCasted.Raise(spell);
            
@@ -86,6 +90,12 @@ public class CastState : PlayerState {
             GameObject rayAttack = GameObject.Instantiate(player.rayAttkPrefab, spawn, Quaternion.identity);
             RangeAttk ray = rayAttack.GetComponent<RangeAttk>();
             yield return new WaitForSeconds(0.2f);
+            int damage = SpellsManager.Instance.computeSpellDamage(spell);
+            float duration = SpellsManager.Instance.computeSpellDuration(spell);
+
+            ray.setDuration(duration);
+            ray.setDamage(damage);
+            
             ray.shot(castDirection);
 
             player.spellCasted.Raise(spell);

@@ -43670,14 +43670,15 @@ MonoBehaviour:
       here? '
     charImage: {fileID: 21300000, guid: db3d1187983a87240a2136b7ca7241c5, type: 3}
   - charName: Little Wizard
-    message: I am here to collect an ingredient that the druid needs for his potions.
+    message: I am here because I want you to return me the magical recipe you stoled
+      years ago from the druid.
     charImage: {fileID: 21300000, guid: f011320babbce8944a9ea43fb01fa999, type: 3}
   - charName: Cyclope
     message: Aaaarggg... Never!! Wizards, druids, magicians... They always come to
-      bother me in my cave.... I am not going to let you pass!
+      bother me in my cave.... I am not going to give you anything.
     charImage: {fileID: 21300000, guid: db3d1187983a87240a2136b7ca7241c5, type: 3}
   - charName: Cyclope
-    message: You'll regret to come here.
+    message: You'll regret to come here. Prepare you to die!!!
     charImage: {fileID: 21300000, guid: db3d1187983a87240a2136b7ca7241c5, type: 3}
 --- !u!483693784 &7405966415282528843
 TilemapRenderer:

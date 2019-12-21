@@ -70,5 +70,9 @@ public abstract class Bullet : MonoBehaviour
 
     }
 
+    public void setDamage(int damage) {
+
+        this.damage = damage;
+    }
    
 }

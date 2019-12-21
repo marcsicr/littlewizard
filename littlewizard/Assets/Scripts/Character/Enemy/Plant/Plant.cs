@@ -11,20 +11,24 @@ public class Plant : Enemy
     public float teleportInterval = 4.5f;
     private float nextTeleport;
     public float teleportRadius;
-    private Material materiaL;
+    //private Material materiaL;
     private int currentPosIndex;
     BoxCollider2D myCollider;
    
     public void Awake() {
-        materiaL = gameObject.GetComponent<SpriteRenderer>().material;
+        //materiaL = gameObject.GetComponent<SpriteRenderer>().material;
         myCollider = gameObject.GetComponent<BoxCollider2D>();
     }
     //private float nextAttackAvailable;
     public override void OnGetKicked(int attack) {
-         
+
+       
+        StartCoroutine(KickEffectCo());
+
         HP -= attack;
         if(HP <= 0) {
-            Destroy(gameObject);
+            Destroy(gameObject,0.1f);
+
         }
         bar.updateBar(HP);
         
@@ -33,7 +37,7 @@ public class Plant : Enemy
     // Start is called before the first frame update
     public override void Start()
     {
-        //base.Start();
+        base.Start();
         if(bullet == null) {
             Debug.Log("Plant Error: Missing bullet");
         }
@@ -85,16 +89,16 @@ public class Plant : Enemy
         float duration = 0.5f;
         float maxOutlineWidth = 0.0032f;
         Vector4 color = new Vector4 (1f,0.8f,0f,1f);
-        materiaL.SetVector("_OutlineColor", color);
-        materiaL.SetFloat("_Brightness", 1f);
+        mat.SetVector("_OutlineColor", color);
+        mat.SetFloat("_Brightness", 1f);
         for (float t = 0f; t < duration; t += Time.deltaTime) {
             float normalizedTime = t / duration;
 
             float width = Mathf.Lerp(0, maxOutlineWidth, normalizedTime);
-            materiaL.SetFloat("_Width", width);
+            mat.SetFloat("_Width", width);
             yield return null;
         }
-        materiaL.SetFloat("_Width", maxOutlineWidth);
+        mat.SetFloat("_Width", maxOutlineWidth);
 
         int height = getMapHeight();
 
@@ -122,12 +126,12 @@ public class Plant : Enemy
             float normalizedTime = t / duration;
 
             float width = Mathf.Lerp(maxOutlineWidth,0, normalizedTime);
-            materiaL.SetFloat("_Width", width);
+            mat.SetFloat("_Width", width);
             yield return null;
         }
 
-        materiaL.SetFloat("_Width", 0);
-        materiaL.SetFloat("_Brightness", 0);
+        mat.SetFloat("_Width", 0);
+        mat.SetFloat("_Brightness", 0);
         state = PlantState.IDLE;
 
     }
@@ -135,37 +139,42 @@ public class Plant : Enemy
     // Update is called once per frame
      public override void Update()
     {
-        switch (state) {
 
-            case PlantState.IDLE:
-                if (attackAtempt() && isPlayerInAttackRadius()) {
-                    state = PlantState.ATTACKING;
-                }
+       
+            switch (state) {
 
-                if (teleportAtempt() && isPlayerInChaseRadius()) {
-                    state = PlantState.TELEPORTING;
-                }
-                  
-                break;
+                case PlantState.IDLE:
+                    if (attackAtempt() && isPlayerInAttackRadius()) {
+                        state = PlantState.ATTACKING;
+                    }
 
-            case PlantState.TELEPORTING:
+                    if (teleportAtempt() && isPlayerInChaseRadius()) {
+                        state = PlantState.TELEPORTING;
+                    }
 
-                break;
+                    break;
 
-            case PlantState.ATTACKING:
-                break;
+                case PlantState.TELEPORTING:
 
-        }
-          
+                    break;
+
+                case PlantState.ATTACKING:
+                    break;
+
+            }          
     }
+
+    
 
     public bool teleportAtempt() {
 
         if (Time.time > nextTeleport) {
-            materiaL.SetFloat("_Width", 0);
-            materiaL.SetFloat("_Brightness", 0);
+            //mat.SetFloat("_Width", 0);
+            //mat.SetFloat("_Brightness", 0);
             StopAllCoroutines();
-
+            mat.SetFloat("_Width", 0);
+            mat.SetFloat("_FlashAmount", 0);
+            mat.SetFloat("_Brightness", 0);
             StartCoroutine(TeletransportCo());
             return true;
         }
@@ -185,7 +194,7 @@ public class Plant : Enemy
             float normalizedTime = t / duration;
 
             c = Color.Lerp( whiteFull,whiteAlpha,normalizedTime);
-            materiaL.SetVector("_Color", new Vector4(c.r, c.g, c.b, c.a));
+            mat.SetVector("_Color", new Vector4(c.r, c.g, c.b, c.a));
              
             yield return null;
         }
@@ -199,7 +208,7 @@ public class Plant : Enemy
             float normalizedTime = t / duration;
 
             c = Color.Lerp(whiteAlpha, whiteFull, normalizedTime);
-            materiaL.SetVector("_Color", new Vector4(c.r, c.g, c.b, c.a));
+            mat.SetVector("_Color", new Vector4(c.r, c.g, c.b, c.a));
 
             yield return null;
         }

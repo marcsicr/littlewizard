@@ -125,6 +125,23 @@ public class SpellsManager : MonoBehaviour {
         return 0;
     }
 
+    public float computeSpellDuration(Spell spell) {
+
+        switch (spell) {
+
+          
+            case Spell.SHIELD: {
+                    return 3 + shieldLevel;
+                }
+
+            case Spell.RANGE_ATTACK: {
+                    return 2 + rayLevel *0.5f;
+                }
+        }
+
+        return 0;
+    }
+
     public void spellLvlUp(Spell spell) {
 
         if(spell == Spell.BOLT) {
@@ -197,6 +214,22 @@ public class SpellsManager : MonoBehaviour {
 
         return 0;
 
+    }
+
+    public int computeSpellDamage(Spell spell) {
+
+        switch (spell) {
+
+            case Spell.BOLT:
+                return 5 * boltLevel;
+
+            case Spell.RANGE_ATTACK:
+                return  1* rayLevel;
+
+            default:
+                return 0;
+            
+        }
     }
 
     public float getSpellTimeout(Spell spell) {

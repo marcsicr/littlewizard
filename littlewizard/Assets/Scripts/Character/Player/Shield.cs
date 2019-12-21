@@ -17,13 +17,13 @@ public class Shield : MonoBehaviour
         
     }
 
-    public void create() {
+    public void create(float duration) {
 
         if (!active) {
             active = true;
             myAnimator.SetTrigger("create");
             player.setInvencible(true);
-            dissapearTime = Time.time + 2 + SpellsManager.Instance.shieldLevel;
+            dissapearTime = Time.time + duration;
             
         }
         

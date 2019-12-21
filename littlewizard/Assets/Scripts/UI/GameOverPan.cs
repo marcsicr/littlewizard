@@ -1,22 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+
 
 public class GameOverPan : MonoBehaviour
 {
-    int sceneIndex;
+  
     GameObject holder;
-    void Awake()
-    {
-        sceneIndex = SceneManager.GetActiveScene().buildIndex;
+    void Awake(){
         holder = transform.Find("Holder").gameObject;
+
     }
 
    public void Retry() {
 
         GameManager.Instance.restartLevel();
+
         holder.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void exitGame() {
@@ -32,6 +34,9 @@ public class GameOverPan : MonoBehaviour
     private IEnumerator showCo() {
 
         yield return new WaitForSeconds(1);
+
+        
         holder.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(transform.Find("Holder/RetryBtn").gameObject);
     }
 }

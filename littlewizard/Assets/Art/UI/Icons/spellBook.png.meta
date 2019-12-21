@@ -5,6 +5,7 @@ TextureImporter:
     21300000: spellBook_0
     21300002: spellBook_1
     21300004: spellBook_2
+    21300006: spellBook_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -44,13 +45,13 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -101,7 +102,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a1dc2a3a768c6447aaae14a38782da7
+      spriteID: 00ff592d0fe960843bd2de6d51cd6436
       vertices: []
       indices: 
       edges: []
@@ -121,7 +122,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2b8150dd7067824bbd2e420491a7805
+      spriteID: d0da50611519b95478076d53eb869e29
       vertices: []
       indices: 
       edges: []
@@ -141,7 +142,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 154434f047c912c43809af7c4b072b19
+      spriteID: c770ce8d622db0647a6f3df1713d1843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spellBook_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 662e8029bd740cb429e5426427788df5
       vertices: []
       indices: 
       edges: []

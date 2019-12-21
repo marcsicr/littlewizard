@@ -140,9 +140,9 @@ public class Player : Character{
         spriteRenderer.enabled = false;
     }
 
-    public void createShield() {
+    public void createShield(float duration) {
 
-        shield.create();
+        shield.create(duration);
     }
 
     public void removeShield() {

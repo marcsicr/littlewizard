@@ -1003,11 +1003,10 @@ MonoBehaviour:
     message: Why you want to summon a portal and where it teleports you?
     charImage: {fileID: 21300000, guid: f011320babbce8944a9ea43fb01fa999, type: 3}
   - charName: Druid
-    message: I need to go inside the cyclopes cave to collect the last ingredient
-      of my potion.
+    message: I need to recover a magical recipe that the cyclope stoled me years ago.
     charImage: {fileID: 21300000, guid: 30f2058c84502e04d971994d84458ded, type: 3}
   - charName: Druid
-    message: Summoning a portal is the easyest way to go there.
+    message: Summoning a portal is the easiest way to go there.
     charImage: {fileID: 21300000, guid: 30f2058c84502e04d971994d84458ded, type: 3}
   - charName: Little Wizard
     message: I see... that seems a dangerous task.
@@ -1019,8 +1018,8 @@ MonoBehaviour:
     message: I'm getting old and I can't cope with all the dangers that are out there.
     charImage: {fileID: 21300000, guid: 30f2058c84502e04d971994d84458ded, type: 3}
   - charName: Druid
-    message: "If you can find the gems and collect the last ingredient I'll let you
-      be my successor.\r"
+    message: "If you can find all the gems and return me back this magical recipe
+      I'll let you be my successor.\r"
     charImage: {fileID: 21300000, guid: 30f2058c84502e04d971994d84458ded, type: 3}
   - charName: Little Wizard
     message: Ok I accept this mission.
