@@ -36,7 +36,10 @@ public class Player : Character{
     private GameObject stunnedEffect;
 
     private float nextSTRecup;
-    private float recuPInterval = 2f;
+    private float recuPIntervalST = 1f;
+
+    private float nextSPRecup;
+    private float recuPIntervalSP = 1f;
     private bool freeze = true;
 
     public GameObject boltPrefab;
@@ -76,7 +79,8 @@ public class Player : Character{
         base.Start();
         
         
-        nextSTRecup = Time.time + recuPInterval;
+        nextSTRecup = Time.time + recuPIntervalST;
+        nextSPRecup = Time.time + recuPIntervalSP;
        
         idleState = new IdleState(this);
         walkState = new WalkState(this);
@@ -193,10 +197,18 @@ public class Player : Character{
                 stamina.UpdateValue(stamina.getRunTimeValue() + 1);
             }
 
-            nextSTRecup = Time.time + recuPInterval;
+            nextSTRecup = Time.time + recuPIntervalST;
         }
 
-        
+        if (Time.time > nextSPRecup) {
+            if (playerSP.getRunTimeValue() < playerSP.getInitialValue()) {
+                playerSP.UpdateValue(playerSP.getRunTimeValue() + 1);
+            }
+
+            nextSPRecup = Time.time + recuPIntervalSP;
+        }
+
+
     }
 
     public Spell getActiveSpell() {

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 437555539957924112}
   - component: {fileID: 8691309767532134108}
+  - component: {fileID: 570526065834248421}
   m_Layer: 5
   m_Name: BossStatusBar
   m_TagString: Untagged
@@ -52,6 +53,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895a1485143eaef42a86fbbe3f4b8178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &570526065834248421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437555539957924113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f8592610e6b824b974ef74467e1254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: a99a81860f6e6a7438a107e35202272f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8691309767532134108}
+        m_MethodName: onBossDefeated
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &437555540759824930
 GameObject:
   m_ObjectHideFlags: 0

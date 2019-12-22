@@ -528,7 +528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   debugCharacter: 0
-  HP: 125
+  HP: 225
   bossDefeatedSignal: {fileID: 11400000, guid: a99a81860f6e6a7438a107e35202272f, type: 2}
   BossHP: {fileID: 11400000, guid: 852ee1dc6aece01409855d7ff6c06aab, type: 2}
   BossSP: {fileID: 11400000, guid: e93f5aaf8dfa02c4ab6e7f064e43b942, type: 2}

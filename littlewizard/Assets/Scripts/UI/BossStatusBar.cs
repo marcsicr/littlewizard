@@ -16,4 +16,9 @@ public class BossStatusBar : MonoBehaviour
     public void setFace(Sprite image) {
         faceImg.sprite = image;
     }
+
+    public void onBossDefeated() {
+
+        Destroy(this.gameObject);
+    }
 }
