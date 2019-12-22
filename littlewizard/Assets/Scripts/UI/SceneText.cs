@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class SceneText : MonoBehaviour
-{
+public class SceneText : MonoBehaviour {
     TextMeshProUGUI text;
 
     private void Awake() {
@@ -15,11 +14,11 @@ public class SceneText : MonoBehaviour
         text.text = "";
     }
 
-    
+
     public IEnumerator fadeOutCo(float duration) {
 
         Color end = new Color32(1, 1, 1, 0);
-     
+
         for (float t = 0f; t < duration; t += Time.deltaTime) {
             float normalizedTime = t / duration;
 
@@ -29,11 +28,13 @@ public class SceneText : MonoBehaviour
         text.color = end;
     }
 
-  
 
 
-    public IEnumerator writeEffectCo(string message,float charTimeout,float fadeTimeout) {
 
+    public IEnumerator writeEffectCo(string message, float charTimeout, float fadeTimeout, TextAlignmentOptions ops = TextAlignmentOptions.Left, int fontSize = 42) {
+
+        text.alignment = ops;
+        text.fontSize = fontSize;
         text.color = Color.white;
         text.text = "";
         yield return null;
@@ -56,4 +57,6 @@ public class SceneText : MonoBehaviour
             yield return new WaitForSeconds(charTimeout);
         }
     }
+
+    
 }

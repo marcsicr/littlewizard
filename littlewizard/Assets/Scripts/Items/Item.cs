@@ -10,7 +10,8 @@ public abstract class Item : MonoBehaviour
         if(other.CompareTag(Player.TAG) && collectable) {
             Player player = other.GetComponent<Player>();
             onItemCollect(player);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            //Destroy(gameObject,1);
         }
         
     }

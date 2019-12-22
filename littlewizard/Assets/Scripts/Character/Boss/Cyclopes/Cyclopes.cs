@@ -101,6 +101,8 @@ public class Cyclopes : Boss {
             GetComponent<Collider2D>().enabled = false;
             isDead = true;
             myAnimator.SetTrigger("die");
+            bossDefeatedSignal.Raise();
+
             //Destroy(gameObject);
         } else {
 

@@ -12,6 +12,7 @@ public class TimelineDirector : MonoBehaviour
     public Signal endOfTimeline;
     public Signal startOfTimeLine;
     
+    
 
     PlayableDirector director;
     
@@ -86,18 +87,26 @@ public class TimelineDirector : MonoBehaviour
 
    public void resume() {
 
-        director.playableGraph.GetRootPlayable(0).SetSpeed(1);
-        player.onTransferLeave();
-        paused = false;
+        if (flag) {
+            director.playableGraph.GetRootPlayable(0).SetSpeed(1);
+            player.onTransferLeave();
+            paused = false;
+        }
+       
     }
     public void pause() {
 
         //pausedPos = p.transform.position;
-        
-        player.onTransferEnter();
-        director.playableGraph.GetRootPlayable(0).SetSpeed(0);
 
-         paused = true;
+        if (flag) {
+            Debug.Log("Paused");
+            player.onTransferEnter();
+            director.playableGraph.GetRootPlayable(0).SetSpeed(0);
+            paused = true;
+        }
+       
+
+       
     
     }
 

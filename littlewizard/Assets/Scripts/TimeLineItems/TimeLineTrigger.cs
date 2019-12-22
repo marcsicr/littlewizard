@@ -12,9 +12,16 @@ public class TimeLineTrigger : MonoBehaviour
 
         if (other.CompareTag(Player.TAG)) {
 
-            timeline.play();
-            Destroy(gameObject);
-            //Debug.Log("Starting TimeLine");
+            triggerTimeLine();
+
+   
         }
+    }
+
+    public void triggerTimeLine() {
+
+        Debug.Log("Triggering");
+        timeline.play();
+        Destroy(gameObject);
     }
 }

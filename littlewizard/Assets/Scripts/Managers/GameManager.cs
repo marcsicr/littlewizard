@@ -135,4 +135,15 @@ public class GameManager : MonoBehaviour{
         asyncLoad.allowSceneActivation = false;
     }
     
+
+    public void goToMainMenu() {
+
+        Destroy(LevelManager.Instance.gameObject);
+        Destroy(SpellsManager.Instance.gameObject);
+        Destroy(DialogManager.Instance.gameObject);
+        Destroy(gameObject);
+        SceneManager.LoadScene(0);
+
+
+    }
 }
