@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   debugCharacter: 0
-  HP: 10
+  HP: 20
   playerDiscoverRadius: 7
   attackRadius: 6
   attackPower: 10

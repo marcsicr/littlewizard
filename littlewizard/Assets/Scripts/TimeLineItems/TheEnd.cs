@@ -20,7 +20,8 @@ public class TheEnd : MonoBehaviour
 
 
         yield return StartCoroutine(fade.onlyFadeOut(2));
-        yield return StartCoroutine(text.writeEffectCo("THE END", 0.2f, 4,TMPro.TextAlignmentOptions.Center,72));
+        yield return StartCoroutine(text.writeEffectCo("THE END", 0.2f, 4,TMPro.TextAlignmentOptions.Center,96));
+        yield return new WaitForSeconds(3);
         yield return StartCoroutine(text.fadeOutCo(4));
         
 

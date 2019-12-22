@@ -22,6 +22,6 @@ public class TimeLineTrigger : MonoBehaviour
 
         Debug.Log("Triggering");
         timeline.play();
-        Destroy(gameObject);
+        Destroy(gameObject,1);
     }
 }
