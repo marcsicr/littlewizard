@@ -11,33 +11,35 @@ public class ChaseBehaviour : StateMachineBehaviour {
 
         enemy = animator.gameObject.GetComponent<Enemy>();
         if (enemy == null)
-            Debug.Log("Enemy component not found");
+            Debug.Log("Cobra component not found");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
-        if (enemy.isPlayerInAttackRadius()) {
-            //Attack
-            animator.SetBool("attack",true);
 
-        } else if(enemy.isPlayerInChaseRadius()) {
-
-            Vector3 enemyPos = animator.transform.position;
-            Vector3 targetPos = enemy.getPlayerTransform().position;
-
-            Vector3 step = Vector3.MoveTowards(enemyPos, targetPos, enemy.speed * Time.deltaTime);
-            Vector3 faceDirection = Vector3.Normalize(step - enemyPos);
-            animator.SetFloat("moveX", faceDirection.x);
-            animator.SetFloat("moveY", faceDirection.y);
-
-            enemy.move(step);
-        } else {
-
+        if(enemy.distanceFromPlayer() <= enemy.minDistance) {
             animator.SetBool("chase", false);
+            return;
         }
-        
-       
+
+        if (!enemy.isPlayerInChaseRadius()) {
+            animator.SetBool("chase", false);
+            return;
+        }
+
+       // Debug.Log("Distance from player " + enemy.distanceFromPlayer());
+        // In chase Radius and distance from player > minDistance
+
+        Vector3 enemyPos = animator.transform.position;
+        Vector3 targetPos = enemy.getPlayerTransform().position;
+
+        Vector3 step = Vector3.MoveTowards(enemyPos, targetPos, enemy.speed * Time.deltaTime);
+        Vector3 faceDirection = Vector3.Normalize(step - enemyPos);
+        animator.SetFloat("moveX", faceDirection.x);
+        animator.SetFloat("moveY", faceDirection.y);
+
+        enemy.move(step);
 
     }
 

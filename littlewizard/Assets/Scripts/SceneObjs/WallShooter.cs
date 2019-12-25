@@ -5,6 +5,7 @@ using UnityEngine;
 public enum ShotDirection {DOWN,UP,LEFT,RIGHT};
 public class WallShooter : MonoBehaviour
 {
+    private Player player;
     public GameObject linearBulletPrefab;
     public ShotDirection direction;
 
@@ -14,7 +15,7 @@ public class WallShooter : MonoBehaviour
     public float bulletSpeed;
     void Start(){
 
-
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         switch (direction) {
 
             case ShotDirection.DOWN: {
@@ -41,6 +42,9 @@ public class WallShooter : MonoBehaviour
 
 
     private void shot() {
+
+        if (Vector3.Distance(player.transform.position, transform.position) > 30)
+            return;
 
         LinearBullet bullet = Instantiate(linearBulletPrefab, transform.position, Quaternion.identity, null).GetComponent<LinearBullet>();
         int height = LevelManager.Instance.getTileLevel(transform.position);

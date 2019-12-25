@@ -207,6 +207,8 @@ public class RangeAttk : MonoBehaviour
 
     void CreateLine(AbstractEnemy e) {
 
+        if (e == null)
+            return;
 
         GameObject lineContainer = new GameObject();
         lineContainer.name = "RayLine";

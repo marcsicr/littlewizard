@@ -26,8 +26,23 @@ public abstract class ItemContainer : MonoBehaviour{
     protected IEnumerator throwLootCo(Item throwItem) {
         
         Vector2 start = transform.position;
-        Vector2 end = start + Random.insideUnitCircle.normalized * 2;
 
+
+        Vector2 end;// = start + Random.insideUnitCircle.normalized * 2;
+
+        RaycastHit2D hit;
+        //Random.InitState(System.DateTime.Now.Millisecond);
+        do {
+            end = start + Random.insideUnitCircle.normalized * 2;
+            hit = Physics2D.CircleCast(start,0.4f, end - start);
+           
+        } while (hit.collider.tag == "Untagged" || hit.collider.tag == "Item");
+        
+       // = Physics2D.Raycast(start, end - start);
+       /* if (hit.collider.tag != "ItemContainer" && hit.collider.tag != "Item") {
+            Debug.Log("Hitted something:" + hit.collider.tag);
+        }*/
+        
         Vector2 middle = Bezier.computeElipticalP1(start, end);
         
        Item itemInstance = GameObject.Instantiate(throwItem, transform.position, Quaternion.identity).GetComponent<Item>();

@@ -369,4 +369,10 @@ public class Player : Character{
         
    
     }
+
+    public override int getMapHeight() {
+
+        Vector3 pos = getCollisionCenterPoint();
+        return LevelManager.Instance.getTileLevel(pos);
+    }
 }

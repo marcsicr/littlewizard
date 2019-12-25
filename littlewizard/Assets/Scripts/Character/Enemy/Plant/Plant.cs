@@ -11,18 +11,17 @@ public class Plant : Enemy
     public float teleportInterval = 4.5f;
     private float nextTeleport;
     public float teleportRadius;
-    //private Material materiaL;
-    private int currentPosIndex;
+
     BoxCollider2D myCollider;
-   
+
     public void Awake() {
-        //materiaL = gameObject.GetComponent<SpriteRenderer>().material;
+
         myCollider = gameObject.GetComponent<BoxCollider2D>();
     }
-    //private float nextAttackAvailable;
+    
+
     public override void OnGetKicked(int attack) {
 
-       
         StartCoroutine(KickEffectCo());
 
         HP -= attack;
@@ -38,10 +37,7 @@ public class Plant : Enemy
     public override void Start()
     {
         base.Start();
-        if(bullet == null) {
-            Debug.Log("Plant Error: Missing bullet");
-        }
-
+       
         state = PlantState.IDLE;
         player = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<Player>();
 
@@ -50,7 +46,7 @@ public class Plant : Enemy
 
         base.nextAttackAvailable = Time.time + attackInterval+Random.Range(0,1);
         nextTeleport = Time.time + teleportInterval;
-        currentPosIndex = 0;
+      
         spawnLocation = transform.position;
 
         if (debugCharacter) {
@@ -70,7 +66,8 @@ public class Plant : Enemy
     }
 
     protected override void attackAction() {
-        
+
+            state = PlantState.ATTACKING;
             StartCoroutine(plantShotCo());
     }
     //Instantiate bullets and shot
@@ -133,7 +130,7 @@ public class Plant : Enemy
         mat.SetFloat("_Width", 0);
         mat.SetFloat("_Brightness", 0);
         state = PlantState.IDLE;
-
+       
     }
 
     // Update is called once per frame
@@ -146,10 +143,9 @@ public class Plant : Enemy
                 case PlantState.IDLE:
                     if (attackAtempt() && isPlayerInAttackRadius()) {
                         state = PlantState.ATTACKING;
-                    }
-
-                    if (teleportAtempt() && isPlayerInChaseRadius()) {
-                        state = PlantState.TELEPORTING;
+                        
+                    } else {
+                        teleportAtempt();
                     }
 
                     break;
@@ -166,23 +162,22 @@ public class Plant : Enemy
 
     
 
-    public bool teleportAtempt() {
+    public void teleportAtempt() {
 
-        if (Time.time > nextTeleport) {
+        if (Time.time > nextTeleport && isPlayerInChaseRadius()) {
             //mat.SetFloat("_Width", 0);
             //mat.SetFloat("_Brightness", 0);
-            StopAllCoroutines();
+           // StopAllCoroutines();
             mat.SetFloat("_Width", 0);
             mat.SetFloat("_FlashAmount", 0);
             mat.SetFloat("_Brightness", 0);
+            state = PlantState.TELEPORTING;
             StartCoroutine(TeletransportCo());
-            return true;
+            
         }
-        return false;
     }
     public IEnumerator TeletransportCo() {
 
-       
         bar.transform.parent.gameObject.SetActive(false);
         myCollider.enabled = false;
         
