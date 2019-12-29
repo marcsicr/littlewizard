@@ -151,5 +151,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d63a52e18d397408e0e009e638a58d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwDirection: {x: 0, y: 0}
-  throwItem: {fileID: 0}
+  openClip: {fileID: 8300000, guid: 86b5310c73e517249876818d358d6b5b, type: 3}
+  throwItems: []

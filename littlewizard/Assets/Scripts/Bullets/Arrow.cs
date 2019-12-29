@@ -60,7 +60,7 @@ public class Arrow : ElipticalBullet{
             yield return new WaitForEndOfFrame();
         }
 
-
+        SoundManager.Instance.playEffect(bulletHitClip);
         GetComponent<Collider2D>().enabled = false;
 
         StartCoroutine(dissapearCo(1));
@@ -88,6 +88,8 @@ public class Arrow : ElipticalBullet{
 
 
     public override void onCollision(Vector2 collisionPoint) {
+
+        SoundManager.Instance.playEffect(bulletHitClip);
         Destroy(gameObject);
     }
 }

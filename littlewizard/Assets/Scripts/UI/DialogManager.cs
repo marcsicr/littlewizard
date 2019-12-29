@@ -20,23 +20,12 @@ public class DialogManager : MonoBehaviour {
 
         if (Instance == null) {
             Instance = this;
-
-            //SceneManager.sceneLoaded += OnLevelFinishedLoading;
             DontDestroyOnLoad(gameObject);
         } else {
 
             Destroy(gameObject);
         }
     }
-
-    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
-        //dialogBox = transform.Find("/UILayout/DialogBox").gameObject;
-        //messageBox = transform.Find("/UILayout/SignMessageBox").gameObject.GetComponent<SignMessageBox>();
-        //messageBox.gameObject.SetActive(false);
-        //dialog = new Queue<DialogMessage>();
-        //dialogBox.SetActive(false); 
-    }
-    
 
     public void displayMessage(string message) {
 

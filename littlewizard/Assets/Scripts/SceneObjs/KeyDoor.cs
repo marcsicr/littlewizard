@@ -5,6 +5,7 @@ using UnityEngine;
 public class KeyDoor : MonoBehaviour
 {
     public PortalTransfer portal;
+    public AudioClip openClip;
     Inventory inventory;
     Animator myAnimator;
    
@@ -19,6 +20,8 @@ public class KeyDoor : MonoBehaviour
         if (other.CompareTag(Player.TAG)) {
             
             if (inventory.useKey()) {
+
+                SoundManager.Instance.playEffect(openClip);
                 myAnimator.SetBool("open", true);
 
                 portal.gameObject.SetActive(true);

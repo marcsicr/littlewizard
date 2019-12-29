@@ -11,9 +11,6 @@ public class Mirror : MonoBehaviour
         mirrorNormal.Normalize();
     }
     private void OnTriggerEnter2D(Collider2D other) {
-
-        //Vector2 mirrorNormal = new Vector2(1f, -1f);
-
         if (other.CompareTag("Bullet")) {
 
             LinearBullet bullet = other.GetComponent<LinearBullet>();
@@ -37,10 +34,7 @@ public class Mirror : MonoBehaviour
     public Vector2 reflect(Vector2 direction) {
 
         Vector2 res;
-        //res = roundDirection(direction);
-
         res = Vector2.Reflect(direction, mirrorNormal);
-
         res = roundDirection(res);
 
         return res;

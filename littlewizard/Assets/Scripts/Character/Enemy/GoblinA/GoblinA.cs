@@ -6,6 +6,7 @@ public class GoblinA : Enemy
 {
   private enum GolbinAState { patrol,attack,idle}
 
+    public AudioClip shotClip;
     private Vector3[] patrolPoints;
     public GameObject arrowPrefab;
     private bool shooting = false;
@@ -75,6 +76,9 @@ public class GoblinA : Enemy
         Vector2 direction = getDirectionToPlayer();
         GameObject arrow = Instantiate(arrowPrefab, new Vector3(transform.position.x + direction.x, transform.position.y + direction.y, transform.position.z), Quaternion.identity);
         Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
+        SoundManager.Instance.playEffect(shotClip);
+
         arrow.GetComponent<Arrow>().shot(player.getCollisionCenterPoint());
 
         shooting = false;

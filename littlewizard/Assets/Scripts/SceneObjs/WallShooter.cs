@@ -43,7 +43,7 @@ public class WallShooter : MonoBehaviour
 
     private void shot() {
 
-        if (Vector3.Distance(player.transform.position, transform.position) > 30)
+        if (Vector3.Distance(player.transform.position, transform.position) > 15)
             return;
 
         LinearBullet bullet = Instantiate(linearBulletPrefab, transform.position, Quaternion.identity, null).GetComponent<LinearBullet>();

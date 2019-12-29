@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BookBtn : MonoBehaviour
 {
-    GameObject spellBook;
-    void Start()
-    {
-        spellBook = transform.parent.parent.Find("SpellsBook").gameObject;
+    bool isOpen = false;
+    public GameObject bookPrefab;
+    SpellsBook book;
+    void Start(){
+       
         
     }
 
@@ -19,7 +20,16 @@ public class BookBtn : MonoBehaviour
 
    public void OnClick() {
 
+        if (!isOpen) {
 
-        spellBook.SetActive(!spellBook.activeInHierarchy);
+            book = Instantiate(bookPrefab, transform.Find("/UILayout"), false).GetComponent<SpellsBook>();
+            isOpen = true;
+        } else {
+
+            Destroy(book.gameObject);
+            isOpen = false;
+        }
+        
+       
     }
 }

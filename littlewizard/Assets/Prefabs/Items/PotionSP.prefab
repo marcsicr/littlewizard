@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb5bed94a8617c4e9c544e95664607a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectClip: {fileID: 8300000, guid: 7527a311b75821a4dbf04570c82a7a06, type: 3}
   points: 150
   type: 1
 --- !u!61 &4448332224431690639

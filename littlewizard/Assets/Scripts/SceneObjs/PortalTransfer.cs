@@ -41,11 +41,15 @@ public class PortalTransfer : MonoBehaviour
 
     private IEnumerator waitEneter() {
 
+
         RectBoundaries b = boundsMan.getBoundaries();
         yield return new WaitForSeconds(0.2f);
         cam.updateBoundaries(b.topLeft, b.bottomRight,boundsMan.CameraSize);
         cam.transform.position = outPortal.transform.position;
         player.transform.position = outPortal.transform.position;
+        
         transitionOut.Raise();
+
+        SoundManager.Instance.changeSong(boundsMan.zoneSong);
     }
 }

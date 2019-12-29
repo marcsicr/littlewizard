@@ -265,8 +265,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 25
   lifetime: 12
+  shotClip: {fileID: 8300000, guid: b99e3aa15bbbbac4796ca0addd7edac0, type: 3}
+  bulletHitClip: {fileID: 0}
   speed: 15
   target: 1
+  shotClip: {fileID: 0}
 --- !u!50 &7236448545999820397
 Rigidbody2D:
   serializedVersion: 4

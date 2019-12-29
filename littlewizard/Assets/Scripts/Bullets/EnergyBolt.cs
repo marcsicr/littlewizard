@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnergyBolt : LinearBullet {
+
     public override void onCollision(Vector2 collisionPoint) {
 
         Vector2 hitDirection = collisionPoint - (Vector2)transform.position;

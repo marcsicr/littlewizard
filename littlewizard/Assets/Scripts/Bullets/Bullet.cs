@@ -8,7 +8,8 @@ public abstract class Bullet : MonoBehaviour
 {
     public int damage;
     public int lifetime;
- 
+
+    public AudioClip bulletHitClip;
 
     public float speed;
     protected float activeSpeed;
@@ -34,8 +35,13 @@ public abstract class Bullet : MonoBehaviour
 
     protected virtual void OnCollisionEnter2D(Collision2D other ) {
 
+       
+
         if (collided)
             return;
+
+        SoundManager.Instance.playEffect(bulletHitClip);
+
 
         ContactPoint2D contactPoint = other.GetContact(0);
        // Vector2 hitDirection = point.point - (Vector2)transform.position;

@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlantState { IDLE,ATTACKING,TELEPORTING};
+public enum PlantState { IDLE, ATTACKING, TELEPORTING, GAME_OVER };
 public class Plant : Enemy
 {
     PlantState state;
     public GameObject bullet;
+
+    public AudioClip teleportClip;
+    public AudioClip fireClip;
   
     public float teleportInterval = 4.5f;
     private float nextTeleport;
@@ -73,15 +76,15 @@ public class Plant : Enemy
     //Instantiate bullets and shot
     private IEnumerator plantShotCo() {
         
-        PlantBullet bulletUp = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + 0.9f, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
-        PlantBullet bulletUpR = Instantiate(bullet, new Vector3(transform.position.x+0.8f, transform.position.y + 0.9f, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
-        PlantBullet bulletUpL = Instantiate(bullet, new Vector3(transform.position.x - 0.8f, transform.position.y + 0.9f, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
-        PlantBullet bulletDown = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
-        PlantBullet bulletDownL = Instantiate(bullet, new Vector3(transform.position.x-0.8f, transform.position.y - 1f, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
-        PlantBullet bulletDownR = Instantiate(bullet, new Vector3(transform.position.x+0.8f, transform.position.y - 1f, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
+        CircleBullet bulletUp = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + 0.9f, transform.position.z), Quaternion.identity).GetComponent<CircleBullet>();
+        CircleBullet bulletUpR = Instantiate(bullet, new Vector3(transform.position.x+0.8f, transform.position.y + 0.9f, transform.position.z), Quaternion.identity).GetComponent<CircleBullet>();
+        CircleBullet bulletUpL = Instantiate(bullet, new Vector3(transform.position.x - 0.8f, transform.position.y + 0.9f, transform.position.z), Quaternion.identity).GetComponent<CircleBullet>();
+        CircleBullet bulletDown = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity).GetComponent<CircleBullet>();
+        CircleBullet bulletDownL = Instantiate(bullet, new Vector3(transform.position.x-0.8f, transform.position.y - 1f, transform.position.z), Quaternion.identity).GetComponent<CircleBullet>();
+        CircleBullet bulletDownR = Instantiate(bullet, new Vector3(transform.position.x+0.8f, transform.position.y - 1f, transform.position.z), Quaternion.identity).GetComponent<CircleBullet>();
 
-        PlantBullet bulletLeft = Instantiate(bullet, new Vector3(transform.position.x - 0.8f, transform.position.y, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
-        PlantBullet bulletRight = Instantiate(bullet, new Vector3(transform.position.x + 0.8f, transform.position.y, transform.position.z), Quaternion.identity).GetComponent<PlantBullet>();
+        CircleBullet bulletLeft = Instantiate(bullet, new Vector3(transform.position.x - 0.8f, transform.position.y, transform.position.z), Quaternion.identity).GetComponent<CircleBullet>();
+        CircleBullet bulletRight = Instantiate(bullet, new Vector3(transform.position.x + 0.8f, transform.position.y, transform.position.z), Quaternion.identity).GetComponent<CircleBullet>();
 
         float duration = 0.5f;
         float maxOutlineWidth = 0.0032f;
@@ -97,6 +100,7 @@ public class Plant : Enemy
         }
         mat.SetFloat("_Width", maxOutlineWidth);
 
+        SoundManager.Instance.playEffect(fireClip);
         int height = getMapHeight();
 
         bulletUp.setShotHeight(height);
@@ -157,6 +161,9 @@ public class Plant : Enemy
                 case PlantState.ATTACKING:
                     break;
 
+               case PlantState.GAME_OVER: {
+                    break;
+                }
             }          
     }
 
@@ -178,6 +185,7 @@ public class Plant : Enemy
     }
     public IEnumerator TeletransportCo() {
 
+        SoundManager.Instance.playEffect(teleportClip);
         bar.transform.parent.gameObject.SetActive(false);
         myCollider.enabled = false;
         
@@ -215,8 +223,8 @@ public class Plant : Enemy
     }
 
     public override void onGameOver() {
-        
 
+        state = PlantState.GAME_OVER;
     }
 
 }

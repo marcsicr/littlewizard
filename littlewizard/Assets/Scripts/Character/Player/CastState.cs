@@ -60,6 +60,7 @@ public class CastState : PlayerState {
             Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), bullet.GetComponent<Collider2D>());
             yield return new WaitForSeconds(0.2f);
 
+            SoundManager.Instance.playVoice(player.castClips[0]);
             bullet.setShotHeight(player.getMapHeight());
             int damage = SpellsManager.Instance.computeSpellDamage(spell);
 
@@ -77,6 +78,8 @@ public class CastState : PlayerState {
         if(spell == Spell.SHIELD) {
 
             float duration = SpellsManager.Instance.computeSpellDuration(spell);
+
+            SoundManager.Instance.playVoice(player.castClips[1]);
             player.createShield(duration);
             UpdatePlayerSP(spell);
             player.spellCasted.Raise(spell);
@@ -95,7 +98,7 @@ public class CastState : PlayerState {
 
             ray.setDuration(duration);
             ray.setDamage(damage);
-            
+            SoundManager.Instance.playVoice(player.castClips[2]);
             ray.shot(castDirection);
 
             player.spellCasted.Raise(spell);

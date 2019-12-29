@@ -5,38 +5,51 @@ using UnityEngine;
 
 public class Pushable : MonoBehaviour {
 
-    [SerializeField] private Rigidbody2D myRigidbody;
+
+    public AudioClip pushClip;
+    private AudioSource audioSource;
+    private Rigidbody2D myRigidbody;
     private Vector2 startPosition;
 
+   
+
     public void Start() {
+
+        myRigidbody = GetComponent<Rigidbody2D>();
         startPosition = myRigidbody.position;
+        audioSource = GetComponent<AudioSource>();
     }
 
+    
+
     private void OnCollisionEnter2D(Collision2D collision) {
+
+        
 
         if (collision.gameObject.CompareTag("Enemy")) {
             myRigidbody.velocity = Vector2.zero;
             myRigidbody.angularVelocity = 0;
-        }
-        
-        if (collision.gameObject.CompareTag("Bullet")) {
+
+            
+        }else if (collision.gameObject.CompareTag("Bullet")) {
+            
             StartCoroutine(stopHitCo());
-        }
-    }
+        } else {
 
-    private void OnTriggerEnter2D(Collider2D other) {
+            audioSource.Play();
+        }
+
         
-        if (other.CompareTag("Enemy")){
-
-            myRigidbody.isKinematic = true;
-            //myRigidbody.bodyType = RigidbodyType2D.Static;
-        }
     }
+
+
     private void OnCollisionExit2D(Collision2D collision) {
 
 
         myRigidbody.velocity = Vector2.zero;
         myRigidbody.angularVelocity = 0;
+
+        audioSource.Stop();
     }
 
     private IEnumerator stopHitCo() { 
@@ -46,6 +59,15 @@ public class Pushable : MonoBehaviour {
         myRigidbody.angularVelocity = 0;
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+
+        if (other.CompareTag("Enemy")) {
+            myRigidbody.isKinematic = true;
+            //myRigidbody.bodyType = RigidbodyType2D.Static;
+        }
+    }
+
+
     private void OnTriggerExit2D(Collider2D other) {
 
         if (other.CompareTag("Enemy")) {
@@ -53,6 +75,8 @@ public class Pushable : MonoBehaviour {
             //myRigidbody.bodyType = RigidbodyType2D.Dynamic;
         }
     }
+
+    
 
     private IEnumerator resetPositionCo() {
 

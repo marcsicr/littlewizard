@@ -16,6 +16,7 @@ public class SceneEnter : MonoBehaviour
     private void Awake() {
 
         text = Instantiate(textIntroPrefab, transform.Find("/UILayout"), false).GetComponent<SceneText>();
+        AudioListener.pause = true;
         
     }
 
@@ -33,22 +34,12 @@ public class SceneEnter : MonoBehaviour
         yield return StartCoroutine(text.writeEffectCo("Once upon a time in a magic land...", writeSpeed,timeout));
         yield return new WaitForSeconds(1f);
         yield return StartCoroutine(text.fadeOutCo(timeout));
-        yield return StartCoroutine(text.writeEffectCo("There was a young wizard who was about to undertake a mission he would never forget... ", writeSpeed,timeout));
-        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(text.writeEffectCo("There was a young wizard ready to take a mission he would never forget... ", writeSpeed,timeout));
+        yield return new WaitForSeconds(1.5f);
         yield return StartCoroutine(text.fadeOutCo(timeout));
 
         director.play();
         yield return StartCoroutine(fade.onlyFadeIn(0.2f));
-        
-        
        
-        //fade.setOpaque();
-        //director.playAndPause();
-        //yield return new WaitForSeconds(0.5f);
-        //yield return StartCoroutine(text.writeEffectCo("Once a upon a time..."));
-        //yield return new WaitForSeconds(2);
-        //yield return StartCoroutine(text.fadeOutCo(1));
-        //yield return StartCoroutine(fade.onlyFadeIn(0.5f));
-        //director.resume();
     }
 }

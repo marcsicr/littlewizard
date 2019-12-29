@@ -263,4 +263,6 @@ public class RangeAttk : MonoBehaviour
 
         attackPower = damage;
     }
+
+   
 }

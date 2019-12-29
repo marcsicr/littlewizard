@@ -19,6 +19,11 @@ public class BossStatusBar : MonoBehaviour
 
     public void onBossDefeated() {
 
-        Destroy(this.gameObject);
+        Invoke("hideBar", 1f);
+        //Destroy(this.gameObject);
+    }
+
+    void hideBar() {
+        this.gameObject.SetActive(false);
     }
 }

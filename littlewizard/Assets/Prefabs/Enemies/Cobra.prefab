@@ -186,6 +186,7 @@ MonoBehaviour:
   attackPower: 10
   minDistance: 1.3
   attackInterval: 1
+  kickClip: {fileID: 8300000, guid: db0601f18c1aed944a61a11813850825, type: 3}
 --- !u!95 &3142367627504328921
 Animator:
   serializedVersion: 3

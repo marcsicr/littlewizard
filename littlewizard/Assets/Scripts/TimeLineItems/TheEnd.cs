@@ -18,7 +18,7 @@ public class TheEnd : MonoBehaviour
 
     public IEnumerator theEndCo() {
 
-
+        yield return StartCoroutine(SoundManager.Instance.theEndCo());
         yield return StartCoroutine(fade.onlyFadeOut(2));
         yield return StartCoroutine(text.writeEffectCo("THE END", 0.2f, 4,TMPro.TextAlignmentOptions.Center,96));
         yield return new WaitForSeconds(3);

@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour{
 
         Destroy(LevelManager.Instance.gameObject);
         Destroy(DialogManager.Instance.gameObject);
+        Destroy(SoundManager.Instance.gameObject);
         SpellsManager.Instance.resetInstance();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 

@@ -9,7 +9,7 @@ public class CameraPlayer : MonoBehaviour
     public float smoothing;
     public Vector2 topLeft;
     public Vector2 bottomRight;
-    public BoundsManager initialBounds;
+   
     private bool shaking = false;
 
     //Camera boundaries to make it Camera size independent
@@ -18,12 +18,11 @@ public class CameraPlayer : MonoBehaviour
    
 
     // Start is called before the first frame update
-    void Start()
-    {
-        RectBoundaries bounds = initialBounds.getBoundaries();
+    void Start(){
+      
+        RectBoundaries bounds = LevelManager.Instance.startBoundaries();
         computeCamBundaries(bounds.topLeft, bounds.bottomRight);
-        //computeCamBundaries(topLeft, bottomRight);
-        //target = GameObject.FindGameObjectWithTag("Player").transform;
+        
         cam = gameObject.GetComponent<Camera>();
         //Debug.Log("Pixel width :" + cam.pixelWidth + " Pixel height : " + cam.pixelHeight);
        
@@ -34,7 +33,6 @@ public class CameraPlayer : MonoBehaviour
     {
 
         if (!shaking) {
-
             Vector3 targetPosition = target.position + new Vector3(0, 0, -1);
             Vector3 smoothPosition = Vector3.Lerp(transform.position, targetPosition, smoothing);
             transform.position = new Vector3(Mathf.Clamp(smoothPosition.x, wtl.x, wbr.x), Mathf.Clamp(smoothPosition.y, wbr.y, wtl.y), smoothPosition.z);

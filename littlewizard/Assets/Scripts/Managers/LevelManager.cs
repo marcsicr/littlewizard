@@ -9,20 +9,25 @@ public class LevelManager : MonoBehaviour {
 
     public static LevelManager Instance { get; private set; }
 
+
+    public BoundsManager initialBounds;
+
     public Signal gemCaughtSignal;
-  
+
     private Tilemap heightsMap;
 
-    Dictionary<int, GameObject> dictionary;
-    List<GameObject> gemsCaught;
+    int gemsInLevel;
+    int gemsCaught;
+
+    
 
     private void Awake() {
 
         if (Instance == null) {
             Instance = this;
 
-            dictionary = new Dictionary<int, GameObject>();
-            gemsCaught = new List<GameObject>();
+            gemsInLevel = 0;
+            gemsCaught = 0;
             heightsMap = GameObject.FindGameObjectWithTag("HeightsMap").GetComponent<Tilemap>();
 
             DontDestroyOnLoad(gameObject);
@@ -35,29 +40,38 @@ public class LevelManager : MonoBehaviour {
 
 
     public void registerGem(GameObject gem) {
-        dictionary.Add(gem.GetInstanceID(), gem);
+
+        gemsInLevel++;
         gemCaughtSignal.Raise();
+
     }
 
     public void addGemCaught(GameObject gem) {
-        gemsCaught.Add(gem);
+        gemsCaught++;
         gemCaughtSignal.Raise();
 
     }
 
+    public RectBoundaries startBoundaries() {
+
+        SoundManager.Instance.changeSong(initialBounds.zoneSong);
+        return initialBounds.getBoundaries();
+    }
+
     public int gemsCaughtCount() {
-        return gemsCaught.Count;
+        return gemsCaught;
     }
 
     public int gemsOnLevel() {
-        return dictionary.Count;
+        return gemsInLevel;
     }
 
 
     public void resetInstance() {
 
-        dictionary = new Dictionary<int, GameObject>();
-        gemsCaught = new List<GameObject>();
+        gemsInLevel = 0;
+        gemsCaught = 0;
+    
     }
 
     public void destory() {
@@ -68,7 +82,7 @@ public class LevelManager : MonoBehaviour {
     public int getTileLevel(Vector3 worldPosition) {
 
         Tile tile = heightsMap.GetTile<Tile>(heightsMap.WorldToCell(worldPosition));
-        if(tile == null) {
+        if (tile == null) {
             return 999;
         }
 

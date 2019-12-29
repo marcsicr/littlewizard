@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SpellIndex : MonoBehaviour
 {
+    public AudioClip turnPageClip;
     public Sprite selected;
     public Sprite unSelected;
 
@@ -18,9 +19,14 @@ public class SpellIndex : MonoBehaviour
     }
 
     public void onClick() {
-
-        if(spell != Spell.NONE)
+        
+        SoundManager.Instance.playEffect(turnPageClip);
+        
+        if (spell != Spell.NONE) {    
             book.showSpell(spell);
+        }
+
+           
 
         Debug.Log("OnClick");
     }

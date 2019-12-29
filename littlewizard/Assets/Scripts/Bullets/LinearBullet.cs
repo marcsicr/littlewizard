@@ -22,11 +22,11 @@ public abstract class LinearBullet : Bullet{
     }
 
     private void Update() {
-
         if (!collided) {
 
             if (LevelManager.Instance.getTileLevel(transform.position) > shotHeight) {
-               // Debug.Log("Destroyed by level");
+                collided = true;
+                SoundManager.Instance.playEffect(bulletHitClip);
                 onCollision(transform.position);
             }
         }
@@ -47,6 +47,8 @@ public abstract class LinearBullet : Bullet{
         Collider2D collider = this.GetComponent<Collider2D>();
         collider.enabled = true;
 
+        
+
        // Destroy(gameObject, lifetime);
 
     }
@@ -59,6 +61,7 @@ public abstract class LinearBullet : Bullet{
 
         if (heightOfCollision >= shotHeight) {
 
+            GetComponent<Collider2D>().enabled = false;
             base.OnCollisionEnter2D(other);
 
         } else {

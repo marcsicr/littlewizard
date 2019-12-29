@@ -293,8 +293,25 @@ MonoBehaviour:
   stamina: {fileID: 11400000, guid: 8f556433ab61e3c478d1658f70949f59, type: 2}
   gameOverSignal: {fileID: 11400000, guid: 8622d57c1f2891d42bbb0058c89fb19f, type: 2}
   spellCasted: {fileID: 11400000, guid: ed4bb6cd787372c42ab6d3d4681d3b73, type: 2}
+  castClips:
+  - {fileID: 8300000, guid: c2f025def32d35241ad1dcd84bea9866, type: 3}
+  - {fileID: 8300000, guid: a15912bc01cb78945965b831c32385b6, type: 3}
+  - {fileID: 8300000, guid: b2148503f848f9d4d977de3a970a5499, type: 3}
+  damagedClips:
+  - {fileID: 8300000, guid: 4c8c05dd22b41fb43aac222eb67e8de4, type: 3}
+  - {fileID: 8300000, guid: bf9c30fdff0beb34e9f594b8ce9bd8ef, type: 3}
+  - {fileID: 8300000, guid: 516fe3164322af74a837d20e25dfa1aa, type: 3}
+  staffKickClips:
+  - {fileID: 8300000, guid: cdc706d97c587a34cbf03fe745f1d71f, type: 3}
+  - {fileID: 8300000, guid: f95dfa79d82b48445849f625f463abeb, type: 3}
+  - {fileID: 8300000, guid: b44d887be43702c4183f4ffddad6481f, type: 3}
+  healClips:
+  - {fileID: 8300000, guid: a9138d02438531640b6198ecf446bd9a, type: 3}
+  - {fileID: 8300000, guid: a816a150f3f55014fa3ac87c3c1c24fc, type: 3}
+  - {fileID: 8300000, guid: 8bf7ebfe3b3a83e4d9f7b24064acc9c0, type: 3}
   showingAlertBubble: 0
   startOnPortal: 1
+  startFreezed: 0
   boltPrefab: {fileID: 8322000851611868158, guid: 77983ce53cb67894aba2e8c142ea5bf1,
     type: 3}
   rayAttkPrefab: {fileID: 5682960449793754693, guid: d0ff362d271fc4543bb781a0c83e14c7,
@@ -576,7 +593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92902ae196bdf34bb26c17c4771bd10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
 --- !u!1 &2904617556346217328
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,6 +806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KickPower: 10
+  hitClips: []
 --- !u!1 &8379309463051919044
 GameObject:
   m_ObjectHideFlags: 0

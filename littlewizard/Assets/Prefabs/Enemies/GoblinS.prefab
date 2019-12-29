@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb281a327ec3a64a90c7e8031231fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kickClip: {fileID: 8300000, guid: db0601f18c1aed944a61a11813850825, type: 3}
 --- !u!1 &3089105381390240506
 GameObject:
   m_ObjectHideFlags: 0

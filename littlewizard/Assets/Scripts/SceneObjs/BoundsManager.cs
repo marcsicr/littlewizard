@@ -11,7 +11,7 @@ public class BoundsManager : MonoBehaviour
 {
 
     RectBoundaries mapBoundaries;
-  
+    public SONG zoneSong;
 
     public float CameraSize;
 

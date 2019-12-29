@@ -12,18 +12,7 @@ public class MushroomShot : LinearBullet
 
     private bool exploding = false;
     // Start is called before the first frame update
-    void Start()
-    {
-
-
-        /* GameObject target = GameObject.FindGameObjectWithTag("Player");
-         direction = target.transform.position - gameObject.transform.position;
-         direction.Normalize();
-
-         //Rotate magic bullet
-         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);*/
-
+    void Start(){
         rend = gameObject.GetComponent<Renderer>();
 
     }
@@ -37,6 +26,7 @@ public class MushroomShot : LinearBullet
        
 
         bulletSparks.Stop();
+        SoundManager.Instance.playEffect(bulletHitClip);
         explosionParticles.Play();
         activeSpeed = 0;
         rend.enabled = false;

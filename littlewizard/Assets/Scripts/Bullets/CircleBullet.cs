@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlantBullet : LinearBullet
+public class CircleBullet : LinearBullet
 {
     public override void shot(Vector2 direction) {
 
@@ -13,12 +13,17 @@ public class PlantBullet : LinearBullet
     public IEnumerator explodeCo() {
         activeSpeed = 0;
         myAnimator.SetTrigger("explode");
+        Debug.Log("Mutiple calls?");
+       
         yield return new WaitForSeconds(0.5f);
+        
         Destroy(gameObject);
     }
 
     public override void onCollision(Vector2 collisionPoint) {
-       StartCoroutine(explodeCo());
+
+        StartCoroutine(explodeCo());
+        
     }
 
 }

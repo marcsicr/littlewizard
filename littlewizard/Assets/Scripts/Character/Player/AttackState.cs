@@ -6,9 +6,9 @@ public class AttackState : PlayerState {
 
     private static float maxDist = 0.8f;
 
-    Vector3 clickPoint;
+    
     Vector2 direction;
-    Vector3 startPoint;
+    
     public bool started_co;
 
 
@@ -17,12 +17,9 @@ public class AttackState : PlayerState {
 
         direction.Normalize();
         this.direction = direction;
-       
 
-        //startPoint = new Vector3(playerRB.position.x, playerRB.position.y,0);
-
-        //direction = clickPoint - startPoint;
-       
+        int randomIndex = Random.Range(0, player.staffKickClips.Length);
+        SoundManager.Instance.playVoice(player.staffKickClips[randomIndex]);
         playerAnimator.SetTrigger("attack");
 
     }

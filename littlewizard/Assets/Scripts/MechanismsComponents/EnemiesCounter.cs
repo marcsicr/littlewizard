@@ -8,7 +8,7 @@ public class EnemiesCounter : Activator {
     private int enemiesCurrent;
     private bool notified = false;
     private Counter counter;
-    void Start() {
+    protected override void  Start() {
         base.Start();
         Debug.Log("Number of enemies:" + transform.GetComponentsInChildren<AbstractEnemy>().Length);
 

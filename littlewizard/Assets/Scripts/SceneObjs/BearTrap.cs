@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BearTrap : MonoBehaviour
 {
+    public AudioClip closeClip;
     public int damage = 5;
     private Animator myAnimator;
     private Player player;
@@ -18,7 +19,8 @@ public class BearTrap : MonoBehaviour
         if (other.CompareTag("Player")) {
 
 
-          
+
+            SoundManager.Instance.playEffect(closeClip);
             myAnimator.SetBool("close", true);
             player.OnGetKicked(damage);
             player.removeShield();

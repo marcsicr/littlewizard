@@ -21,25 +21,25 @@ MonoBehaviour:
   - m_ElementType: 2
     m_Unicode: 0
     m_GlyphIndex: 0
-    m_Scale: 2
+    m_Scale: 2.2
     m_Name: 1
     m_HashCode: 49
   - m_ElementType: 2
     m_Unicode: 0
     m_GlyphIndex: 1
-    m_Scale: 2
+    m_Scale: 2.2
     m_Name: 2
     m_HashCode: 50
   - m_ElementType: 2
     m_Unicode: 0
     m_GlyphIndex: 2
-    m_Scale: 2
+    m_Scale: 2.2
     m_Name: 3
     m_HashCode: 51
   - m_ElementType: 2
     m_Unicode: 0
     m_GlyphIndex: 3
-    m_Scale: 2
+    m_Scale: 2.2
     m_Name: space
     m_HashCode: 134760324
   - m_ElementType: 2
@@ -68,7 +68,7 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 32
       m_Height: 32
-      m_HorizontalBearingX: 0
+      m_HorizontalBearingX: -10
       m_HorizontalBearingY: 24
       m_HorizontalAdvance: 32
     m_GlyphRect:

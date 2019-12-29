@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1398805068855969768}
   - component: {fileID: 1398805068855969770}
   - component: {fileID: 1398805068855969771}
+  - component: {fileID: 5497981182951890923}
   m_Layer: 15
   m_Name: Plant
   m_TagString: Untagged
@@ -118,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08456659, y: -0.30046225}
+  m_Offset: {x: -0.06791733, y: -0.34411407}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -129,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5127325, y: 0.91453266}
+  m_Size: {x: 0.46959785, y: 0.8046565}
   m_EdgeRadius: 0
 --- !u!95 &1398805068855969770
 Animator:
@@ -165,14 +166,43 @@ MonoBehaviour:
   speed: 2
   debugCharacter: 0
   HP: 50
-  playerDiscoverRadius: 5
+  playerDiscoverRadius: 10
   attackRadius: 12
   attackPower: 10
   minDistance: 2.5
   attackInterval: 2
   bullet: {fileID: 5285576163405724483, guid: 2b4a6351c511e7447b2f255bf49a74d5, type: 3}
+  teleportClip: {fileID: 8300000, guid: ed482f59ec811634d9269a2eea2846c2, type: 3}
+  fireClip: {fileID: 8300000, guid: b99e3aa15bbbbac4796ca0addd7edac0, type: 3}
   teleportInterval: 2
   teleportRadius: 5
+--- !u!114 &5497981182951890923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398805068855969773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f8592610e6b824b974ef74467e1254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 8622d57c1f2891d42bbb0058c89fb19f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1398805068855969771}
+        m_MethodName: onGameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1398805069248563378
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class RootAttack : MonoBehaviour
 {
     private int attackPower = 1;
-
+    public AudioClip hitClip;
     private Animator myAnimator;
 
     public void Start() {
@@ -29,6 +29,7 @@ public class RootAttack : MonoBehaviour
         
         if(other.tag == "Player") {
 
+            SoundManager.Instance.playEffect(hitClip);
             Player p = other.gameObject.GetComponent<Player>();
             p.OnGetKicked(attackPower);
         }

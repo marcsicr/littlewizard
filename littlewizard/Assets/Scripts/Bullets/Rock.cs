@@ -50,6 +50,7 @@ public class Rock : ElipticalBullet
         }
 
         GetComponent<Collider2D>().enabled = false;
+        SoundManager.Instance.playEffect(bulletHitClip);
         StartCoroutine(dissapearCo(1));
 
         
@@ -74,15 +75,5 @@ public class Rock : ElipticalBullet
         }
 
         Destroy(gameObject);
-    }
-
-    private void Update() {
-
-        if (Input.GetKeyDown(KeyCode.Space)) {
-
-            Player p = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
-            shot(p.getCollisionCenterPoint());
-        }
     }
 }

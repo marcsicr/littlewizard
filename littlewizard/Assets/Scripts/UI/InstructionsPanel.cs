@@ -32,6 +32,8 @@ public class InstructionsPanel : MonoBehaviour
     }
 
     public void hideInstructions() {
+
+        AudioListener.pause = false;
         Destroy(gameObject);
     }
 

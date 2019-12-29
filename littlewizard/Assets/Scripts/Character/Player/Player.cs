@@ -26,6 +26,10 @@ public class Player : Character{
 
     public SpellSignal spellCasted;
 
+    public AudioClip[] castClips;
+    public AudioClip[] damagedClips;
+    public AudioClip[] staffKickClips;
+    public AudioClip[] healClips;
 
     private Shield shield;
     private bool isInvencible;
@@ -40,6 +44,8 @@ public class Player : Character{
 
     private float nextSPRecup;
     private float recuPIntervalSP = 1f;
+
+    
     private bool freeze = true;
 
     public GameObject boltPrefab;
@@ -94,8 +100,6 @@ public class Player : Character{
             freeze = false;
             boxCollider.enabled = true;
         }
-
-        
     }
 
     private IEnumerator PlayerAppearCo(){
@@ -145,7 +149,6 @@ public class Player : Character{
     }
 
     public void createShield(float duration) {
-
         shield.create(duration);
     }
 
@@ -240,11 +243,12 @@ public class Player : Character{
 
         freeze = true;
         myAnimator.SetFloat("magnitude", 0);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         stunnedEffect.SetActive(true);
 
         while(timeOut > 0) {
             timeOut -= Time.deltaTime;
+            myRigidBody.velocity = Vector2.zero;
             yield return null;
         }
 
@@ -262,6 +266,10 @@ public class Player : Character{
         if(playerHP.getRunTimeValue() > 0) {
             if (playerHP.getRunTimeValue() > attack) {
                 playerHP.UpdateValue(playerHP.getRunTimeValue() - attack);
+
+                int randomIndex = Random.Range(0, damagedClips.Length);
+                SoundManager.Instance.playVoice(damagedClips[randomIndex]);
+
             } else {
                 playerHP.UpdateValue(0);
             }
@@ -292,6 +300,13 @@ public class Player : Character{
             usePotion(points, playerSP);
         }
 
+       
+        Invoke("playHealClip", 0.5f);
+    }
+
+    private void playHealClip() {
+        int randomIndex = Random.Range(0, healClips.Length);
+        SoundManager.Instance.playEffect(healClips[randomIndex]);
     }
 
     private void usePotion(int points, ObservableInteger var) {

@@ -204,6 +204,7 @@ MonoBehaviour:
   attackPower: 10
   minDistance: 1
   attackInterval: 1
+  shotClip: {fileID: 8300000, guid: 0a99e7e2a4570ce409ec4de3deb243dd, type: 3}
   arrowPrefab: {fileID: 2166835186345104390, guid: 5acd491c4e35d3a4d97dee1d0a91d89c,
     type: 3}
 --- !u!114 &1057805481690817726

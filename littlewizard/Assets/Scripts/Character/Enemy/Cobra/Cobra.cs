@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Cobra : Enemy
 {
-    
+    public AudioClip kickClip;
+
     //public float minDistance = 2.5f;
     
      public override void Start() {
@@ -17,6 +18,7 @@ public class Cobra : Enemy
         if (other.tag == "Player") {
 
             Player p = other.GetComponent<Player>();
+            SoundManager.Instance.playEffect(kickClip);
             p.OnGetKicked(attackPower);
         }
     }

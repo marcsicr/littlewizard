@@ -5,6 +5,8 @@ using UnityEngine;
 public class StaffKick : MonoBehaviour
 {
     public int KickPower;
+
+    public AudioClip[] hitClips;
     public void Update() {
 
        

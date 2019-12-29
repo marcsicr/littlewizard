@@ -4,11 +4,15 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
+    public AudioClip collectClip;
+
     protected bool collectable = true;
     private void OnTriggerEnter2D(Collider2D other) {
 
         if(other.CompareTag(Player.TAG) && collectable) {
             Player player = other.GetComponent<Player>();
+
+            SoundManager.Instance.playEffect(collectClip);
             onItemCollect(player);
             GetComponent<Collider2D>().enabled = false;
             StartCoroutine(collectEffectCo());

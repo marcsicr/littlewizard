@@ -179,5 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf01f6fd948c96649b9a457f3dee1213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectClip: {fileID: 8300000, guid: 2914c2d02e856e14eb8c7f8c32ef83df, type: 3}
   levelPortalPrefab: {fileID: 5546852018706223798, guid: 82751d49412fb5047bccdaa3e257d3bb,
     type: 3}

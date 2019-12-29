@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a3acdf3e14aa94d9e0da858f765abe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  closeClip: {fileID: 8300000, guid: e5e53384cc2de644f9802613ed07991e, type: 3}
   damage: 15
 --- !u!58 &4348648022559408681
 CircleCollider2D:

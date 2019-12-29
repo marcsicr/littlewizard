@@ -119,4 +119,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fad77fac605b1e4dad451f4872e7091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectClip: {fileID: 8300000, guid: 25973e56554868944bf500b7bec001bf, type: 3}
   keySignal: {fileID: 11400000, guid: 3f3526f0ec155554a961477bfa763f37, type: 2}

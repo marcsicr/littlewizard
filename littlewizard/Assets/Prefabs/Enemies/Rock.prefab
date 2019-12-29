@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 15
   lifetime: 4
+  bulletHitClip: {fileID: 8300000, guid: a6bded3e843232f4c9cc374b50dd78da, type: 3}
   speed: 2
   target: 0
 --- !u!50 &7021907588483967275

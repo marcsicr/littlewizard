@@ -74,7 +74,7 @@ public class TimelineDirector : MonoBehaviour
        /* Debug.Log(p.transform.position);
         if (director.state != PlayState.Playing && !bugFix && flag) {
 
-            Debug.Log("Fixed shit");
+            Debug.Log("Fixed");
             bugFix = true;
             playerAnimator.runtimeAnimatorController = playerRAC;
        
