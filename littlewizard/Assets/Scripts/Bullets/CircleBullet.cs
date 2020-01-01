@@ -13,7 +13,7 @@ public class CircleBullet : LinearBullet
     public IEnumerator explodeCo() {
         activeSpeed = 0;
         myAnimator.SetTrigger("explode");
-        Debug.Log("Mutiple calls?");
+       
        
         yield return new WaitForSeconds(0.5f);
         

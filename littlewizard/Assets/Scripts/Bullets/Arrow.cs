@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrow : ElipticalBullet{
+public class Arrow : ParabolicBullet{
 
 
     public override void shot(Vector2 point) {
@@ -13,9 +13,7 @@ public class Arrow : ElipticalBullet{
         //startMoving(direction);
         myAnimator.SetFloat("X", direction.x);
         myAnimator.SetFloat("Y", direction.y);
-        Destroy(gameObject, lifetime);
-
-
+  
         StartCoroutine(ArrowShotCo(point));
         
     }
@@ -41,7 +39,7 @@ public class Arrow : ElipticalBullet{
         //https://gamedev.stackexchange.com/questions/27056/how-to-achieve-uniform-speed-of-movement-on-a-bezier-curve
 
 
-        float dist = 0.2f;
+        float dist = speed; // Distance traveled each step
         Vector2 v1 = 2 * start - 4 * middle + 2 * end;
         Vector2 v2 = -2 * start + 2 * middle;
 

@@ -55,6 +55,6 @@ public class Log : Enemy
 
     
     protected override void attackAction() {
-        aRoot.attack(getPlayerTransform());
+        aRoot.attack(getPlayerPosition());
     }
 }

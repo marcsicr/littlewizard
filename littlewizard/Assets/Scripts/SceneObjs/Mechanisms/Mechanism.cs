@@ -31,27 +31,18 @@ public class Mechanism : MonoBehaviour
         activators.Add(activator.GetInstanceID(), activator);
     }
 
-  
-
+ 
     public void notifyStatusChange(Activator activator) {
-
-        activators[activator.GetInstanceID()] = activator;
-
-        //Calculate if mechanism is activated
-
         computeMechanismeStatus();
     }
 
-    
     private void computeMechanismeStatus() {
 
         bool activate = true;
-
         foreach( KeyValuePair<int,Activator> pair in activators) {
 
             activate &= pair.Value.getState();
         }
-
         notifyMechanismStatus(activate);
     }
 
@@ -61,14 +52,11 @@ public class Mechanism : MonoBehaviour
             foreach (Activable activable in activables) {
                 activable.Activate();
             }
-
         } else {
-
             foreach (Activable activable in activables) {
                 activable.Desactivate();
             }
-        }
-        
+        }   
     }
 
     public void Reset() {

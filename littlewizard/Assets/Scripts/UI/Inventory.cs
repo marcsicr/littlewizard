@@ -5,28 +5,19 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     GameObject keyIcon;
-    bool hasKey;
+
     public void Awake() {
         keyIcon = transform.Find("KeyIcon").gameObject;
     }
-    public void addKey() {
+    public void onKeyCaught() {
 
-        if(keyIcon != null) {
-            hasKey = true;
-            keyIcon.SetActive(true);
-        }
+        keyIcon.SetActive(true);
+
    }
 
-    /*Return true if the user uses the key*/
-    public bool useKey() {
+    public void onKeyUsed() {
 
-        if (hasKey) {
-           
-            keyIcon.SetActive(false);
-            hasKey = false;
-            return true;
-        }
-        return false;
-        
+        keyIcon.SetActive(false);
+
     }
 }

@@ -13,11 +13,16 @@ public class LevelManager : MonoBehaviour {
     public BoundsManager initialBounds;
 
     public Signal gemCaughtSignal;
+    
+    public Signal keyCaught;
+    public Signal keyUsed;
 
     private Tilemap heightsMap;
 
     int gemsInLevel;
     int gemsCaught;
+
+    bool hasKey;
 
     
 
@@ -67,10 +72,28 @@ public class LevelManager : MonoBehaviour {
     }
 
 
+    public bool useKey() {
+
+        if (hasKey) {
+            hasKey = false;
+            keyUsed.Raise();
+            return true;
+        }
+
+        return false;
+    }
+    public void addKey() {
+        hasKey = true;
+        keyCaught.Raise();
+    }
+
+    
+
     public void resetInstance() {
 
         gemsInLevel = 0;
         gemsCaught = 0;
+        hasKey = false;
     
     }
 

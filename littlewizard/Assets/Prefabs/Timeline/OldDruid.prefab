@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messages:
-  - charName: Druid
+  - charName: Old Wizard
     message: I was in so many places that I don't know where you should start searching
       for.
     charImage: {fileID: 21300000, guid: 30f2058c84502e04d971994d84458ded, type: 3}

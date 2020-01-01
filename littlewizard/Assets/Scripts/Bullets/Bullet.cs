@@ -7,7 +7,7 @@ public enum BulletTarget { Player, Enemy };
 public abstract class Bullet : MonoBehaviour
 {
     public int damage;
-    public int lifetime;
+  
 
     public AudioClip bulletHitClip;
 
@@ -40,7 +40,11 @@ public abstract class Bullet : MonoBehaviour
         if (collided)
             return;
 
-        SoundManager.Instance.playEffect(bulletHitClip);
+        GameObject player = GameObject.FindGameObjectWithTag(Player.TAG);
+        if (Vector3.Distance(transform.position, player.transform.position) < 20) {
+            SoundManager.Instance.playEffect(bulletHitClip);
+        }
+      //  SoundManager.Instance.playEffect(bulletHitClip);
 
 
         ContactPoint2D contactPoint = other.GetContact(0);

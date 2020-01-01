@@ -26,7 +26,12 @@ public abstract class LinearBullet : Bullet{
 
             if (LevelManager.Instance.getTileLevel(transform.position) > shotHeight) {
                 collided = true;
-                SoundManager.Instance.playEffect(bulletHitClip);
+
+                
+                GameObject player = GameObject.FindGameObjectWithTag(Player.TAG);
+                if(Vector3.Distance(transform.position,player.transform.position) < 20) {
+                    SoundManager.Instance.playEffect(bulletHitClip);
+                }
                 onCollision(transform.position);
             }
         }
@@ -66,7 +71,7 @@ public abstract class LinearBullet : Bullet{
 
         } else {
 
-            Debug.Log("Height Of collision" + heightOfCollision.ToString());
+            //Debug.Log("Height Of collision" + heightOfCollision.ToString());
             Physics2D.IgnoreCollision(other.collider, gameObject.GetComponent<Collider2D>());
            
         }

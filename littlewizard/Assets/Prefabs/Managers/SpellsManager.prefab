@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedSpell: 0
   spellSelected: {fileID: 11400000, guid: e7243554e0fa75b4ca06edfd7b2d7804, type: 2}
+  lvlUpSignal: {fileID: 11400000, guid: 01e7925295e264a4aba6a07d0d592796, type: 2}
 --- !u!114 &2878419775415985514
 MonoBehaviour:
   m_ObjectHideFlags: 0

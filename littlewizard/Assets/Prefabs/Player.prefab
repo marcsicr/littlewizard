@@ -311,7 +311,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bf7ebfe3b3a83e4d9f7b24064acc9c0, type: 3}
   showingAlertBubble: 0
   startOnPortal: 1
-  startFreezed: 0
   boltPrefab: {fileID: 8322000851611868158, guid: 77983ce53cb67894aba2e8c142ea5bf1,
     type: 3}
   rayAttkPrefab: {fileID: 5682960449793754693, guid: d0ff362d271fc4543bb781a0c83e14c7,

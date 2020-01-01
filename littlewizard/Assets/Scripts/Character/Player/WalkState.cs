@@ -13,23 +13,7 @@ public class WalkState : PlayerState {
 
 
     public override PlayerState handleInput() {
-        //Check first if we should change to another state
-
-        /*if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject()) {
-
-            Spell s = player.getActiveSpell();
-            if(s != Spell.NONE) {
-                return new CastState(player, Camera.main.ScreenToWorldPoint(Input.mousePosition), s,movement);
-            }
-
-            //If no spell is selected try to hit with staff
-            if (player.stamina.getRunTimeValue() > 0) {
-                return new AttackState(player, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            }
-
-
-        }*/
-
+      
         PlayerState state = handleAttack();
         if (state != null)
             return state;
@@ -38,15 +22,12 @@ public class WalkState : PlayerState {
         movement.y = Input.GetAxisRaw("Vertical");
         
 
-      
-
         if (movement != Vector2.zero) {
 
             Vector2 temp = movement.normalized;
             temp.x = Mathf.Round(temp.x);
             temp.y = Mathf.Round(temp.y);
             player.faceDirection = temp;
-            //player.faceDirection = movement.normalized;
             return this;
         } else {
 

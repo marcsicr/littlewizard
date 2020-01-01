@@ -53,7 +53,6 @@ public class WallShooter : MonoBehaviour
         bullet.speed = bulletSpeed;
         bullet.transform.localScale = scale * 1.2f;
         bullet.setShotHeight(height);
-        bullet.lifetime = 10;
         bullet.shot(_direction);
 
     }

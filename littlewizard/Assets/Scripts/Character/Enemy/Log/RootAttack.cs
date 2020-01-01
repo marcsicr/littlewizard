@@ -16,10 +16,10 @@ public class RootAttack : MonoBehaviour
         this.attackPower = attackPower;
     }
 
-    public void attack(Transform t) {
+    public void attack(Vector3 position) {
 
         Vector2 random = Random.insideUnitCircle;
-        Vector3 dest = new Vector3(t.transform.position.x + random.x, t.transform.position.y + random.y);
+        Vector3 dest = new Vector3(position.x + random.x, position.y + random.y);
         transform.position = dest;
         myAnimator.SetTrigger("attack");
         

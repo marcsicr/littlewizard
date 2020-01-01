@@ -58,7 +58,7 @@ public class DialogBox : MonoBehaviour
             }
             spaceImg.SetActive(true);
 
-            Debug.Log("E");
+           
             audioSource.Stop();
 
             while (!Input.GetKeyDown(KeyCode.Space)) {

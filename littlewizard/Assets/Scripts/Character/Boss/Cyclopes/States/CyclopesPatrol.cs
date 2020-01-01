@@ -73,13 +73,13 @@ public class CyclopesPatrol : StateMachineBehaviour {
             cyclope.sheduleLaserAttack();
         }
 
-        if (cyclope.isStunReady && cyclope.getDistanceToPlayer() < cyclope.discoverDistance) {
+        if (cyclope.isStunReady && cyclope.distanceFromPlayer() < cyclope.discoverDistance) {
 
             animator.SetTrigger("stunJump");
             return;
         }
 
-        if (cyclope.getDistanceToPlayer() < cyclope.discoverDistance) {
+        if (cyclope.distanceFromPlayer() < cyclope.discoverDistance) {
             animator.SetTrigger("throw");
             return;
         }

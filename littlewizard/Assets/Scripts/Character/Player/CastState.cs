@@ -11,15 +11,7 @@ public class CastState : PlayerState {
     public Vector2 castDirection;
     Vector2 movement;
     private Spell spell;
-    //public CastState(Player player,Vector3 worldPoint,Spell spell,Vector2 movement) : base(player) {
-
-    //    castDirection = (worldPoint - player.transform.position);
-    //    castDirection.Normalize();
-    //    this.worldPoint = worldPoint;
-    //    this.movement = movement;
-    //    this.spell = spell;
-    //}
-
+  
     public CastState(Player player,Vector3 worldPoint,Spell spell,Vector2 movement) : base(player) {
 
        castDirection = (worldPoint - player.getPlayerCastPoint());
@@ -43,7 +35,6 @@ public class CastState : PlayerState {
 
         if (!casting) {
 
-            
             playerAnimator.SetTrigger("cast");
             player.StartCoroutine(CastCo(spell));
         }
@@ -58,7 +49,7 @@ public class CastState : PlayerState {
             //Instantiate bullet prefab and shot(castDirection);
             LinearBullet bullet = GameObject.Instantiate(player.boltPrefab, spawn, Quaternion.identity).GetComponent<LinearBullet>();
             Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), bullet.GetComponent<Collider2D>());
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
 
             SoundManager.Instance.playVoice(player.castClips[0]);
             bullet.setShotHeight(player.getMapHeight());
@@ -67,8 +58,6 @@ public class CastState : PlayerState {
             bullet.setDamage(damage);
             bullet.shot(worldPoint);
             castDone = true;
-
-           
 
             UpdatePlayerSP(spell);
             player.spellCasted.Raise(spell);
@@ -137,7 +126,7 @@ public class CastState : PlayerState {
 
         int playerSP = player.playerSP.getRunTimeValue();
 
-        int points = SpellsManager.Instance.computeSPConsumed(spell);
+        int points = SpellsManager.Instance.computeManaConsumed(spell);
 
         playerSP -= points;
         player.playerSP.UpdateValue(playerSP);

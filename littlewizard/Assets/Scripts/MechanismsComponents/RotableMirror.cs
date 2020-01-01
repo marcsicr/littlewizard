@@ -52,15 +52,6 @@ public class RotableMirror : MonoBehaviour{
         current = Instantiate(prefab, transform, false);
     }
 
-    void Update() {
-
-        if (Input.GetKeyDown(KeyCode.R)) {
-
-            rotate();
-        }
-    }
-
-
     public void rotate() {
 
         //Vertical --> RotatedRight

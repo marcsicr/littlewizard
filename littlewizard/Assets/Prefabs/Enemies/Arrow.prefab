@@ -154,5 +154,5 @@ MonoBehaviour:
   damage: 15
   lifetime: 5
   bulletHitClip: {fileID: 8300000, guid: 4380b9a3a0ad8a94380e785368e0a1d6, type: 3}
-  speed: 2
+  speed: 0.2
   target: 0

@@ -8,6 +8,7 @@ public class LaserBeam : MonoBehaviour
     public GameObject hitPrefab;
     private LineRenderer line;
 
+    private AudioSource audioSource;
 
     private GameObject laserHit;
     private int LASER_HIT_LAYER;
@@ -35,7 +36,7 @@ public class LaserBeam : MonoBehaviour
         laserHit = Instantiate(hitPrefab, null, true);
         laserHit.SetActive(false);
 
-       
+        audioSource = GetComponent<AudioSource>();
 
         
     }
@@ -84,6 +85,8 @@ public class LaserBeam : MonoBehaviour
     public IEnumerator dissapear() {
 
         exit = true;
+
+        audioSource.Stop();
         yield return null;
 
         Vector3 initialScale = laserHit.transform.localScale;
@@ -109,8 +112,9 @@ public class LaserBeam : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
-      
+        
         StartCoroutine(resizeEffectCo());
+        audioSource.Play();
         StartCoroutine(moveCo(direction));
     }
 
@@ -149,7 +153,6 @@ public class LaserBeam : MonoBehaviour
                 laserHit.SetActive(false);
             }
          
-            //Debug.Log("beamVector" + newVector);
             line.SetPosition(0, transform.position);
 
             if(hit.point != Vector2.zero) {

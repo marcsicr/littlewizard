@@ -24,6 +24,8 @@ public class SoundManager : MonoBehaviour {
     private AudioSource effectsSource;
     private AudioSource playerVoice;
 
+    
+
     private float volume;
     public static SoundManager Instance { get; private set; }
     
@@ -36,10 +38,15 @@ public class SoundManager : MonoBehaviour {
             musicSource = createAudioSource("Music", true);
             effectsSource = createAudioSource("Effects", false);
             playerVoice = createAudioSource("Voice", false);
-          
         } else {
             Destroy(gameObject);
         }
+    }
+
+    private void Start() {
+
+        float savedVolume = PlayerPrefs.GetFloat("volume", 1);
+        audioMixer.SetFloat("MasterVolume", Mathf.Log10(savedVolume) * 20);
     }
 
     public void changeSong(SONG song) {
@@ -177,4 +184,17 @@ public class SoundManager : MonoBehaviour {
         changeSong(SONG.CAVE);
             //(SONG.CAVE);
     }
+
+    public void setMasterVolume(float sliderValue) {
+
+        PlayerPrefs.SetFloat("volume", sliderValue);
+        Debug.Log(sliderValue);
+        audioMixer.SetFloat("MasterVolume", Mathf.Log10(sliderValue) * 20);
+    }
+
+    public float getMasterVolume() {
+
+        return PlayerPrefs.GetFloat("volume",1);
+    }
+
 }

@@ -27,7 +27,7 @@ public class CyclopesStun : StateMachineBehaviour {
 
     void chooseNextState(Animator animator) {
 
-       if(cyclope.getDistanceToPlayer() < cyclope.discoverDistance) {
+       if(cyclope.distanceFromPlayer() < cyclope.discoverDistance) {
             animator.SetTrigger("throw");
        } else {
 

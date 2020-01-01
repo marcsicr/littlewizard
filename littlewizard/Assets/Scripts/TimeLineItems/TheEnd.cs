@@ -11,7 +11,7 @@ public class TheEnd : MonoBehaviour
 
     public void OnEnable() {
 
-        Debug.Log("Enabled");
+       
         StartCoroutine(theEndCo());
         text = Instantiate(sceneTextPrefab, transform.Find("/UILayout"), false).GetComponent<SceneText>();
     }

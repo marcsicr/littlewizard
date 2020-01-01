@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4176772233478150665}
   - component: {fileID: 5285576163405724485}
   m_Layer: 18
-  m_Name: PlantBullet
+  m_Name: CircleBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
-  lifetime: 3
   bulletHitClip: {fileID: 8300000, guid: f375defd19ccdde43a5e19cbd29a2a8d, type: 3}
   speed: 6
   target: 0

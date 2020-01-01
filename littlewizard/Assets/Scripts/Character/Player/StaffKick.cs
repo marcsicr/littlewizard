@@ -5,14 +5,9 @@ using UnityEngine;
 public class StaffKick : MonoBehaviour
 {
     public int KickPower;
-
     public AudioClip[] hitClips;
-    public void Update() {
-
-       
-    }
+   
     public void OnTriggerEnter2D(Collider2D other) {
-
 
         if (other.gameObject.tag == Enemy.TAG) {
             AbstractEnemy enemy = other.gameObject.GetComponent<AbstractEnemy>();
@@ -23,6 +18,5 @@ public class StaffKick : MonoBehaviour
             ItemContainer container = other.GetComponent<ItemContainer>();
             container.open();
         }
-
     }
 }

@@ -39,7 +39,7 @@ public class MushroomChase : StateMachineBehaviour {
         } else if(enemy.distanceFromPlayer() >= minPlayerDist) {
 
             Vector3 enemyPos = animator.transform.position;
-            Vector3 targetPos = enemy.getPlayerTransform().position;
+            Vector3 targetPos = enemy.getPlayerPosition();
 
             Vector3 step = Vector3.MoveTowards(enemyPos, targetPos, enemy.speed * Time.deltaTime);
             enemy.move(step);

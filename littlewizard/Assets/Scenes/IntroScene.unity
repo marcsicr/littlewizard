@@ -15512,6 +15512,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1652114102084412058, guid: b150200d60c8f4745bf0f41093db4d3d,
+        type: 3}
+      propertyPath: messages.Array.data[0].charName
+      value: Old Wizard
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b150200d60c8f4745bf0f41093db4d3d, type: 3}
 --- !u!1839735485 &3063851049663374597

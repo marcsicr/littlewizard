@@ -39,7 +39,7 @@ public class ChaseLog : StateMachineBehaviour {
 
 
         Vector3 logPos = animator.transform.position;
-        Vector3 targetPos = log.getPlayerTransform().position;
+        Vector3 targetPos = log.getPlayerPosition();
 
         Vector3 step = Vector3.MoveTowards(logPos, targetPos, log.speed * Time.deltaTime);
         Vector3 faceDirection = Vector3.Normalize(step - logPos);

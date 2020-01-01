@@ -28,9 +28,9 @@ public abstract class PlayerState
             Spell s = player.getActiveSpell();
             if (s != Spell.NONE) {
 
-                int spNeeded = SpellsManager.Instance.computeSPConsumed(s);
+                int manaNeeded = SpellsManager.Instance.computeManaConsumed(s);
 
-                if (spNeeded < player.playerSP.getRunTimeValue()){
+                if (manaNeeded < player.playerSP.getRunTimeValue()){
                     return new CastState(player, point, s, Vector2.zero);
                 }
                 

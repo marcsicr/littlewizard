@@ -30,22 +30,17 @@ public class FloorBtn : Activator
         state = true;
         myAnimator.SetBool("activate", true);
         mechanism.notifyStatusChange(this);
-
-       
-        ///Debug.Log("Trigger enter:"+other.tag);
     }
-
      private void OnTriggerExit2D(Collider2D other) {
 
         objectsAbove--;
        
-        if(objectsAbove <= 0) {
-            ///Debug.Log("Desactivate");
+        if(objectsAbove <= 0) { //Desactivate
+          
             state = false;
             myAnimator.SetBool("activate", false);
             mechanism.notifyStatusChange(this);
         }
-      
     }
 
     private IEnumerator desactivateCo() {

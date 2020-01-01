@@ -14,7 +14,7 @@ public abstract class AbstractEnemy : Character {
     public override void Start() {
         base.Start();
 
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player = GameObject.FindGameObjectWithTag(Player.TAG).GetComponent<Player>();
         gameObject.tag = TAG;
         spawnLocation = transform.position;
     }
@@ -27,18 +27,13 @@ public abstract class AbstractEnemy : Character {
         return Vector3.Distance(player.transform.position, transform.position);
     }
 
-    public Transform getPlayerTransform() {
-        return this.player.transform;
+    public Vector3 getPlayerPosition() {
+        return player.transform.position;
     }
 
     public Vector2 getDirectionToPlayer() {
         Vector3 direction = player.transform.position - transform.position;
         return new Vector2(direction.x, direction.y).normalized;
-    }
-
-    public float getDistanceToPlayer() {
-
-        return Vector3.Distance(transform.position, player.transform.position);
     }
 
     public void resetSpeed() {

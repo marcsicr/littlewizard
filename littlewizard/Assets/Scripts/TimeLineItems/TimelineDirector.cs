@@ -27,7 +27,7 @@ public class TimelineDirector : MonoBehaviour
     Vector3 otherpos;
     bool paused = false;
     bool stopped = false;
-    bool flag = false;
+    bool isTimelineStarted = false;
     bool bugFix = false;
     
     private void Awake() {
@@ -37,23 +37,13 @@ public class TimelineDirector : MonoBehaviour
 
         otherAnimator = otherActor.GetComponent<Animator>();
     }
-    void OnEnable()
-    {
-      //playerRAC = playerAnimator.runtimeAnimatorController;
-       //playerAnimator.runtimeAnimatorController = null;
-
-     
-    }
-
+  
     public void play() {
 
         playerRAC = playerAnimator.runtimeAnimatorController;
-        //otherRAC = otherAnimator.runtimeAnimatorController;
-
-        //otherAnimator.runtimeAnimatorController = null;
         playerAnimator.runtimeAnimatorController = null;
 
-        flag = true;
+        isTimelineStarted = true;
         
         director.Play();
 
@@ -87,7 +77,7 @@ public class TimelineDirector : MonoBehaviour
 
    public void resume() {
 
-        if (flag) {
+        if (isTimelineStarted) {
             director.playableGraph.GetRootPlayable(0).SetSpeed(1);
             player.onTransferLeave();
             paused = false;
@@ -98,7 +88,7 @@ public class TimelineDirector : MonoBehaviour
 
         //pausedPos = p.transform.position;
 
-        if (flag) {
+        if (isTimelineStarted) {
             Debug.Log("Paused");
             player.onTransferEnter();
             director.playableGraph.GetRootPlayable(0).SetSpeed(0);
@@ -112,41 +102,21 @@ public class TimelineDirector : MonoBehaviour
 
     private void LateUpdate() {
 
-        if (director.state != PlayState.Playing && !bugFix && flag) {
+        if (director.state != PlayState.Playing && !bugFix && isTimelineStarted) {
 
-            
             bugFix = true;
             playerAnimator.runtimeAnimatorController = playerRAC;
             otherAnimator.runtimeAnimatorController = otherRAC;
-            
-            //otherActor.GetComponent<Animator>().runtimeAnimatorController = null;
-
- 
         }
 
-        if (stopped && flag) {
+        if (stopped && isTimelineStarted) {
             player.transform.position = lastpos;
             playerAnimator.SetFloat("moveX", playerEndDirection.x);
             playerAnimator.SetFloat("moveY", playerEndDirection.y);
-
 
             otherActor.transform.position = otherpos;
             endOfTimeline.Raise();
             Destroy(gameObject);
         }
-
-
-    }
-
-    private IEnumerator resetCamera() {
-
-        while (paused) {
-            //Camera.main.transform.position = lastpos;
-            player.transform.position = lastpos;
-
-            yield return new WaitForSeconds(1f);
-        }
-      
-
     }
 }

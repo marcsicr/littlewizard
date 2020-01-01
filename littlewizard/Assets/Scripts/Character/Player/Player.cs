@@ -9,6 +9,7 @@ public class Player : Character{
     [HideInInspector]
     public static readonly string TAG = "Player"; //This tag must be defined first on inspector
 
+    [HideInInspector]
     public Vector2 faceDirection;
 
     //States that can be reused
@@ -21,7 +22,7 @@ public class Player : Character{
     public ObservableInteger playerHP;
     public ObservableInteger playerSP;
     public ObservableInteger stamina;
-    public Signal gameOverSignal;
+   
 
 
     public SpellSignal spellCasted;
@@ -33,6 +34,8 @@ public class Player : Character{
 
     private Shield shield;
     private bool isInvencible;
+    
+    [HideInInspector]
     public bool showingAlertBubble = false;
 
     public bool startOnPortal = false;
@@ -47,6 +50,8 @@ public class Player : Character{
 
     
     private bool freeze = true;
+
+    private float lastKick = 0;
 
     public GameObject boltPrefab;
     public GameObject rayAttkPrefab;
@@ -100,6 +105,8 @@ public class Player : Character{
             freeze = false;
             boxCollider.enabled = true;
         }
+
+        
     }
 
     private IEnumerator PlayerAppearCo(){
@@ -171,6 +178,32 @@ public class Player : Character{
         
     }
 
+    public void FixedUpdate() {
+
+        if (!freeze) {
+            currentState.act();
+        }
+
+        if (Time.time > nextSTRecup) {
+            if (stamina.getRunTimeValue() < stamina.getInitialValue()) {
+                stamina.UpdateValue(stamina.getRunTimeValue() + 1);
+            }
+            nextSTRecup = Time.time + recuPIntervalST;
+        }
+
+        if (Time.time > nextSPRecup) {
+            if (playerSP.getRunTimeValue() < playerSP.getInitialValue()) {
+                playerSP.UpdateValue(playerSP.getRunTimeValue() + 1);
+            }
+
+            nextSPRecup = Time.time + recuPIntervalSP;
+        }
+
+    }
+
+
+
+
     public void onTimelineStart() {
         /*playerRAC = GetComponent<Animator>().runtimeAnimatorController;
         GetComponent<Animator>().runtimeAnimatorController = null;*/
@@ -189,30 +222,7 @@ public class Player : Character{
     }
    
  
-    public void FixedUpdate() {
-        
-        if (!freeze) {
-            currentState.act();
-        }
-      
-        if(Time.time > nextSTRecup) {
-            if(stamina.getRunTimeValue() < stamina.getInitialValue()) {
-                stamina.UpdateValue(stamina.getRunTimeValue() + 1);
-            }
-
-            nextSTRecup = Time.time + recuPIntervalST;
-        }
-
-        if (Time.time > nextSPRecup) {
-            if (playerSP.getRunTimeValue() < playerSP.getInitialValue()) {
-                playerSP.UpdateValue(playerSP.getRunTimeValue() + 1);
-            }
-
-            nextSPRecup = Time.time + recuPIntervalSP;
-        }
-
-
-    }
+   
 
     public Spell getActiveSpell() {
 
@@ -221,8 +231,6 @@ public class Player : Character{
 
     }
    
-
-    
 
     /*Set if enemies can hurt player*/
     public void setInvencible(bool isInvencible) {
@@ -268,7 +276,12 @@ public class Player : Character{
                 playerHP.UpdateValue(playerHP.getRunTimeValue() - attack);
 
                 int randomIndex = Random.Range(0, damagedClips.Length);
-                SoundManager.Instance.playVoice(damagedClips[randomIndex]);
+
+                if (Time.time > lastKick + 0.25f) {
+                    SoundManager.Instance.playVoice(damagedClips[randomIndex]);
+                    lastKick = Time.time;
+                } 
+                
 
             } else {
                 playerHP.UpdateValue(0);
@@ -353,8 +366,6 @@ public class Player : Character{
         playerHP.reset();
         playerSP.reset();
         stamina.reset();
-        gameOverSignal.Raise(); 
-
     }
 
     public Vector3 getCollisionCenterPoint() {

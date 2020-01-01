@@ -17,6 +17,8 @@ public class SpellsManager : MonoBehaviour {
     public Spell selectedSpell = Spell.NONE;
     
     public SpellSignal spellSelected;
+    public SpellSignal lvlUpSignal;
+
     public float boltTimeOut{ get; private set; }
     public float shieldTimeOut{ get; private set; }
     public float rayAtkTimeOut { get; private set; }
@@ -144,6 +146,8 @@ public class SpellsManager : MonoBehaviour {
 
     public void spellLvlUp(Spell spell) {
 
+        lvlUpSignal.Raise(spell);
+
         if(spell == Spell.BOLT) {
             boltLevel += 1;
             return;
@@ -195,7 +199,7 @@ public class SpellsManager : MonoBehaviour {
         return 0;
     }
 
-    public int computeSPConsumed(Spell spell) {
+    public int computeManaConsumed(Spell spell) { 
 
         switch (spell) {
 

@@ -183,20 +183,26 @@ public class RangeAttk : MonoBehaviour
 
     void UpdateEnemyRay(EnemyRay r, float devationFactor) {
 
-
         float deviation = devationFactor; //0.5f;
         Vector3 enemyPos = r.enemy.transform.position;
         Vector3 lastPoint = transform.position;
         int i = 1;
         
         r.line.SetPosition(0, transform.position);//Ray starts at this gameobject position
-        while (Vector3.Distance(lastPoint, r.enemy.transform.position) > 0.5f) {//while the last point of the ray is not close enough 
+
+        //while the last point of the ray is not close enough 
+        while (Vector3.Distance(lastPoint, r.enemy.transform.position) > 0.5f) {
 
             r.line.positionCount = i + 1;
-            Vector3 fwd = Vector3.Normalize(r.enemy.transform.position - lastPoint);//Get direction from the last point of the ray to the enemy
-            
-            fwd = RandomDeviation(fwd, deviation); // Get deviation point
-            fwd += lastPoint; // Next point of the ray is lastPoint + desviation
+
+            //Get direction from the last point of the ray to the enemy
+            Vector3 fwd = Vector3.Normalize(r.enemy.transform.position - lastPoint);
+
+            // Get deviation point
+            fwd = RandomDeviation(fwd, deviation);
+
+            // Next point of the ray is lastPoint + desviation
+            fwd += lastPoint; 
             r.line.SetPosition(i, fwd);
             i++;
             lastPoint = fwd;

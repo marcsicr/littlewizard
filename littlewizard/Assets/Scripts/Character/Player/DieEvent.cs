@@ -10,8 +10,11 @@ public class DieEvent : MonoBehaviour
         Player p = gameObject.GetComponentInParent<Player>();
         if (p == null)
             Debug.Log("DieEvent: Character not found");
+        
 
         p.die();
+
+        
     }
 
     public void explosionEnd() {

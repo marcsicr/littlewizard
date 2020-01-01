@@ -70,8 +70,11 @@ public class Plant : Enemy
 
     protected override void attackAction() {
 
+        if(state != PlantState.GAME_OVER) {
             state = PlantState.ATTACKING;
             StartCoroutine(plantShotCo());
+        }
+           
     }
     //Instantiate bullets and shot
     private IEnumerator plantShotCo() {
@@ -162,6 +165,8 @@ public class Plant : Enemy
                     break;
 
                case PlantState.GAME_OVER: {
+
+                 
                     break;
                 }
             }          
@@ -171,7 +176,7 @@ public class Plant : Enemy
 
     public void teleportAtempt() {
 
-        if (Time.time > nextTeleport && isPlayerInChaseRadius()) {
+        if (Time.time > nextTeleport && isPlayerInChaseRadius() && state != PlantState.GAME_OVER) {
             //mat.SetFloat("_Width", 0);
             //mat.SetFloat("_Brightness", 0);
            // StopAllCoroutines();
@@ -179,11 +184,11 @@ public class Plant : Enemy
             mat.SetFloat("_FlashAmount", 0);
             mat.SetFloat("_Brightness", 0);
             state = PlantState.TELEPORTING;
-            StartCoroutine(TeletransportCo());
+            StartCoroutine(TeleportCo());
             
         }
     }
-    public IEnumerator TeletransportCo() {
+    public IEnumerator TeleportCo() {
 
         SoundManager.Instance.playEffect(teleportClip);
         bar.transform.parent.gameObject.SetActive(false);
@@ -224,6 +229,7 @@ public class Plant : Enemy
 
     public override void onGameOver() {
 
+        Debug.Log("Plant gameover");
         state = PlantState.GAME_OVER;
     }
 

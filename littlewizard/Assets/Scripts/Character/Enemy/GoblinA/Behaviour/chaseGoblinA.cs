@@ -27,7 +27,7 @@ public class chaseGoblinA : StateMachineBehaviour {
 
 
         Vector3 enemyPos = animator.transform.position;
-        Vector3 targetPos = archer.getPlayerTransform().position;
+        Vector3 targetPos = archer.getPlayerPosition();
 
         Vector3 step = Vector3.MoveTowards(enemyPos, targetPos, archer.speed * Time.deltaTime);
         Vector3 faceDirection = Vector3.Normalize(step - enemyPos);

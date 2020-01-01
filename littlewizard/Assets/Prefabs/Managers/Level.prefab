@@ -43,4 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d888395be56be7246b9f53e2993ff39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialBounds: {fileID: 0}
   gemCaughtSignal: {fileID: 11400000, guid: c35c8200badf2064c91f097d080b919a, type: 2}
+  keyCaught: {fileID: 11400000, guid: 3f3526f0ec155554a961477bfa763f37, type: 2}
+  keyUsed: {fileID: 11400000, guid: e2e8ed7d57cc14042891679c65b652cd, type: 2}

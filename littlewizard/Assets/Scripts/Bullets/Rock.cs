@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rock : ElipticalBullet
+public class Rock : ParabolicBullet
 {
     public override void onCollision(Vector2 collisionPoint) {
 
@@ -35,7 +35,7 @@ public class Rock : ElipticalBullet
 
 
 
-        float dist = 0.3f;
+        float dist = speed;
         Vector2 v1 = 2 * start - 4 * middle + 2 * end;
         Vector2 v2 = -2 * start + 2 * middle;
 

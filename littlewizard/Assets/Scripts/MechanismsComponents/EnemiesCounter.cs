@@ -10,14 +10,10 @@ public class EnemiesCounter : Activator {
     private Counter counter;
     protected override void  Start() {
         base.Start();
-        Debug.Log("Number of enemies:" + transform.GetComponentsInChildren<AbstractEnemy>().Length);
-
         enemiesCurrent = transform.GetComponentsInChildren<AbstractEnemy>().Length;
-
         counter = transform.GetComponentInChildren<Counter>();
         counter.setText(enemiesCurrent.ToString());
     }
-
 
     void Update() {
 
