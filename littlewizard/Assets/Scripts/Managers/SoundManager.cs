@@ -128,14 +128,18 @@ public class SoundManager : MonoBehaviour {
                 yield return null;
             }
 
-
-        //musicSource.Stop();
         yield return StartCoroutine(fadeInCo(startVolume, fadeTime));
-       // musicSource.Play();
-           //musicSource.volume = startVolume;
-        
+    
     }
 
+    public void stopAll() {
+        StopAllCoroutines();
+        playerVoice.Stop();
+        effectsSource.Stop();
+        musicSource.Stop();
+    }
+
+      
     private IEnumerator fadeInCo(float volume,float fadeTime) {
 
         float startVolume = musicSource.volume;

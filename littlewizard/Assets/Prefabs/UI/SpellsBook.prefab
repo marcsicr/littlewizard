@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 553, y: 0}
+  m_AnchoredPosition: {x: 563, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &431820566704703111
@@ -497,7 +497,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Casts a magical shield that makes player invencible during a short period
-    of time. It protects player from bullets and enemies hits.
+    of time. It protects player from bullets and enemy hits.
 
 
     On each level its duration is increased by 1 second and its timeout and SP are
@@ -547,7 +547,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 194
+  m_firstOverflowCharacterIndex: 192
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -571,7 +571,7 @@ MonoBehaviour:
   m_margin: {x: -0.22926329, y: -6.6950636, z: 0.29663086, w: 51.92993}
   m_textInfo:
     textComponent: {fileID: 7747538267612617113}
-    characterCount: 221
+    characterCount: 219
     spriteCount: 0
     spaceCount: 39
     wordCount: 39
@@ -1784,7 +1784,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -302}
-  m_SizeDelta: {x: -361.75513, y: 512}
+  m_SizeDelta: {x: -33, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1875459456305481265
 CanvasRenderer:
@@ -2703,7 +2703,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 3.59
+  m_padding: 0
   m_canvasRenderer: {fileID: 180682044153369468}
   m_TextComponent: {fileID: 563489095162219496}
   m_materialReferenceIndex: 2
@@ -2860,7 +2860,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -302}
-  m_SizeDelta: {x: -361.75513, y: 512}
+  m_SizeDelta: {x: -33, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4997988769973527475
 CanvasRenderer:
@@ -3291,7 +3291,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 3.59
+  m_padding: 0
   m_canvasRenderer: {fileID: 2753767321386983011}
   m_TextComponent: {fileID: 6871673611867437539}
   m_materialReferenceIndex: 1
@@ -3626,7 +3626,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -15, y: -247}
-  m_SizeDelta: {x: -361.75513, y: 325}
+  m_SizeDelta: {x: -33, y: 325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1059577912910028692
 CanvasRenderer:
@@ -4180,7 +4180,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "To cast this spell, first you need to select it by pressing the <sprite
-    name=\"1\"> key and then use <sprite name=\"space\"> to cast it.                                                                                              \n
+    name=\"1\"> key and then use <sprite name=\"space\"> to cast it.                                                                                          \n
     \     \nWhen the character is not moving and this spell is selected you can use
     a pointer by <color=red>holding down</color> <sprite name=\"space\">                                                  \n"
   m_isRightToLeft: 0
@@ -4252,9 +4252,9 @@ MonoBehaviour:
   m_margin: {x: -0.22926329, y: -4.2079616, z: -14.1658535, w: 1.7003839}
   m_textInfo:
     textComponent: {fileID: 7513991225345659532}
-    characterCount: 348
+    characterCount: 344
     spriteCount: 0
-    spaceCount: 193
+    spaceCount: 189
     wordCount: 39
     linkCount: 0
     lineCount: 9
@@ -4427,7 +4427,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -15, y: -246.3}
-  m_SizeDelta: {x: -361.75513, y: 325}
+  m_SizeDelta: {x: -33, y: 325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1211530175985814725
 CanvasRenderer:
