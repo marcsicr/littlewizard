@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour {
 
+    public GameObject volumePanelPrefab;
+    public GameObject volumeBtn;
     GameObject panel;
     Button resumeBtn;
     
@@ -38,6 +40,15 @@ public class PauseMenu : MonoBehaviour {
         GameManager.Instance.QuitGame();
     }
 
-    
+    public void showVolumePanel() {
+
+        VolumePanel panel = Instantiate(volumePanelPrefab, transform.parent).GetComponent<VolumePanel>();
+
+        panel.setBackgroundPanel(gameObject, volumeBtn);
+
+
+
+    }
+
 
 } 

@@ -30,7 +30,7 @@ public class SceneEnter : MonoBehaviour
         float writeSpeed = 0.03f;
         float timeout = 1f;
         fade.setOpaque();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         yield return StartCoroutine(text.writeEffectCo("Once upon a time in a magic land...", writeSpeed,timeout));
         yield return new WaitForSeconds(1f);
         yield return StartCoroutine(text.fadeOutCo(timeout));

@@ -943,7 +943,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6300485e60b607f4b8ec6853b84daa7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootPointer: {fileID: 21300000, guid: 9bfec1afd0f1ca94995311aab7ee8222, type: 3}
   defaultCursor: {fileID: 21300000, guid: 527b2633bce97d546abde84fa8c2363b, type: 3}
 --- !u!1 &476657743652736745
 GameObject:

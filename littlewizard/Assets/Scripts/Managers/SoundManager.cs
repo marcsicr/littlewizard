@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public enum SONG {FOREST, CAVE, CASTLE,BOSS,HOUSE}
+public enum SONG {FOREST, CAVE, CASTLE,BOSS,HOUSE,MAIN_MENU}
 public class SoundManager : MonoBehaviour {
 
     public AudioClip forestSong;
@@ -12,10 +12,15 @@ public class SoundManager : MonoBehaviour {
     public AudioClip houseSong;
     public AudioClip bossBattleSong;
 
+    public AudioClip menuSong;
     public AudioClip gameOverClip;
+
+    public AudioClip enterGameClip;
 
     public AudioClip winClip;
     public AudioClip winBigClip;
+
+
 
     public AudioMixer audioMixer;
 
@@ -70,6 +75,9 @@ public class SoundManager : MonoBehaviour {
 
             case SONG.HOUSE:
                 return houseSong;
+
+            case SONG.MAIN_MENU:
+                return menuSong;
 
             default:
                 return null;
@@ -197,8 +205,12 @@ public class SoundManager : MonoBehaviour {
     }
 
     public float getMasterVolume() {
-
         return PlayerPrefs.GetFloat("volume",1);
     }
 
+    public float playEnterGameEffect() {
+        musicSource.Stop();
+        effectsSource.PlayOneShot(enterGameClip);
+        return enterGameClip.length;
+    }
 }

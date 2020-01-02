@@ -53,7 +53,9 @@ MonoBehaviour:
   castleSong: {fileID: 8300000, guid: 5bba4e9c5782dcb4a9d4cf9ea35e1dac, type: 3}
   houseSong: {fileID: 8300000, guid: 27b7ec6362d184f4fbfde9e1d91d9c1e, type: 3}
   bossBattleSong: {fileID: 8300000, guid: 1524440359e9efd43ac6e3f327c187eb, type: 3}
+  menuSong: {fileID: 8300000, guid: ed0cf1c623ca131498193ecbbab356e1, type: 3}
   gameOverClip: {fileID: 8300000, guid: c838e4ce433f9bd4992d302aa017b6f6, type: 3}
+  enterGameClip: {fileID: 8300000, guid: b9d614db29824684db6681a8c46e0b22, type: 3}
   winClip: {fileID: 8300000, guid: bb08f2329240270488035c977e0c7477, type: 3}
   winBigClip: {fileID: 8300000, guid: de2398eae88571d48a6b12d76f6d08ab, type: 3}
   audioMixer: {fileID: 24100000, guid: 6a2d8ec0e564975489e2b1e7ef2c1fcb, type: 2}
