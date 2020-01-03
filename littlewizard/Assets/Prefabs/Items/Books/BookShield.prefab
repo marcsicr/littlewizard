@@ -119,5 +119,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c0951de60a6c44eba97ab3a99fa4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectClip: {fileID: 8300000, guid: 190d0543240f3e84a8b47a2de6c1b77e, type: 3}
   spell: 2
-  spellLvlUp: {fileID: 11400000, guid: 01e7925295e264a4aba6a07d0d592796, type: 2}

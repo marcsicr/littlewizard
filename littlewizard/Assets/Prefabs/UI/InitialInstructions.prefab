@@ -2493,7 +2493,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Move character with:'
+  m_text: 'Move the character with:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd3db71f2723d5e47ab11d9d8e7a04b5, type: 2}
   m_sharedMaterial: {fileID: 21349628096142932, guid: cd3db71f2723d5e47ab11d9d8e7a04b5,
@@ -2563,10 +2563,10 @@ MonoBehaviour:
   m_margin: {x: 13.28628, y: 0, z: 10.629084, w: 5.786077}
   m_textInfo:
     textComponent: {fileID: 647555674957686628}
-    characterCount: 20
+    characterCount: 24
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 3
+    wordCount: 4
     linkCount: 0
     lineCount: 1
     pageCount: 1
