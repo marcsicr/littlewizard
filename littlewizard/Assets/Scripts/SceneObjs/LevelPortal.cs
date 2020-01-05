@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelPortal : MonoBehaviour
 {
-
+    public AudioClip appearClip;
     private void OnTriggerEnter2D(Collider2D other) {
 
 
@@ -28,6 +28,7 @@ public class LevelPortal : MonoBehaviour
 
     public void appear(int Zorder,bool isExit) {
 
+       
         if (isExit) {
             GetComponent<CircleCollider2D>().enabled = true;
         }
@@ -35,6 +36,10 @@ public class LevelPortal : MonoBehaviour
         
         GetComponent<SpriteRenderer>().sortingOrder = Zorder;
         GetComponent<Animator>().SetTrigger("appear");
+    }
+
+    public void playAppearEffect() {
+        SoundManager.Instance.playEffect(appearClip);
     }
 
     private IEnumerator goToNextLevelCo() {

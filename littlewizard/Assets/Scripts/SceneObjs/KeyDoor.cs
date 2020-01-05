@@ -11,9 +11,14 @@ public class KeyDoor : MonoBehaviour
    
     private void Awake() {
 
-        portal.gameObject.SetActive(false);
+
         myAnimator = gameObject.GetComponent<Animator>();
     }
+
+    public void Start() {
+        portal.gameObject.SetActive(false);
+    }
+
     public void OnTriggerEnter2D(Collider2D other) {
 
         if (other.CompareTag(Player.TAG)) {

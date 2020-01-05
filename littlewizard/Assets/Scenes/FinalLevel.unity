@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messages:
-  - charName: Druid
+  - charName: Old wizard
     message: Fantastic! You collected all the gems and defeated the cyclopes to get
       my recipe back.
     charImage: {fileID: 21300000, guid: 30f2058c84502e04d971994d84458ded, type: 3}
@@ -238,7 +238,7 @@ MonoBehaviour:
     message: Yes. It wasn't an easy task. I've learnt a lot of things during this
       adventure.
     charImage: {fileID: 21300000, guid: f011320babbce8944a9ea43fb01fa999, type: 3}
-  - charName: Druid
+  - charName: Old wizard
     message: I am so proud of you. It was a difficult task and you managed very well.  You
       deserve the honor to be my successor.
     charImage: {fileID: 21300000, guid: 30f2058c84502e04d971994d84458ded, type: 3}
@@ -382,7 +382,7 @@ PrefabInstance:
     - target: {fileID: 6498065792096964348, guid: b4b7c6c42bb6e7e4fb98c3a1f3f24422,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6498065792096964348, guid: b4b7c6c42bb6e7e4fb98c3a1f3f24422,
         type: 3}
@@ -417,7 +417,7 @@ PrefabInstance:
     - target: {fileID: 6498065792096964351, guid: b4b7c6c42bb6e7e4fb98c3a1f3f24422,
         type: 3}
       propertyPath: HP
-      value: 30
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 8637537763339551203, guid: b4b7c6c42bb6e7e4fb98c3a1f3f24422,
         type: 3}
@@ -842,7 +842,7 @@ PrefabInstance:
     - target: {fileID: 919214655935530885, guid: dc6f9cc022a88b5409ea2027597f22e4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -22.9
       objectReference: {fileID: 0}
     - target: {fileID: 919214655935530885, guid: dc6f9cc022a88b5409ea2027597f22e4,
         type: 3}
@@ -872,7 +872,7 @@ PrefabInstance:
     - target: {fileID: 919214655935530885, guid: dc6f9cc022a88b5409ea2027597f22e4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919214655935530885, guid: dc6f9cc022a88b5409ea2027597f22e4,
         type: 3}
@@ -1042,7 +1042,7 @@ PrefabInstance:
     - target: {fileID: 1652114102084412052, guid: b150200d60c8f4745bf0f41093db4d3d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1652114102084412052, guid: b150200d60c8f4745bf0f41093db4d3d,
         type: 3}
@@ -1562,7 +1562,7 @@ PrefabInstance:
     - target: {fileID: 575718415559048932, guid: 80cb6bd1a4b7c4f478875c544495e5cc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 575718415559048932, guid: 80cb6bd1a4b7c4f478875c544495e5cc,
         type: 3}
@@ -1792,7 +1792,7 @@ PrefabInstance:
     - target: {fileID: 476657742664850448, guid: f98fe5e51b61a974683ef44cec456e53,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 476657742664850448, guid: f98fe5e51b61a974683ef44cec456e53,
         type: 3}
@@ -59439,7 +59439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79591c181fc167242bbd6c1fc50118c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneSong: 0
+  zoneSong: 1
   CameraSize: 8
 --- !u!4 &3135690534483647433
 Transform:
