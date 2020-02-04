@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2878419775415985512}
   - component: {fileID: 2878419775415985513}
   - component: {fileID: 2878419775415985514}
+  - component: {fileID: 8763088677649306758}
   m_Layer: 0
   m_Name: SpellsManager
   m_TagString: Untagged
@@ -66,6 +67,33 @@ MonoBehaviour:
       - m_Target: {fileID: 2878419775415985513}
         m_MethodName: OnSpellCasted
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8763088677649306758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878419775415985515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f8592610e6b824b974ef74467e1254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 8622d57c1f2891d42bbb0058c89fb19f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2878419775415985513}
+        m_MethodName: onGameOver
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

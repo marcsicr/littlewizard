@@ -492,7 +492,7 @@ MonoBehaviour:
       favour!
     charImage: {fileID: 21300000, guid: 30f2058c84502e04d971994d84458ded, type: 3}
   - charName: Little Wizard
-    message: Hmm... what? Come in ant tell me what you want.
+    message: Hmm... what? Come in and tell me what you want.
     charImage: {fileID: 21300000, guid: f011320babbce8944a9ea43fb01fa999, type: 3}
 --- !u!4 &452100059
 Transform:
@@ -2001,6 +2001,11 @@ PrefabInstance:
       propertyPath: initialBounds
       value: 
       objectReference: {fileID: 3135690534133012248}
+    - target: {fileID: 919214655935530875, guid: dc6f9cc022a88b5409ea2027597f22e4,
+        type: 3}
+      propertyPath: mainTarget
+      value: 
+      objectReference: {fileID: 1152426996}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc6f9cc022a88b5409ea2027597f22e4, type: 3}
 --- !u!1 &1780215628

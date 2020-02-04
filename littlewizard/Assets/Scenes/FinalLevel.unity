@@ -904,6 +904,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 180891508}
+    - target: {fileID: 919214655935530875, guid: dc6f9cc022a88b5409ea2027597f22e4,
+        type: 3}
+      propertyPath: mainTarget
+      value: 
+      objectReference: {fileID: 329997190}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc6f9cc022a88b5409ea2027597f22e4, type: 3}
 --- !u!1001 &713067049
@@ -1059,6 +1064,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1652114102084412059, guid: b150200d60c8f4745bf0f41093db4d3d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1652114102084412055, guid: b150200d60c8f4745bf0f41093db4d3d,
         type: 3}
       propertyPath: m_Sprite
@@ -1068,11 +1078,6 @@ PrefabInstance:
     - target: {fileID: 1652114102084412058, guid: b150200d60c8f4745bf0f41093db4d3d,
         type: 3}
       propertyPath: messages.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1652114102084412059, guid: b150200d60c8f4745bf0f41093db4d3d,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1740,6 +1745,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8763088677649306758, guid: d47ac44bffd86d24b8ad7b7b1d806540,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d47ac44bffd86d24b8ad7b7b1d806540, type: 3}
 --- !u!1001 &1662033695
@@ -2262,6 +2272,11 @@ PrefabInstance:
     - target: {fileID: 410294496736438395, guid: f98fe5e51b61a974683ef44cec456e53,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476657742664850450, guid: f98fe5e51b61a974683ef44cec456e53,
+        type: 3}
+      propertyPath: m_ScreenMatchMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 476657743234336897, guid: f98fe5e51b61a974683ef44cec456e53,

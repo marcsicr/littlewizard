@@ -16,7 +16,10 @@ public class UILayout : MonoBehaviour
                 GameManager.Instance.pauseGame();
             } else {
 
-                GameManager.Instance.resumeGame();
+                if (menuInstnace.isActiveAndEnabled) {
+                    GameManager.Instance.resumeGame();
+                }
+             
                
             }
         }

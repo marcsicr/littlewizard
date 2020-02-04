@@ -5,7 +5,9 @@ using UnityEngine;
 public class CameraPlayer : MonoBehaviour
 {
     public Camera cam;
-    public Transform target;
+    public Transform mainTarget;
+    private Transform currentTarget;
+
     public float smoothing;
     public Vector2 topLeft;
     public Vector2 bottomRight;
@@ -19,7 +21,8 @@ public class CameraPlayer : MonoBehaviour
 
     // Start is called before the first frame update
     void Start(){
-      
+
+        currentTarget = mainTarget;
         RectBoundaries bounds = LevelManager.Instance.startBoundaries();
         computeCamBundaries(bounds.topLeft, bounds.bottomRight);
         
@@ -33,7 +36,7 @@ public class CameraPlayer : MonoBehaviour
     {
 
         if (!shaking) {
-            Vector3 targetPosition = target.position + new Vector3(0, 0, -1);
+            Vector3 targetPosition = currentTarget.position + new Vector3(0, 0, -1);
             Vector3 smoothPosition = Vector3.Lerp(transform.position, targetPosition, smoothing);
             transform.position = new Vector3(Mathf.Clamp(smoothPosition.x, wtl.x, wbr.x), Mathf.Clamp(smoothPosition.y, wbr.y, wtl.y), smoothPosition.z);
         }
@@ -80,4 +83,14 @@ public class CameraPlayer : MonoBehaviour
         shaking = false;
         
     }
+
+    public void changeTartget(Transform target) {
+        this.currentTarget = target;
+    }
+
+    public void resetTarget() {
+        this.currentTarget = mainTarget;
+    }
+
+    
 }

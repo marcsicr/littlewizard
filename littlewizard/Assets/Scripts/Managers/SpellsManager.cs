@@ -256,4 +256,8 @@ public class SpellsManager : MonoBehaviour {
         return 0;
     }
 
+    public void onGameOver() {
+
+        selectedSpell = Spell.NONE;
+    }
 }

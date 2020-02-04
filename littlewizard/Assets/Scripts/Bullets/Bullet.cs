@@ -26,6 +26,9 @@ public abstract class Bullet : MonoBehaviour
     /*Handle Bullet collision effects*/
     public abstract void onCollision(Vector2 collisionPoint);
 
+
+
+
     private void Awake() {
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
@@ -84,5 +87,7 @@ public abstract class Bullet : MonoBehaviour
 
         this.damage = damage;
     }
+
+  
    
 }

@@ -16,10 +16,7 @@ public class Mirror : MonoBehaviour
             LinearBullet bullet = other.GetComponent<LinearBullet>();
 
             if (bullet != null) {
-
-                Vector2 direction = bullet.getDirection();
-                Vector2 newDirection = reflect(direction);
-                bullet.setDirection(newDirection);
+                onLinearBulletHit(bullet);
             }
         }
     }
@@ -36,5 +33,20 @@ public class Mirror : MonoBehaviour
         direction.y = Mathf.Round(direction.y * 10f) / 10f;
 
         return direction;
+    }
+
+    private void onLinearBulletHit(LinearBullet bullet) {
+
+        Vector2 direction = bullet.getDirection();
+        Vector2 newDirection = reflect(direction);
+        bullet.setDirection(newDirection);
+
+        EnergyBolt bolt = bullet.GetComponent<EnergyBolt>();
+
+        if (bolt != null) {
+
+            bolt.setCameraTarget();
+        }
+      
     }
 }

@@ -16,6 +16,13 @@ public class VolumePanel : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(slider);
     }
 
+    void Update() {
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            closePanel();
+        }
+    }
+
     public void setBackgroundPanel(GameObject panel,GameObject selectedBackgound) {
         hiddenPanel = panel;
         hiddenPanel.SetActive(false);
@@ -24,9 +31,14 @@ public class VolumePanel : MonoBehaviour
 
     public void closePanel() {
 
-        hiddenPanel.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(previousSelected);
+        if (hiddenPanel != null) {
+
+   
+            hiddenPanel.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(previousSelected);
+
+        }
 
         Destroy(gameObject);
     }
