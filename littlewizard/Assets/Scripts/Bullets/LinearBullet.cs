@@ -52,9 +52,7 @@ public abstract class LinearBullet : Bullet{
         Collider2D collider = this.GetComponent<Collider2D>();
         collider.enabled = true;
 
-        
-
-       // Destroy(gameObject, lifetime);
+       
 
     }
 

@@ -19,7 +19,7 @@ public class TimelineDirector : MonoBehaviour
     private RuntimeAnimatorController playerRAC;
     public Animator playerAnimator;
 
-    private RuntimeAnimatorController otherRAC;
+    //private RuntimeAnimatorController otherRAC;
     private Animator otherAnimator;
 
 
@@ -106,7 +106,7 @@ public class TimelineDirector : MonoBehaviour
 
             bugFix = true;
             playerAnimator.runtimeAnimatorController = playerRAC;
-            otherAnimator.runtimeAnimatorController = otherRAC;
+            //otherAnimator.runtimeAnimatorController = otherRAC;
         }
 
         if (stopped && isTimelineStarted) {

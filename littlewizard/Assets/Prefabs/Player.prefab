@@ -291,7 +291,6 @@ MonoBehaviour:
   playerHP: {fileID: 11400000, guid: b68f0ff6255a3a742b2ad200613504fc, type: 2}
   playerSP: {fileID: 11400000, guid: bc0753e494d55b048927fa5d31ccb8d0, type: 2}
   stamina: {fileID: 11400000, guid: 8f556433ab61e3c478d1658f70949f59, type: 2}
-  gameOverSignal: {fileID: 11400000, guid: 8622d57c1f2891d42bbb0058c89fb19f, type: 2}
   spellCasted: {fileID: 11400000, guid: ed4bb6cd787372c42ab6d3d4681d3b73, type: 2}
   castClips:
   - {fileID: 8300000, guid: c2f025def32d35241ad1dcd84bea9866, type: 3}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4310237346428337722}
   - component: {fileID: 4310237346428337723}
+  - component: {fileID: 627654601784584208}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -43,7 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d888395be56be7246b9f53e2993ff39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialBounds: {fileID: 0}
+  initialZone: {fileID: 0}
   gemCaughtSignal: {fileID: 11400000, guid: c35c8200badf2064c91f097d080b919a, type: 2}
   keyCaught: {fileID: 11400000, guid: 3f3526f0ec155554a961477bfa763f37, type: 2}
   keyUsed: {fileID: 11400000, guid: e2e8ed7d57cc14042891679c65b652cd, type: 2}
+--- !u!114 &627654601784584208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4310237346428337721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95804e28b9a74c147b7ea5ffe07bd590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

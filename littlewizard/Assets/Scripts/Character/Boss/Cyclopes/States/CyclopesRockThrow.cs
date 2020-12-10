@@ -5,7 +5,7 @@ using UnityEngine;
 public class CyclopesRockThrow : StateMachineBehaviour {
 
     Cyclopes cyclope;
-    float timeOut = 0.8f;
+  
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 

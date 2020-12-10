@@ -9,7 +9,6 @@ public class LinePointer : MonoBehaviour{
     private LineRenderer reflectedLine;
     public float spawnDelay;
     public float maxDistance;
-    private float timeDown = 0;
     int layerMask;
 
    

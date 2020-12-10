@@ -9,14 +9,15 @@ public struct RectBoundaries {
 }
 public class BoundsManager : MonoBehaviour
 {
-
     RectBoundaries mapBoundaries;
-    public SONG zoneSong;
-
+    [HideInInspector]
+    public Zone zone;
+    
     public float CameraSize;
 
     public void Awake() {
 
+        zone = transform.GetComponentInParent<Zone>();
         mapBoundaries.topLeft = transform.Find("TopLeft").position;
         mapBoundaries.bottomRight = transform.Find("BottomRight").position;
 

@@ -16,7 +16,7 @@ public class GoblinA : Enemy
 
         List<Vector3> listPatrolPoints = new List<Vector3>();
         Transform pointsHolder = transform.Find("PatrolPoints");
-        Debug.Log("Childs count" + pointsHolder.childCount);
+      //  Debug.Log("Childs count" + pointsHolder.childCount);
         Transform[] transformPoints = pointsHolder.GetComponentsInChildren<Transform>();
 
         foreach(Transform t in transformPoints) {
@@ -50,8 +50,6 @@ public class GoblinA : Enemy
         myAnimator.SetFloat("moveY", direction.y);
         myAnimator.SetTrigger("shot");
 
-
-        //StartCoroutine(waitShotCo());
       
     }
 
@@ -64,10 +62,9 @@ public class GoblinA : Enemy
             Debug.Log("Arrow shot");
             StartCoroutine(ArrowShotCo());
         }
-         
-
 
     }
+
     public IEnumerator ArrowShotCo() {
 
         shooting = true;

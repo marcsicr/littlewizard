@@ -37,7 +37,9 @@ public abstract class AbstractEnemy : Character {
     }
 
     public void resetSpeed() {
-        myRigidBody.velocity = Vector2.zero;
-        myRigidBody.angularVelocity = 0;
+       
+       myRigidBody.velocity = Vector2.zero;
+       myRigidBody.angularVelocity = 0;
+     
     }
 }

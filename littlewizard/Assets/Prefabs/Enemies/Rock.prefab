@@ -98,6 +98,7 @@ MonoBehaviour:
   bulletHitClip: {fileID: 8300000, guid: a6bded3e843232f4c9cc374b50dd78da, type: 3}
   speed: 0.3
   target: 0
+  updateDirection: 1
 --- !u!50 &7021907588483967275
 Rigidbody2D:
   serializedVersion: 4

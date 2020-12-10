@@ -175,7 +175,6 @@ public class Player : Character{
         if (!freeze) {
             currentState = currentState.handleInput();
         }
-        
     }
 
     public void FixedUpdate() {
@@ -400,5 +399,10 @@ public class Player : Character{
 
         Vector3 pos = getCollisionCenterPoint();
         return LevelManager.Instance.getTileLevel(pos);
+    }
+
+    public static Player GetPlayer() {
+
+       return GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 }

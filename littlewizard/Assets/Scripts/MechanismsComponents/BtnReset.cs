@@ -15,7 +15,7 @@ public class BtnReset : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         mechanism = transform.parent.parent.GetComponent<Mechanism>();
 
-        Debug.Log("pushables size:" + pushables.Length);
+        //Debug.Log("pushables size:" + pushables.Length);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -41,8 +41,5 @@ public class BtnReset : MonoBehaviour
         if (objectsAbove <= 0) {
             myAnimator.SetBool("pushed", false);
         }
-
-
-
     }
 }

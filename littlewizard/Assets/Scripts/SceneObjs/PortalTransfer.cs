@@ -5,24 +5,26 @@ using UnityEngine.UI;
 public class PortalTransfer : MonoBehaviour
 {
     public PortalTransfer outPortal;
-
+    [HideInInspector]
+    public Zone zone;
     public Signal transitionEnter;
     public Signal transitionOut;
 
-    private BoundsManager boundsMan;
+    private BoundsManager outBoundsMan;
         
-    GameObject player;
+    Player player;
     CameraPlayer cam;
     
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = Player.GetPlayer();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraPlayer>();
+        zone = LevelManager.Instance.getZone(transform.position);
 
         //Potal is expected to be in /Map/portals/portalX Bounds is expected to be in /Map/Bounds
-        boundsMan = outPortal.gameObject.transform.parent.parent.Find("Bounds").GetComponent<BoundsManager>();
-        if (boundsMan == null)
+        outBoundsMan = outPortal.gameObject.transform.parent.parent.Find("Bounds").GetComponent<BoundsManager>();
+        if (outBoundsMan == null)
             Debug.Log("PortalTransfer: nextMapBounds not found");
 
 
@@ -42,14 +44,16 @@ public class PortalTransfer : MonoBehaviour
     private IEnumerator waitEneter() {
 
 
-        RectBoundaries b = boundsMan.getBoundaries();
+        RectBoundaries b = outBoundsMan.getBoundaries();
         yield return new WaitForSeconds(0.2f);
-        cam.updateBoundaries(b.topLeft, b.bottomRight,boundsMan.CameraSize);
+        cam.updateBoundaries(b.topLeft, b.bottomRight,outBoundsMan.zone.cameraSize);
         cam.transform.position = outPortal.transform.position;
+        outPortal.zone.changeActive(true);
+        zone.changeActive(false);
         player.transform.position = outPortal.transform.position;
         
         transitionOut.Raise();
 
-        SoundManager.Instance.changeSong(boundsMan.zoneSong);
+        SoundManager.Instance.changeSong(outBoundsMan.zone.zoneSong);
     }
 }

@@ -9,7 +9,10 @@ public class CameraPlayer : MonoBehaviour
     private Transform currentTarget;
 
     public float smoothing;
+    
+    [HideInInspector]
     public Vector2 topLeft;
+    [HideInInspector]
     public Vector2 bottomRight;
    
     private bool shaking = false;
@@ -23,10 +26,12 @@ public class CameraPlayer : MonoBehaviour
     void Start(){
 
         currentTarget = mainTarget;
-        RectBoundaries bounds = LevelManager.Instance.startBoundaries();
+        Zone startZone = LevelManager.Instance.startZone();
+        RectBoundaries bounds = startZone.getZoneBounds();
         computeCamBundaries(bounds.topLeft, bounds.bottomRight);
         
         cam = gameObject.GetComponent<Camera>();
+        cam.orthographicSize = startZone.cameraSize;
         //Debug.Log("Pixel width :" + cam.pixelWidth + " Pixel height : " + cam.pixelHeight);
        
     }
