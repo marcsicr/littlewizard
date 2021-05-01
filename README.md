@@ -12,5 +12,5 @@ If you want to play, you can download it from the **Releases** section.
 
 ## Gallery
 ![History](/images/dialogs.jpg)
-![On Battle](/images/battle.jpg)
+![On Battle](/images/battle.JPG)
 
